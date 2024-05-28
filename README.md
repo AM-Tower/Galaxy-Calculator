@@ -11,4 +11,4 @@ If you input a few variables it will calculate that Galaxy.
 5. Radius of the Galaxy
 6. Number of Track records to skip
 
-
+Live Demo: [https://AM-Tower.com/galaxy-calculator/](https://AM-Tower.com/galaxy-calculator/)
