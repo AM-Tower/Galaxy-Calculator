@@ -1,0 +1,1868 @@
+/* ****************************************************************************
+ * 1 Document 2 Rule All 3
+ *
+ * Custom CSS Written by Jeffrey Scott Flesher for
+ * http://AM-Tower.com
+ * Created: 14 January 2010
+ * Last Update: 27 May 2024
+ */
+/* ************************************************************************* */
+/* container for all pages, must be between body and /body
+ * do not override this container
+ * do not set width
+ */
+.container
+{
+    display: block !important;
+    margin: 0.2em !important;
+    padding: 0.2em !important;
+    width: auto;
+}
+/*  Anchor: href, id
+ *  iBooks override (iOS 9 + El Capitan in night mode)
+ *  inherit = text color
+ *  Note: KF8 will force this value unless you use "el.class a"
+ */
+a
+{
+    color: blue;
+    cursor: pointer;
+    display: inline;
+    font-family: "Times New Roman",  serif;
+    font-size: 100%;
+    font-style: normal;
+    font-weight: 300;
+    margin: 0.2em 0.1em;
+    padding: 0.1em 0.2em 0.1em 0.2em;
+    text-decoration: underline;
+    vertical-align: baseline;
+}
+/* hover */
+a:hover
+{
+    color: green;
+    outline-style: outset;
+    text-decoration: none;
+}
+/* focus */
+a:focus
+{
+    outline-style: inset;
+}
+/* Bold: id */
+b
+{
+    font-weight: 300;
+}
+/* ****************************************************************************
+ *  blockquote
+ * Crashes wkhtmltopdf: quotes: "\201C" "\201D" "\2018" "\2019";
+ */
+blockquote
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+    padding: 0.36em 0.2em 0.36em 0.2em;
+}
+/* .blockquote */
+blockquote::before
+{
+    content: open-quote;
+}
+/* .blockquote */
+blockquote::after
+{
+    content: close-quote;
+}
+/* Body:
+ * KF8 does not support this in body
+ * font-size: 100%;
+ * line-height: 1.5;
+ * line-height: 150%;
+ * font-feature-settings: "kern", "liga", "clig", "onum", "pnum";
+ * font-kerning: normal;
+ * font-variant: common-ligatures oldstyle-nums proportional-nums;
+ * RS will override margins anyways
+ * iBooks and Kobo support widows and orphans
+    height: 100%;
+    width: 100%;
+ */
+body
+{
+    height: 100%;
+    margin: 0;
+    orphans: 2;
+    padding: 0;
+    widows: 2;
+    width: 100%;
+}
+/* cite */
+cite
+{
+    font-style: italic;
+}
+/* **************************************
+    <dl>
+        <dt>Definition Term</dt>
+        <dd>Definition Description</dd>
+    </dl>
+  *** dd Description
+*/
+dd
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    margin: 0.33em 1em;
+}
+/* Definition List */
+dl
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    margin: 0.36em 0.3em 0.36em 0.3em;
+}
+/* Definition Term */
+dt
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-weight: 300;
+}
+/* *** div top, right, bottom, and left */
+div
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    margin: 0.36em 0.2em 0.36em 0.2em;
+    padding: 0.1em 0.2em 0.1em 0.2em;
+}
+/* html */
+html
+{
+    height: 100%;
+    width: 100%;
+}
+/* hr solid ridge inset */
+hr
+{
+    border-color: #666 #333;
+    border-style: outset;
+    border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+/* Header: h1 Center 200% 24pt 32px xx-large  */
+h1
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+    text-indent: 0;
+}
+/* Header: h2 Center 160% 20pt 26px 1.6em */
+h2
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 1.66em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+    text-indent: 0;
+}
+/* Header: h3 Center 150% 18pt 24px x-large */
+h3
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 1.5em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+    text-indent: 0;
+}
+/* Header: h4 Center 140% 16pt 22px */
+h4
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 1.4em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+    text-indent: 0;
+}
+/* Header: h5 Center 125% 14.5pt 20px */
+h5
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 1.25em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+    text-indent: 0;
+}
+/* Header: h6 Center 112.5% 13.5pt 18px large */
+h6
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 1.125em;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em;
+    page-break-after: avoid;
+    page-break-before: avoid;
+    page-break-inside: avoid;
+    text-align: center;
+    text-indent: 0;
+}
+/* *****************************
+ * Paragraph p
+ */
+p
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 100%;
+    margin: 0.36em 0.2em 0.36em 0.2em;
+    padding: 0.1em 0.2em 0.1em 0.2em;
+    text-indent: 0;
+}
+/* *****************************
+ *   pre
+ * top right bottom left
+ */
+pre
+{
+    font-family: mono, monospace, "Courier New";
+    font-size: 100%;
+    font-style: normal;
+    font-weight: 300;
+    margin: 0.36em 0 0.36em 0;
+    padding: 0.1em 0.2em 0.1em 0.2em;
+    page-break-inside: avoid;
+    text-indent: 0;
+}
+/* *****************************
+ * Ordered List with Numbers
+ * top right bottom left
+ */
+ol
+{
+    font-family: "Times New Roman",  serif;
+    margin: 0;
+}
+/* Unordered List without Numbers: Bullets */
+ul
+{
+    font-family: "Times New Roman",  serif;
+    margin: 0;
+}
+/* Styling is improved to prevent sub from affecting line-height
+ * line-height: 120%;
+ * font-size: 75%;
+ */
+sub
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 75% !important;
+    line-height: 120%;
+    text-decoration: none;
+    vertical-align: sub;
+    vertical-align: -20%;
+}
+/* Styling is improved to prevent sup from affecting line-height
+ * line-height: 120%;
+ * font-size: 75%;
+ */
+sup
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 75% !important;
+    line-height: 120%;
+    text-decoration: none;
+    vertical-align: super;
+    vertical-align: 33%;
+}
+/* *****************************
+ * TABLES
+    Note: legacy RMSDK sets auto to 0, which is permitted in a footnote of the EPUB2 specs
+ */
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0;
+    display: table;
+    font-family: "Times New Roman",  serif;
+    padding: 0;
+    page-break-inside: avoid;
+    table-layout: auto;
+    width: auto;
+}
+/* th */
+th
+{
+    background-color: #DCDCDC;
+    empty-cells: show;
+    font-family: "Times New Roman",  serif;
+    font-weight: 300;
+    padding: 0.3em;
+    text-align: left;
+}
+/* td */
+td
+{
+    empty-cells: show;
+    font-family: "Times New Roman",  serif;
+    padding: 0.3em;
+    text-align: left;
+}
+/* Table Font Size */
+table, tbody, td, tfoot, th, thead, tr
+{
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 0.1em;
+    font-family: "Times New Roman",  serif;
+    font-size: 100%;
+    page-break-inside: avoid;
+    text-indent: 0;
+    vertical-align: middle;
+}
+/* hover */
+tr:hover
+{
+    background-color: #D3D3D3;
+}
+/* ************************************************************************* */
+/* If there are too many floating elements in a XHTML file,
+ * performance of legacy RMSDK takes a huge hit (+- 4 seconds to render page on eInk devices)
+ */
+.float-left
+{
+    float: left;
+    padding: 0 1.5% 0 0;
+}
+/* term */
+.term
+{
+    font-family: "Times New Roman",  serif;
+    width: 100%;
+}
+/* dropcaps1 */
+.dropcaps1
+{
+    float: left;
+    font-family: cursive, serif, Georgia;
+    font-size: 2.7em;
+    line-height: 0.8em;
+    padding-bottom: -0.1em;
+    /* text-shadow: 5px -3px #151B54; */
+}
+/* dropcaps2 */
+.dropcaps2
+{
+    float: left;
+    font-family: Zapfino, cursive, serif, Georgia;
+    font-size: 2.7em;
+    font-weight: 300;
+    line-height: 0.8em;
+    padding-bottom: -0.1em;
+}
+/* Create two equal columns that floats next to each other */
+.column
+{
+    box-sizing: border-box;
+    display: inline;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 33%;
+}
+/* row */
+.row
+{
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+/* Clear floats after the columns */
+.row:after
+{
+    clear: both;
+    content: "";
+    display: table;
+}
+/* *****************************
+ *   Display
+ */
+.block
+{
+    display: block;
+}
+/* inline */
+.inline
+{
+    display: inline;
+}
+/* Clearings
+ * may be useful if an element is floating in a container
+ */
+.clear
+{
+    clear: both;
+}
+/* align_center */
+.align_center
+{
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* Font styles
+ * Does not use that with span if b or strong can be used
+ */
+.bold
+{
+    font-weight: 300;
+}
+/*
+ * Does not use that with span if i, cite, dfn or em can be used
+ */
+.italic
+{
+    font-style: italic;
+}
+/* underline: */
+.underline
+{
+    text-decoration: underline;
+}
+/* For some reason, after has better support than before (Google, Kobo, etc.) */
+.break-after
+{
+    page-break-after: always;
+}
+/* *****************************
+ * a_line_show_break_html that gets drawn for Page Breaks on the Website,
+ * but display none set on them so only JavaScript can enable them.
+ * display: none; has to go on top, order will have to be wrong
+ */
+.a_line_show_break_html
+{
+    display: none;
+    border-color: #666;
+    border-style: solid;
+    border-width: 0.1em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    width: 100%;
+}
+/* *****************************
+ * a_hard_line gets drawn
+ */
+.a_hard_line
+{
+    border: 0;
+    border-top-color: #666;
+    border-top-style: solid;
+    border-top-width: 0.1em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 0;
+}
+/* *****************************
+ *  Table of Content no numbers
+ */
+.toc
+{
+    list-style-type: none;
+    text-align: left;
+    text-indent: 0;
+}
+/* 0 level TOC this is inside another level */
+.toc_level_0
+{
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    text-indent: 0;
+}
+/* 1st level TOC */
+.toc_level_1
+{
+    list-style-type: none;
+    padding: 0 1.5em 0 1.5em;
+    text-align: left;
+    text-indent: 0;
+}
+/* 2nd level TOC */
+.toc_level_2
+{
+    list-style-type: none;
+    padding: 0 2.0em 0 2.0em;
+    text-align: left;
+    text-indent: 0;
+}
+/* 3rd level TOC */
+.toc_level_3
+{
+    list-style-type: none;
+    padding: 0 2.5em 0 2.5em;
+    text-align: left;
+    text-indent: 0;
+}
+/* 4th level TOC */
+.toc_level_4
+{
+    list-style-type: none;
+    padding: 0 3.0em 0 3.0em;
+    text-align: left;
+    text-indent: 0;
+}
+/* *****************************
+ * center_table
+ */
+table.center_table
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+/* *****************************
+ * normal_right
+ */
+table.normal_right
+{
+    text-align: right;
+}
+/* *****************************
+ * normal_left
+ */
+table.normal_left
+{
+    text-align: left;
+}
+/* *****************************
+ * normal_center
+ */
+table.normal_center
+{
+    text-align: center;
+}
+/* tr, td */
+tr.normal_center, td.normal_center
+{
+    text-align: center;
+}
+/* th */
+th.normal_center
+{
+    text-align: center;
+}
+/* *****************************
+ * oddlist
+ */
+/* even */
+tr.oddlist:nth-child(even)
+{
+    background-color: #E0E0E0;
+}
+/* *****************************
+ * table_small
+ */
+table.table_small
+{
+    font-size: smaller;
+    padding-right: 0.2em;
+    padding-top: 0.2em;
+}
+/* tr, td */
+tr.small_normal, td.small_normal, th.small_normal
+{
+    font-size: smaller;
+    padding-right: 0.2em;
+    padding-top: 0.2em;
+}
+/* *****************************
+ * table_center_small
+ */
+table.table_center_small
+{
+    font-size: smaller;
+    padding-right: 0.2em;
+    padding-top: 0.2em;
+    text-align: center;
+}
+/* tr, td */
+tr.table_center_small, td.table_center_small, th.table_center_small
+{
+    font-size: smaller;
+    padding-right: 0.2em;
+    padding-top: 0.2em;
+    text-align: center;
+}
+/* th */
+/* *****************************
+ * subdue
+ */
+table.subdue
+{
+    border-color: #666666;
+}
+/* : border: 0.1em solid #666666; */
+td.subdue, tr.subdue
+{
+    border-color: #666666;
+}
+/* : border: 0.1em solid #666666; */
+th.subdue
+{
+    border-color: #666666;
+}
+/* *****************************
+ * subdue_tc
+ */
+table.subdue_tc
+{
+    border-color: #666666;
+}
+/* *****************************
+ * subdue_center
+ */
+table.subdue_center
+{
+    border-color: #666666;
+    text-align: center;
+}
+/* : */
+td.subdue_center
+{
+    border-color: #666666;
+    text-align: center;
+}
+tr.subdue_center
+{
+    border-color: #666666;
+    text-align: center;
+}
+/* : */
+th.subdue_center
+{
+    border-color: #666666;
+    text-align: center;
+}
+/* *****************************
+ * subdue_right
+ */
+td.subdue_right, tr.subdue_right
+{
+    border-color: #666666;
+    text-align: right;
+}
+/* *****************************
+ * groove
+ */
+table.groove
+{
+    border-spacing: 0.3em;
+    border-style: groove;
+}
+/* *****************************
+ * ridge Table
+ */
+table.ridge, thead.ridge, tbody.ridge, tfoot.ridge, tr.ridge, th.ridge, td.ridge
+{
+    border-color: #D3D3D3;
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+}
+/*
+ * ridge_center tr, th, td
+ */
+table.ridge_center, thead.ridge_center, tbody.ridge_center, tfoot.ridge_center, tr.ridge_center, th.ridge_center, td.ridge_center
+{
+    border-color: #D3D3D3;
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/*
+ * ridge_silver
+ */
+table.ridge_silver, thead.ridge_silver, tbody.ridge_silver, tfoot.ridge_silver, tr.ridge_silver, th.ridge_silver, td.ridge_silver
+{
+    border-color: silver;
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    padding: 0.2em;
+}
+/*
+ * ridge_silver_center
+ */
+table.ridge_silver_center, thead.ridge_silver_center, tbody.ridge_silver_center, tfoot.ridge_silver_center, tr.ridge_silver_center, th.ridge_silver_center, td.ridge_silver_center
+{
+    border-color: silver;
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    padding: 0.2em;
+    text-align: center;
+}
+/*
+ * red_ridge_center
+ */
+table.red_ridge_center, thead.red_ridge_center, tbody.red_ridge_center, tfoot.red_ridge_center, tr.red_ridge_center, th.red_ridge_center, td.red_ridge_center
+{
+    border-color: rgb(244, 176, 176);
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/*
+ * orange_ridge_center
+ */
+table.orange_ridge_center, thead.orange_ridge_center, tbody.orange_ridge_center, tfoot.orange_ridge_center, tr.orange_ridge_center, th.orange_ridge_center, td.orange_ridge_center
+{
+    border-color: rgb(244, 204, 176);
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/*
+ * yellow_ridge_center
+ */
+table.yellow_ridge_center, thead.yellow_ridge_center, tbody.yellow_ridge_center, tfoot.yellow_ridge_center, tr.yellow_ridge_center, th.yellow_ridge_center, td.yellow_ridge_center
+{
+    border-color: rgb(244, 244, 176);
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/*
+ * green_ridge_center
+ */
+table.green_ridge_center, thead.green_ridge_center, tbody.green_ridge_center, tfoot.green_ridge_center, tr.green_ridge_center, th.green_ridge_center, td.green_ridge_center
+{
+    border-color: rgb(176, 244, 176);
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/*
+ * blue_ridge_center
+ */
+table.blue_ridge_center, thead.blue_ridge_center, tbody.blue_ridge_center, tfoot.blue_ridge_center, tr.blue_ridge_center, th.blue_ridge_center, td.blue_ridge_center
+{
+    border-color: rgb(176, 176, 244);
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/*
+ * violet_ridge_center
+ */
+table.violet_ridge_center, thead.violet_ridge_center, tbody.violet_ridge_center, tfoot.violet_ridge_center, tr.violet_ridge_center, th.violet_ridge_center, td.violet_ridge_center
+{
+    border-color: rgb(204, 176, 244);
+    border-spacing: 0.1em;
+    border-style: ridge;
+    border-width: 0.2em;
+    text-align: center;
+}
+/* ****************************************************************************
+ *  my_signature
+ * font-weight: normal, bold; lighter; bolder;
+ */
+.my_signature
+{
+    font-family: flesh, "Comic Sans MS", cursive;
+}
+/* ****************************************************************************
+ *  a_signature
+ * font-weight: normal, bold; lighter; bolder;
+ */
+.a_signature
+{
+    font-family: "Comic Sans MS", cursive;
+    font-weight: 300;
+}
+/* a_signature_light */
+.a_signature_light
+{
+    font-family: "Comic Sans MS", cursive;
+}
+/* a_signature_large_center */
+.a_signature_large_center
+{
+    display: block;
+    font-family: "Comic Sans MS", cursive;
+    font-size: large;
+    font-weight: 300;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* ******* First sentence in chapters following heading ******* */
+.text_top
+{
+    font-family: "Times New Roman",  serif;
+    text-align: left;
+    text-indent: 1em;
+}
+/* text_standard */
+.text_standard
+{
+    font-family: "Times New Roman",  serif;
+    font-style: normal;
+    text-indent: 0;
+}
+/* sentence in chapters */
+.text_normal
+{
+    font-family: "Times New Roman",  serif;
+    font-style: normal;
+    text-indent: 0;
+}
+/* sentence in chapters indented */
+.text_indent
+{
+    font-family: "Times New Roman",  serif;
+    text-align: left;
+    text-indent: 1.33em;
+}
+/* sentence in chapters are centered */
+.text_center
+{
+    font-family: "Times New Roman",  serif;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* text_centerit */
+.text_centerit
+{
+    font-family: "Times New Roman",  serif;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 99%;
+}
+/* text_small */
+.text_small
+{
+    font-family: "Times New Roman",  serif;
+    font-size: smaller;
+    text-align: left;
+    text-indent: 1em;
+}
+/*
+ * font-weight: 300;
+ */
+.text_center_caption
+{
+    font-family: Charcoal, sans-serif;
+    font-size: large;
+    margin: 1em 1em 1em 1em;
+    text-align: center;
+    width: 99%;
+}
+/* ****************************************************************************
+ *  text_code
+    white-space: nowrap;
+ */
+.text_code
+{
+    font-family: mono, "Courier New", monospace;
+    font-style: italic;
+    font-weight: 300;
+}
+/* : */
+.text_code_normal
+{
+    font-family: mono, "Courier New", monospace;
+    font-weight: 300;
+}
+/* text_math: used for f(x) */
+.text_math
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+}
+/* text_html:  */
+.text_html
+{
+    font-family: "Times New Roman",  serif;
+    font-size: 118%;
+    line-height: 1;
+}
+/* No Wrap for 1 line of text */
+.text_line
+{
+    font-family: "Times New Roman",  serif;
+    font-size: medium;
+}
+/* : */
+.text_indent_narrow
+{
+    display: inline-block;
+    font-family: "Times New Roman",  serif;
+    text-align: left;
+    text-indent: 1em;
+    width: 86%;
+}
+/* line of text in Times */
+.small_text_line
+{
+    font-family: "Times New Roman",  serif;
+    font-size: smaller;
+}
+/* line of text in Times */
+.small_text_line_center
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-size: smaller;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* ****************************************************************************
+ *  text_light
+ */
+.text_light
+{
+    font-family: Garamond, "Trebuchet MS", Bookman, serif;
+    font-style: italic;
+    font-weight: 300;
+}
+/* ****************************************************************************
+ *  text_dark
+ */
+.text_dark
+{
+    font-family: "Comic Sans MS", cursive;
+    font-weight: 300;
+}
+/* ****************************************************************************
+ *  text_mono
+ */
+.text_mono
+{
+    font-family: mono, monospace, Courier, "Courier New";
+    font-style: normal;
+    font-weight: normal;
+}
+/* ****************************************************************************
+ *  text_mono_bold
+ */
+.text_mono_bold
+{
+    font-family: mono, monospace, Courier, "Courier New";
+    font-style: normal;
+    font-weight: 300;
+}
+/* ****************************************************************************
+ *  text_mono_bold_italic
+ */
+.text_mono_bold_italic
+{
+    font-family: mono, monospace, Courier, "Courier New";
+    font-style: italic;
+    font-weight: 300;
+}
+/* ****************************************************************************
+ *  text_mono_italic
+ */
+.text_mono_italic
+{
+    font-family: mono, monospace, Courier, "Courier New";
+    font-style: italic;
+    font-weight: normal;
+}
+/* ****************************************************************************
+ * the_chapter
+ */
+.the_chapter
+{
+    padding-left: 0.2em;
+}
+/* ****************************************************************************
+ *  a_description
+ */
+.a_description
+{
+    font-family: "Times New Roman",  serif;
+    padding-left: 0.2em;
+}
+/* ****************************************************************************
+ *  a_table
+ *  % would not reflow with font-size user setting
+ */
+.a_table
+{
+    font-family: "Times New Roman",  serif;
+    padding: 0.1em;
+}
+/* ****************************************************************************
+ *  a_ref
+ */
+.a_ref
+{
+    font-family: "Times New Roman", sans-serif;
+    font-size: 100%;
+    font-weight: 300;
+    margin: 0.2em 0.1em 0.2em 0.2em;
+    padding: 0.1em 0.2em 0.1em 0.2em;
+    text-align: left;
+    text-indent: 0;
+}
+/* ****************************************************************************
+ *  a_blank_line
+ */
+.a_blank_line
+{
+    display: block;
+    white-space: nowrap;
+}
+/* ****************************************************************************
+ * linknotice
+ *
+ */
+a.linknotice
+{
+    color: red;
+    cursor: url("favicon.ico"), auto;
+    display: inline;
+    font-family: "Times New Roman",  serif;
+    font-size: 100%;
+    font-weight: 300;
+    margin: 0 auto;
+    padding: 0.2em 0.3em;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    vertical-align: baseline;
+}
+/* hover focus */
+a.linknotice:hover, a.linknotice:focus
+{
+    border-color: green;
+    border-width: 0.3em;
+    color: green;
+    outline-style: outset;
+    text-decoration: none;
+}
+/* ****************************************************************************
+ *  a_header Center
+    cursor: url("favicon.ico"), auto;
+ */
+.a_header
+{
+    font-family: "Times New Roman",  serif;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+}
+/* **********************************
+ *  ref_header
+    cursor: url("favicon.ico"), auto;
+ */
+.ref_header
+{
+    font-family: "Times New Roman",  serif;
+    font-weight: 300;
+    margin: 0.1em 0.6em 0.1em 0.1em;
+    text-align: left;
+    text-indent: 0;
+}
+/* *****************************
+ *  a_button
+ * line-height: 52%;
+ transition-duration: 0.4s;
+ */
+.a_button
+{
+    border-color: green;
+    border-style: outset;
+    border-width: 0.3em;
+    cursor: progress;
+    display: inline-block;
+    font-family: "Times New Roman",  serif;
+    padding: 0.01em 0.42em;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+/*
+ *  a_button Hover
+ */
+.a_button:hover
+{
+    border-color: #dc143c;
+    border-style: inset;
+}
+/* ****************************************************************************
+ *  Red
+ */
+.red
+{
+    color: Red;
+}
+/* ****************************************************************************
+ *  Blue
+ */
+.blue
+{
+    color: Blue;
+}
+/* ****************************************************************************
+ *  Green
+ */
+.green
+{
+    color: Green;
+}
+/* author_title */
+.author_title
+{
+    cursor: url("favicon.ico"), auto;
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-size: 100%;
+    font-style: italic;
+    font-weight: normal;
+    margin: 0 auto;
+    padding: 0.1em 0.2em;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    vertical-align: middle;
+    width: 100%;
+}
+/* *****************************
+ * center top, right, bottom, and left
+ */
+.center
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* font-size: small */
+.small_center
+{
+    font-size: smaller;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    vertical-align: middle;
+}
+/* *****************************
+ * center_small
+ */
+.center_small
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-size: smaller;
+    font-weight: normal;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    vertical-align: middle;
+    width: 100%;
+}
+/* *****************************
+ * center_bold
+ */
+.center_bold
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-weight: 300;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* *****************************
+ * center_bold_small
+ * Does not use that with span if i, cite, dfn or em can be used
+ */
+.center_bold_small
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-size: smaller;
+    font-weight: 300;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* *****************************
+ * center_italic
+ * Does not use that with span if i, cite, dfn or em can be used
+ */
+.center_italic
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* *****************************
+ * center_italic_bold
+ * Does not use that with span if i, cite, dfn or em can be used
+ */
+.center_italic_bold
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* *****************************
+ * a_link top, right, bottom, and left
+ * Taking nesting of inline elements into account (e.g. em nested in strong)
+ * pointer; help; wait; zoom-in; zoom-out alias
+ */
+a.a_link
+{
+    color: blue;
+    cursor: pointer;
+    font-size: 100%;
+    font-weight: normal;
+    padding: 0.1em 0.2em 0.1em 0.2em;
+    text-decoration: underline;
+    vertical-align: baseline;
+}
+/* : */
+a.a_link:hover
+{
+    color: green;
+    outline-style: outset;
+    text-decoration: none;
+}
+/* : */
+a.a_link:focus
+{
+    outline-style: inset;
+}
+/* *****************************
+ *  button_blank_target_link
+ *  line-height: 52%;
+ *  transition-duration: 0.4s;
+ */
+.button_blank_target_link
+{
+    border-color: green;
+    border-style: outset;
+    border-width: 0.3em;
+    cursor: progress;
+    display: inline;
+    font-family: "Times New Roman",  serif;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0.1em 0.2em;
+    padding: 0.1em 0.2em;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    vertical-align: middle;
+}
+/* Hover */
+.button_blank_target_link:hover
+{
+    border-color: #dc143c;
+    border-style: inset;
+}
+/* *****************************
+ * https_blank_target_link
+ */
+.https_blank_target_link
+{
+    border-color: red;
+    border-style: outset;
+    border-width: 0.1em;
+    cursor: progress;
+    display: inline;
+    font-family: "Times New Roman",  serif;
+    font-style: normal;
+    font-weight: 300;
+    margin: 0.1em 0.2em;
+    padding: 0.1em 0.2em;
+    text-decoration: none;
+    text-indent: 0;
+    vertical-align: middle;
+}
+/* element */
+.https_blank_target_link:hover
+{
+    border-color: green;
+    border-style: inset;
+}
+/* anchor */
+a.https_blank_target_link:focus
+{
+    color: green;
+    outline-style: inset;
+}
+/* *****************************
+ * blank_target_link
+ */
+.blank_target_link
+{
+    border-color: red;
+    border-style: outset;
+    border-width: 0.1em;
+    cursor: progress;
+    display: inline;
+    font-family: "Times New Roman",  serif;
+    font-style: normal;
+    font-weight: normal;
+    margin: 0.1em 0.2em;
+    padding: 0.1em 0.2em;
+    text-decoration: none;
+    text-indent: 0;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+/* element */
+.blank_target_link:hover
+{
+    border-color: green;
+    border-style: inset;
+}
+/* anchor */
+a.blank_target_link:focus
+{
+    color: green;
+    outline-style: inset;
+}
+/* *****************************
+ * toc_link
+ * pointer; help wait zoom-in zoom-out alias
+ */
+a.toc_link
+{
+    cursor: pointer;
+    padding: 0;
+    text-indent: 1em;
+}
+/* : */
+a.toc_link:hover, a.toc_link:focus
+{
+    outline-style: outset;
+}
+/* : */
+a.toc_link:focus
+{
+    outline-style: inset;
+}
+/* ******************* List *************
+ *  list_alpha
+ */
+.list_alpha
+{
+    list-style-type: upper-alpha;
+}
+/* : */
+.alpha
+{
+    list-style-type: lower-alpha;
+}
+/* *****************************
+ * list_pyramid
+ */
+.list_pyramid
+{
+    list-style-image: url("images/pyramid-icon-large.png");
+    list-style-type: circle;
+}
+/* *****************************
+ * list_pyramid_small
+ */
+.list_pyramid_small
+{
+    list-style-image: url("images/pyramid-icon-small.png");
+    list-style-type: circle;
+}
+/* boxit */
+.boxit
+{
+    border-style: double;
+    border-width: 0.3em;
+    display: block;
+    margin: 0.3em 0.3em 0.3em 0.3em;
+    padding: 0.1em 0.3em 0.1em 0.3em;
+}
+/* boxitcenter */
+.boxitcenter
+{
+    border-style: double;
+    border-width: 0.3em;
+    display: block;
+    margin: 1em auto;
+    padding: 0.3em;
+    text-align: center;
+    width: 96%;
+}
+/* ********************************** font-size *******************************
+ * inherit, initial, %, length, larger, smaller, xx-large, x-large, large, small, x-small, xx-small, medium 
+*/
+/* font-size:large_xxx 26pt 35px 2.2em 220% */
+.large_xxx
+{
+    font-size: 2.33em;
+}
+/* font-size:large_xx 24pt 32px 2em 200% */
+.large_xx
+{
+    font-size: xx-large;
+}
+/* font-size:large_x 18pt 24px 1.5em 150% */
+.large_x
+{
+    font-size: x-large;
+}
+/* font-size:large_x 18pt 24px 1.5em 150% */
+.large_x_center
+{
+    font-size: x-large;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* font-size:large 13.5pt 18px 1.125em 112.5% */
+.large
+{
+    font-size: large;
+}
+/* larger then parent*/
+.larger
+{
+    font-size: larger;
+}
+/* font-size:large 13.5pt 18px 1.125em 112.5% */
+.large_center
+{
+    font-size: large;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* font-size:medium 12pt 16px 1em 100% */
+.medium
+{
+    font-size: medium;
+}
+/* font-size: small 10pt 13px 0.8em 80% */
+.small
+{
+    font-size: smaller;
+    margin: 0.2em 0.1em;
+    padding: 0.1em;
+}
+/* font-size: small */
+a.small
+{
+    font-size: smaller;
+}
+/* font-size: small */
+span.small
+{
+    font-size: smaller;
+}
+/* font-size: small */
+dd.small
+{
+    font-size: smaller;
+}
+/* font-size: small */
+.small_dd
+{
+    font-size: smaller;
+}
+/* font-size: x-small */
+.small_x
+{
+    font-size: x-small;
+    margin: 0.2em 0.1em;
+    padding: 0.1em;
+}
+/* font-size: x-small */
+a.small_x
+{
+    font-size: x-small;
+}
+/* font-size: */
+.big
+{
+    font-family: "Times New Roman",  serif;
+    font-size: x-large;
+}
+/* font-size: I did away with bold */
+.bignbold
+{
+    font-family: "Times New Roman",  serif;
+    font-size: x-large;
+}
+/* bignboldncenter font-size: x-large */
+.bignboldncenter
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-size: x-large;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+}
+/* bignboldncenter font-size: x-large */
+.bigcenter
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-size: x-large;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+}
+/* ****************************************************************************
+ *  a_caption
+ */
+.a_caption
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+    padding-left: 0;
+    text-indent: 1em;
+}
+/* ****************************************************************************
+ *  a_illustration
+ */
+.a_illustration
+{
+    font-family: "Times New Roman",  serif;
+    padding: 0.36em 0.33em;
+}
+/*
+ * object-fit: contain;
+ */
+.image_wrapper
+{
+    display: block;
+    text-align: left;
+}
+/*
+ *
+ * object-fit: contain;
+ */
+.image_wrapper_center
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.1em 0.3em 0.1em 0.3em;
+    text-align: center;
+    text-indent: 0;
+    vertical-align: middle;
+    width: 100%;
+}
+/* the_image
+ * 333x187
+ * border-radius: 0.6em;
+ * 11.688em; = 187px; height
+ * 20.813em; = 333px; width
+ * object-fit: contain;
+ */
+.the_image
+{
+    display: block;
+    height: 11.688em;
+    width: 20.813em;
+}
+/*
+.the_image:hover
+{
+    box-shadow: 0 0 0.2em 0.1em rgba(0, 140, 186, 0.5);
+}
+*/
+/* style="width: 320px; height: 480px;" */
+.the_image_size
+{
+    display: block;
+}
+/* noprint printer */
+@media print
+{
+    .noprint
+    {
+        display: none;
+    }
+}
+/* noprint */
+.noprint
+{
+    display: none;
+}
+/* ************* Google Translate ************** */
+.google_translate_element
+{
+    font-family: "Times New Roman",  serif;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    z-index: 99999;
+}
+/* **************************************************************
+ * Over-engineered asterism with an SVG background
+ * which is legacy RMSDK-compliant, reflows with text and
+ * is night-mode compatible (black asterisk + white border)
+    cursor: url("favicon.ico"),auto;
+    overflow not support in KF8
+    background-size: auto;
+ */
+.asterism
+{
+    background: transparent url("images/asterism.svg") no-repeat center;
+    border: none;
+    height: 1.5em;
+    padding: 0;
+    opacity: 0.666;
+    text-align: center;
+    text-indent: 0;
+    width: auto;
+}
+/* ****************************************************************************
+ *  footnote
+ */
+.footnote
+{
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+    padding: 0;
+    text-align: left;
+    text-indent: 1em;
+    width: 90%;
+}
+/* ****************************************************************************
+ *  footnote
+ */
+.tocholder
+{
+    color: #666;
+    display: block;
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* ****************************************************************************
+ *  empty
+ */
+.empty
+{
+    border: 0;
+    display: block;
+    text-indent: 0;
+    width: 100%;
+}
+/* ****************************************************************************
+ *  a_quote_centered
+ * Crashes wkhtmltopdf: quotes: "\201C" "\201D" "\2018" "\2019";
+ */
+.a_quote_centered
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+/* .a_quote_centered */
+.a_quote_centered::before
+{
+    content: open-quote;
+}
+/* .a_quote_centered */
+.a_quote_centered::after
+{
+    content: close-quote;
+}
+/* ****************************************************************************
+ *  a_quote
+ * Crashes wkhtmltopdf: quotes: "\201C" "\201D" "\2018" "\2019";
+ */
+.a_quote
+{
+    font-family: "Times New Roman",  serif;
+    font-style: italic;
+    font-weight: 300;
+}
+/* .a_quote */
+.a_quote::before
+{
+     content: open-quote; 
+/*    content:"\201C";*/
+/*    right: -45px; */
+}
+/* .a_quote */
+.a_quote::after
+{
+     content: close-quote; 
+/*    content:"\201D"; */
+/*    right: -45px;    */
+}
+/* ****** Video5 ****** */
+/* Put in Video to control its size  */
+.video5
+{
+    width: 42%;
+}
+/* : */
+.video5_centerit
+{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 99%;
+}
+/* ****************************************************************************
+ * page_counter top, right, bottom, and left
+ * display: block none;
+ * could not get working
+ */
+.page_counter
+{
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+    text-indent: 0;
+    width: 100%;
+}
+/* debug_info is controlled in 1doc2rule.js */
+.debug_info
+{
+    display: none;
+}
+/* ****************************************************************************
+ * Javascript only: Enabled with Javascript
+ *  Kindlegen does not like this line when applied on anything but a span
+ */
+.js_only
+{
+    display: none;
+    padding: 0;
+}
+/* *****************************
+ * Show only for PDF
+ * Default: none
+ * JavaScript SetAgent will set to block if js enabled, Book are not shown
+ * Kindlegen does not like this line when applied on anything but a span
+ * used in class book_cover
+ */
+.show_only_pdfs
+{
+    display: none;
+}
+/* *****************************
+ * Do not show in Book
+ * Default: none
+ * Kindlegen does not like this line when applied on anything but a span
+ */
+.no_show_book
+{
+    display: none;
+}
+/* ****************************************************************************
+ * Show if not in PDF or Book or js_only
+ * Default: none
+ * JavaScript SetAgent will set to none if js_only, PDF or Book are not shown
+ * Not used in PTU
+ */
+.show_if_js_only_no_show_pdf_book
+{
+    display: none;
+}
+/* *****************************
+ * Do not show in PDF with JavaScript set to none
+ * Default: none set to inline
+ * Kindlegen does not like this line when applied on anything but a span
+ */
+.no_show_pdf
+{
+    display: none;
+}
+/* *****************************
+ * Show only for Web Page
+ * Default: none
+ * JavaScript SetAgent will set to block if js enabled, PDF or Book are not shown
+ * Kindlegen does not like this line when applied on anything but a span
+ * Note: JavaScript not always load so script does not change display none
+ *   so I manually fix it by setting it to block, after making ePub, Mobi, PDF
+ */
+.show_web_page_only
+{
+    display: none;
+}
+/* ********************************** End of File ************************** */

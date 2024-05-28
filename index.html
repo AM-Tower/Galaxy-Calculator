@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AM-Tower Galaxy Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jeffrey Scott Flesher" />
+    <meta name="created" content="1961-01-14T18:32:33.366699936" />
+    <meta name="changedby" content="Jeffrey Scott Flesher" />
+    <meta name="changed" content="2024-01-14T18:32:57.366666666" />
+    <meta name="description" content="Author: Jeffrey Scott Flesher, AM-Tower End of Time Simulator based on Wizards like Sir Isaac Newton and Nikola Tesla" />
+    <meta name="keywords" content="Light,Wizard,Kepler,Newton,Tesla,God,Universe,Physics,Sun,Jeffrey Scott Flesher" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+
+    <link rel="stylesheet" href="1doc2rule.min.css" />
+	
+    <script async="async" src="bignumber.js"></script>
+    <script async="async" src="bignumbermath.js"></script>
+    <script async="async" src="galaxycalculator.js"></script>
+	<style>
+		.evenRow {
+			background-color: #f2f2f2;
+		}
+		.oddRow {
+			background-color: #ffffff;
+		}
+        /* Styling for the help dialog */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        /* Styling for the close button */
+        .popup-close {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+		.buttonStyle {
+			background-color:green;
+			color:white;
+        }
+		.buttonStyle:hover {
+			color: red;
+        }
+	</style>
+</head>
+<body>
+
+<h1>Galaxy Calculator</h1>
+
+<div>
+    <form id="galaxyCalculatorForm">
+        <label for="myGalaxy">Galaxy:</label>
+        <input type="text" id="myGalaxy" name="myGalaxy" value="Milkyway">
+		<button type="button" onclick="showHelp(1)">Help</button>
+        <div id="helpPopup1" class="popup">
+            <span class="popup-close" onclick="closeHelp(1)">&times;</span>
+            <p>Enter the Name of the Galaxy, for example: Milkyway.</p>
+        </div>		
+		<br>
+
+        <label for="mySunSize">Sun Size:</label>
+        <input type="text" id="mySunSize" name="mySunSize" value="864575.9">
+		<button type="button" onclick="showHelp(2)">Help</button>
+        <div id="helpPopup2" class="popup">
+            <span class="popup-close" onclick="closeHelp(2)">&times;</span>
+            <p>Enter the average size of the Sun, for example: 864,575.9 miles in diameter.</p>
+        </div>		
+		<br>
+
+        <label for="myLivalbePlanetSize">Livable Planet Size:</label>
+        <input type="text" id="myLivalbePlanetSize" name="myLivalbePlanetSize" value="7926.2109">
+		<button type="button" onclick="showHelp(3)">Help</button>
+        <div id="helpPopup3" class="popup">
+            <span class="popup-close" onclick="closeHelp(3)">&times;</span>
+            <p>Enter the Livalbe Planet Size, for example: Earth is 7926.2109 miles in diameter.</p>
+        </div>		
+		<br>
+
+        <label for="myTrinaryEngines">Trinary Engines:</label>
+        <input type="text" id="myTrinaryEngines" name="myTrinaryEngines" value="333">
+		<button type="button" onclick="showHelp(4)">Help</button>
+        <div id="helpPopup4" class="popup">
+            <span class="popup-close" onclick="closeHelp(4)">&times;</span>
+			<p>Trinary means 3 logical states, meaning God.</p>
+            <p>Enter the Number of Trinary Engines, for example: The Milkyway has 333.</p>
+        </div>		
+		<br>
+
+        <label for="myGalaxyRadius">Galaxy Radius:</label>
+        <input type="text" id="myGalaxyRadius" name="myGalaxyRadius" value="241828072282107.5071453596951">
+		<button type="button" onclick="showHelp(5)">Help</button>
+        <div id="helpPopup5" class="popup">
+            <span class="popup-close" onclick="closeHelp(5)">&times;</span>
+            <p>Enter the Radius of the Galaxy, for example: The Milkyway has 241,828,072,282,107.5071453596951.</p>
+        </div>		
+		<br>
+
+        <label for="myPrintNthTrack">Print Nth Track:</label>
+        <input type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66">
+		<button type="button" onclick="showHelp(6)">Help</button>
+        <div id="helpPopup6" class="popup">
+            <span class="popup-close" onclick="closeHelp(6)">&times;</span>
+            <p>Enter the Number of Track records, for example: If skip every 66 records, you get a list of 21 records.</p>
+        </div>		
+		<br>
+
+        <input class="buttonStyle" type="button" value="Calculate Galaxy" onclick="printValues()">
+    </form>
+
+</div>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Track</th>
+                <th>Engines</th>
+                <th>Max Speed<br>(mph)</th>
+                <th>Min Speed<br>(mph)</th>
+                <th>Frequency<br>(Hz)</th>
+                <th>Orbit Distance (miles)</th>
+                <th>Track Frequency<br>(Hz)</th>
+            </tr>
+        </thead>
+        <tbody id="myGalaticTable">
+            <!-- Rows will be inserted here -->
+        </tbody>
+    </table>
+	<br><br>
+</div>
+
+<div>
+	<a href="https://github.com/AM-Tower/Galaxy-Calculator/" target="_blank">GitHub Code Repository</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	
+	<a href="https://AM-Tower.com/galaxy-calculator/" target="_blank">Live Demo</a> 
+	
+	<br><br>
+</div>
+
+
+<script>
+function printValues() {
+    const galaxy = document.getElementById('myGalaxy').value;
+    const sunSize = document.getElementById('mySunSize').value;
+    const livablePlanetSize = document.getElementById('myLivalbePlanetSize').value;
+    const trinaryEngines = document.getElementById('myTrinaryEngines').value;
+    const galaxyRadius = document.getElementById('myGalaxyRadius').value;
+    const nthTrack = document.getElementById('myPrintNthTrack').value;
+
+    console.log(`Galaxy: ${galaxy}`);
+    console.log(`Sun Size: ${sunSize}`);
+    console.log(`Livable Planet Size: ${livablePlanetSize}`);
+    console.log(`Trinary Engines: ${trinaryEngines}`);
+    console.log(`Galaxy Radius: ${galaxyRadius}`);
+    console.log(`Print Nth Track: ${nthTrack}`);
+	galaxyCalculor(galaxy, sunSize, livablePlanetSize, trinaryEngines, galaxyRadius, nthTrack)
+}
+// Function to show the help dialog
+function showHelp(itemId) {
+    var popup = document.getElementById("helpPopup" + itemId);
+    popup.style.display = "block";
+}
+// Function to close the help dialog
+function closeHelp(itemId) {
+    var popup = document.getElementById("helpPopup" + itemId);
+    popup.style.display = "none";
+}
+</script>
+</body>
+</html>
