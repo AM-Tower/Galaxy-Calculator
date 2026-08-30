@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -)",
+      "Bash(node run-tests.js)",
+      "Bash(node --check bignumbermath.js)",
+      "Bash(echo \"exit: $?\")"
+    ]
+  }
+}

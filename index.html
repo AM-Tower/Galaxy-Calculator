@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AM-Tower Galaxy Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jeffrey Scott Flesher" />
+    <meta name="created" content="1961-01-14T18:32:33.366699936" />
+    <meta name="changedby" content="Jeffrey Scott Flesher" />
+    <meta name="changed" content="2024-01-14T18:32:57.366666666" />
+    <meta name="description" content="Author: Jeffrey Scott Flesher, AM-Tower End of Time Simulator based on Wizards like Sir Isaac Newton and Nikola Tesla" />
+    <meta name="keywords" content="Light,Wizard,Kepler,Newton,Tesla,God,Universe,Physics,Sun,Jeffrey Scott Flesher" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="1doc2rule.min.css" />
+    <script defer="defer" src="bignumber.js"></script>
+    <script defer="defer" src="bignumbermath.js"></script>
+    <script defer="defer" src="galaxycalculator.js"></script>
+</head>
+<body>
+
+    <h1>Galaxy Calculator</h1>
+
+    <div>
+        <form id="galaxyCalculatorForm" class="tableContainer">
+            <table id="myTable" class="ridge">
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="myGalaxy">Galaxy</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myGalaxy" name="myGalaxy" value="Milkyway"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(1)">Help</button></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="mySunSize">Sun Size</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="mySunSize" name="mySunSize" value="864575.9"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(2)">Help</button></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="myLivablePlanetSize">Livable Planet Size</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myLivablePlanetSize" name="myLivablePlanetSize" value="7926.2109"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(3)">Help</button></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="myTrinaryEngines">Trinary Engines</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myTrinaryEngines" name="myTrinaryEngines" value="333"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(4)">Help</button></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="myLifeTrack">Life Track</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myLifeTrack" name="myLifeTrack" value="666"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(7)">Help</button></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="myGalaxyRadius">Galaxy Radius</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myGalaxyRadius" name="myGalaxyRadius" value="238229441887838.4639953874"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(5)">Help</button></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="myPrintNthTrack">Print Nth Track</label></td>
+                    <td class="ridge"><input class="medium-font" type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66"></td>
+                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(6)">Help</button></td>
+                </tr>
+            </table>
+
+            <input class="buttonStyle medium-font" type="button" value="Calculate Galaxy" onclick="printValues()">
+        </form>
+    </div>
+
+    <div class="container">
+        <div id="helppopupHelp1" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(1)">&times;</span>
+            <p class="medium-font">Enter the Name of the Galaxy, for example: Milkyway.</p>
+        </div>
+
+        <div id="helppopupHelp2" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(2)">&times;</span>
+            <p class="medium-font">Enter the average size of the Sun, for example: 864,575.9 miles in diameter.</p>
+        </div>
+
+        <div id="helppopupHelp3" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(3)">&times;</span>
+            <p class="medium-font">Enter the Livable Planet Size, for example: Earth is 7926.2109 miles in diameter.</p>
+        </div>
+
+        <div id="helppopupHelp4" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(4)">&times;</span>
+            <p class="medium-font">Trinary means 3 logical states, meaning God.</p>
+            <p class="medium-font">Enter the Number of Trinary Engines, for example: The Milkyway has 333.</p>
+        </div>
+
+        <div id="helppopupHelp7" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(7)">&times;</span>
+            <p class="medium-font">The Track that supports Life, for example: 666 in our Solar System.</p>
+            <p class="medium-font">
+                The Torah tells us Life is on Track 666, and that is our Galaxy, not every Galaxy, so you can change it.  <br />
+                This Track also sets the rate for every other Track, because they all orbit at the same rate, like a record player.  <br />
+                It must be a Track this Galaxy has, from 1 up to Trinary Engines times 4.  <br />
+                With 333 Trinary Engines that is 1 to 1,332, and out of range falls back to Trinary Engines times 2.
+            </p>
+        </div>
+
+        <div id="helppopupHelp5" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(5)">&times;</span>
+            <p class="medium-font">Enter the Radius of the Galaxy, for example: The Milkyway has 241,828,072,282,107.5071453596951.</p>
+        </div>
+
+        <div id="helppopupHelp6" class="popupHelp medium-font">
+            <span class="popupHelp-close" onclick="closeHelp(6)">&times;</span>
+            <p class="medium-font">
+                Enter the Number of Track records to skip.  <br />
+                The smaller the number, the longer the list.  <br />
+                The number must be greater than 0, and less than 1,000.  <br />
+                For example: If you skip every 66 records, you get a list of 21 records.
+            </p>
+        </div>
+    </div>
+
+    <p class="medium-font bold-text" id="galaxyTitle"></p>
+
+    <div class="tableContainer" id="derivedValues"></div>
+
+    <p class="medium-font">
+        Every number in the table below comes from the values above, so each step can be checked
+        rather than taken on trust. <br />
+        The Livable Planet Ring Frequency is the one to look at first: it comes out at 7.830 Hz,
+        and the Schumann resonance, the frequency of the cavity between the Earth and its ionosphere,
+        is measured at 7.83 Hz.
+    </p>
+
+    <div class="tableContainer">
+        <table class="ridge tableContainer">
+            <thead class="ridge">
+                <tr class="ridge">
+                    <th class="medium-font ridge">Track</th>
+                    <th class="medium-font ridge">Engines</th>
+                    <th class="medium-font ridge">Max Speed<br />(mph)</th>
+                    <th class="medium-font ridge">Min Speed<br />(mph)</th>
+                    <th class="medium-font ridge">Frequency<br />(Hz)</th>
+                    <th class="medium-font ridge">Orbit Distance (miles)</th>
+                    <th class="medium-font ridge">Track Frequency<br />(Hz)</th>
+                </tr>
+            </thead>
+            <tbody id="myGalacticTable" class="medium-font">
+                <!-- Rows will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <div class="container">
+        <p class="medium-font">
+            Each line in the table is a track that represents the Sun&#39;s path as it orbits the Galaxy.
+        </p>
+
+        <p class="medium-font">
+            The last Track a Galaxy can have is its Trinary Engines times 4, so the Milky Way runs from
+            Track 1 to Track 1,332, and the heading above the table says so for whatever Galaxy you enter. <br />
+            Not every Track carries a Sun. This is written for any Galaxy, and there is no way to know from
+            here how many Suns a given Galaxy has or which Tracks they sit on. <br />
+            The inner Tracks are hard to measure in real life because they are so close in to the center.
+        </p>
+
+        <p class="medium-font">
+            The Tracks show the movement of the Suns. They are not the Spiral Arms.
+            The Arms show the path of the debris, which is a different thing on a different path,
+            and the two should not be read as the same.
+        </p>
+
+        <p class="medium-font">
+            The Sun does not travel a flat circle. It moves like a waveform, rising above the Galactic Plane
+            and falling back below it while it goes around. <br />
+            The Track Frequency column is that waveform. At Track 666 it reads 30,000,030, which is one half
+            of a cycle, top to bottom, and that is one crossing of the Galactic Plane.
+            It is not the time to go around the Galaxy. Going around takes many of these cycles.
+        </p>
+
+        <p class="medium-font">
+            A full cycle up and back down is 60 million years, and the orbit holds about 3.85 of them. <br />
+            Astronomers measure the Sun crossing the Galactic Plane about every 30 million years,
+            with a full vertical period near 60 million, and about 3.8 of those to one trip around. <br />
+            This number does not come from the Galaxy Radius. Halve the Radius or double it and the Track
+            Frequency does not move, because it comes from Min Speed and the Life Track,
+            not from the size of the Galaxy.
+        </p>
+
+        <p class="medium-font">
+            The Torah tells us that only track 666 supports life as we know it.
+        </p>
+
+        <p class="medium-font">
+            Max Speed and Min Speed are the two ends of one range, not two separate numbers.
+            A Sun on Track 666 travels somewhere between 333,333 and 666,666 mph, which averages
+            499,999.5 mph, or 223.5 km/s. The Sun is measured at 220 to 250 km/s. <br />
+            Current science puts our Sun at a fixed speed, but the speed only changes over millions of years,
+            so a fixed figure is an assumption, not a measurement. <br />
+            Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
+        </p>
+
+        <p class="medium-font">
+            You can use this data to plot the orbital path of any Star, in any Galaxy, and given a Planet Size, you can determine where Life exists in the Galaxy.
+        </p>
+
+        <p class="medium-font">
+            <a href="https://en.wikipedia.org/wiki/Henrietta_Swan_Leavitt" target="_blank">Henrietta Swan Leavitt</a>
+            worked for Edward Charles Pickering at the Harvard College Observatory, where she was hired in 1902,
+            and she died in 1921. She did not work for Edwin Hubble, the man the telescope is named after.
+            Hubble used her work after her death to measure the distance to other Galaxies, and he said she
+            deserved the Nobel Prize for it.
+        </p>
+
+        <p class="medium-font">
+            Her published discovery is the period to luminosity relation for Cepheid variables, now called
+            Leavitt&#39;s Law, which gave astronomy its first way to measure distance. <br />
+            Her observations also showed the inner stars moving faster than anyone expected, and that the Suns
+            orbit the Galaxy together. <br />
+            The words <q>they orbit at the same rate, but not the same speed</q> are mine, not a quote from her.
+            That is my reading of what her observations show, and this calculator is here to test it.
+        </p>
+
+        <p class="medium-font">
+            This means they all travel around the galaxy as if they were a record on an old-fashioned record player.
+        </p>
+
+        <p class="medium-font">
+            Kepler said Christ is a Star, and we know it as Sirius.  <br />
+            It aligns with the Great Pyramid every year on 25 December under the Julian Calendar or 14 January under the Gregorian Calendar.  <br />
+            It is a Binary Star, combined with our Sun, which is also a Star; you have 3 Stars; this is Trinity. <br />
+            This system will orbit the Galaxy together, in the pattern an electron orbits an atom, and for the same reason, they are the same, only on a different scale.
+        </p>
+
+        <p class="medium-font">
+            Trinary and Trinity mean the same thing, with the exception that Trinary is a Science based on 3 Logical State Changes shown in the graph below.
+        </p>
+
+        <p class="medium-font">
+            At the Atomic Level, atoms will have a Solid State, which means it is in all 3 dimensions of space, width, depth, and height.
+        </p>
+
+        <p class="medium-font">
+            The Arabic numbering system is based on angles, for example, 1 has one angle, 2 has two, 3 has three, and so on. 0 has zero angles. <br />
+            Trinity uses the logic of 1 and 0, much like Binary, but Trinary makes it 3 states, <sup>+</sup>1, <sup>-</sup>1, and 0.
+        </p>
+
+        <p class="medium-font">
+            Trinary Science is based on the Newtonian Universe and does not change anything, unlike Einstein, who did the complete opposite.
+        </p>
+
+        <p class="medium-font">
+            This combines Kepler, Newton, and Nikola Tesla into one Science. <br />
+            The math and the concepts for treating Gravity as a wave come from Tesla,
+            the orbital work from Kepler and Newton, and the rest I added to get the results I needed. <br />
+            Published as a book in 2019, written in 1988.
+        </p>
+
+        <p class="medium-font">
+            There is no proof that Gravity is caused by Centrifugal force. <br />
+            There is proof that electromagnetic forces act over great distances, and that is what this is built on.
+        </p>
+
+        <p class="medium-font">
+            Newton said Light is Static, as proof it has no acceleration.
+        </p>
+
+        <p class="medium-font">
+            Einstein said Light is Dynamic; the opposite and Newton disproved by saying Light has no acceleration, 3 centuries before Einstein was born.
+        </p>
+
+        <p class="medium-font">
+            Trinary Science is based on what can be proven, and a Dark Star and its Companions are well-documented in images, like the ones Leavitt studied and observed.
+        </p>
+
+        <p class="medium-font">
+            Leavitt did not call them Dark Stars, Newton called them Dark Angels, and Halley said they are Dark Stars, but the term Star was not always accurate. <br />
+            Women at the Harvard College Observatory were hired as computers, paid less than the men, and were not
+            credited the way the men were. Leavitt was one of them, and her Law carried Hubble&#39;s career. <br />
+            I am going with Henrietta on this subject in science.
+        </p>
+
+        <p class="medium-font">
+            The world was taught that Black Holes existed when Dark Stars existed, and the name changed everything.
+        </p>
+
+        <p class="medium-font">
+            A Black Hole is some magical hole that defies all known physics, or common sense. <br />
+            The theory states a collapsed Galaxy or Star, created a vortex to another dimension in Space.
+        </p>
+
+        <p class="medium-font">
+            Einstein called this an Alternate Universe in Alternate Reality. <br />
+            Alternate and Alternative do not mean the same thing, we cannot apply Dynamic Light to a Universe where Light has no acceleration.
+        </p>
+
+        <p class="medium-font">
+            Do not confuse a <q>Deity God</q> that does not exist to a God who is all Light without Darkness which exists.<br />
+            As proof, ask the Church if God physically exists, we know the answer is no.<br />
+            In Trinary Science, Christ is the Binary Star we know as Sirius, which is key to the End of Time Event.
+        </p>
+
+        <p class="medium-font">
+            In the Torah, when it said Christ is Born on 25 December under the Julian Calendar, is now 14 January,
+            so we know this is when Sirius or Christ the Star, aligns with the Great Pyramid,
+            and it when Earth is closest to the Sun, giving it the power to be born.
+            In reality, this event can be viewed by looking for Sirius in the Sky; it only marks this date.
+        </p>
+
+        <p class="medium-font">
+            Trinary Science added Trinary Engines, which are called Dark Stars, according to Edmond Halley, who was taking dictation from Sir Isaac Newton. <br />
+            The term Star sounded more scientific than Dark Angel and its Fallen Angel Companies. <br />
+            The prefix Trinary means this is based on 3 Logical State changes in Atoms.
+        </p>
+
+        <p class="medium-font">
+            Trinary, Trinity, and God, all mean the same thing and are interchangeable.<br />
+            Trinary means the Science of God, the same as Newtonian Science, only Trinary Science added Trinary Engines. <br />
+            Halley might have been the first one to use the term Dark Star, which is a Trinary Engine.
+        </p>
+
+        <p class="medium-font">
+            Newton said the Dark Angels are heavenly bodies that we orbit around, without ever knowing they are there. <br />
+            Fallen Angels are the Companies of the Dark Angel that orbit around a Galaxy, to keep all the Suns on the right track. <br />
+            This is from the Torah, the one with the Pagan Beliefs in them.
+        </p>
+
+        <p class="medium-font">
+            To prove to anyone that Newton is right, I give you the following 3 facts we can all agree on.
+        </p>
+
+        <ol>
+            <li>Light has no acceleration, therefore, Static </li>
+            <li>God is the Force of Gravity in F = MA </li>
+            <li>The End of Time will be in 2061 when our North Magnetic Pole crosses the Equator </li>
+        </ol>
+
+        <p class="medium-font">
+            Planetary Orbital Speed Calculator:<br />
+            <a class="medium-font" href="https://github.com/AM-Tower/Galaxy-Calculator/" target="_blank">https://am-tower.com/documents/#orbitalspeeds</a><br /><br />
+            The source code is on GitHub:<br />
+            <a class="medium-font" href="https://github.com/AM-Tower/Galaxy-Calculator/" target="_blank">https://github.com/AM-Tower/Planetary-Orbital-Speed-Calculator/</a><br />
+        </p>
+
+        <p class="medium-font">
+            The God Formula is (<sup>+</sup>1) + (<sup>-</sup>1) = 0. Tycho Brahe said it was a mathematical Truth statement.
+        </p>
+
+        <p class="medium-font">
+            This is not an Equation; it is a Formula.
+        </p>
+
+        <p class="medium-font">
+            This graph will show you the Waveform of an Alternating Current (AC),
+            much like our Brainwave, it is our Soul, because it takes electricity to make Light and God is all Light without Darkness found inside Atoms. <br /><br />
+        </p>
+
+        <p class="medium-font">
+            Sir Isaac Newton did not write, in so many words, that God is the Force of Gravity in his Equations. <br />
+            In the Principia he wrote that the system <q>could only proceed from the counsel and dominion of an
+            intelligent and powerful Being</q>, and on what causes Gravity he wrote
+            <q>hypotheses non fingo</q>, I frame no hypotheses. <br />
+            His published books leave out a great deal that is in his notes, and taking those notes together
+            with the Principia, his work implies it, In My Opinion.
+        </p>
+
+        <p class="medium-font">
+            So F = MA, where F is the Force of Gravity in terms of the Light without Darkness found inside all the
+            Atoms in the Universe, and everything is made of Atoms. That is my reading of Newton, and it is what
+            this calculator is built on.
+        </p>
+
+        <p class="medium-font">
+            We are Light Beings and Light is Everything. Tesla
+        </p>
+
+        <p class="medium-font">
+            The calculator uses 1 divided by 137 as the Trinary Marker. That is the fine structure constant,
+            which mainstream physics writes as alpha, and measures at 1 divided by 137.035999. <br />
+            It is the coupling constant of electromagnetism, the number that sets how strongly Light and
+            charged matter interact. For a model that treats Gravity as a Frequency, the same as Light,
+            in an electromagnetic system, that is the right constant to be holding, and it is not an
+            arbitrary choice. It is the one number in physics that already ties Light to matter.
+        </p>
+
+        <p class="medium-font">
+            The Galaxy Calculator Formula, together with God&#39;s Formula, make up one Formula that explains the Universe.
+        </p>
+
+        <p class="medium-font">
+            <a class="medium-font" href="Trinary.Math.html">Trinary Math</a> describes how this math works,
+            what every constant means, why it uses arbitrary precision instead of floating point,
+            and it walks Track 666 through the whole calculation.
+        </p>
+
+        <p class="medium-font">
+            <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a> takes the table above and plots the course
+            of every Sun in the Galaxy, so you can watch them orbit in relationship to each other,
+            and see for yourself whether they hold formation the way Leavitt said they do.
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+
+            | State | Trinity | Visibility | Dimension |<br />
+            | ----- | --------| -----------|-----------|<br />
+            | (+1)&nbsp; | Father&nbsp; | Solid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+            | &nbsp;0&nbsp;&nbsp;&nbsp; | Mother&nbsp; | Invisible&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+            | (-1)&nbsp; | Son&nbsp;&nbsp;&nbsp;&nbsp; | Semisolid&nbsp; | 1 or 2&nbsp;&nbsp;&nbsp; |<br /><br />
+
+            | State | -------- Graph ----------------- |<br />
+            | (+1)&nbsp; | *-------*-------*-------*------- |<br />
+            |  &nbsp;0&nbsp;&nbsp;&nbsp; | --*---*---*---*---*---*--------- |<br />
+            | (-1)&nbsp; | ----*-------*-------*----------- |<br />
+        </p>
+
+    </div>
+    <div class="boxit_container">
+        <!-- 1. Henrietta Swan Leavitt -->
+        <div class="image-container">
+            <img id="image1" class="thumbnail" src="Henrietta.Swan.Leavitt.thumbnail.png" alt="Henrietta Swan Leavitt" title="Henrietta Swan Leavitt" onclick="showPopup('popupContainer1', 'Henrietta.Swan.Leavitt.png')">
+        </div>
+        <div id="popupContainer1" class="popupContainer" onclick="closePopup('popupContainer1')">
+            <img class="popupImage" src="Henrietta.Swan.Leavitt.png" alt="Henrietta Swan Leavitt" title="Henrietta Swan Leavitt">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Henrietta Swan Leavitt<br /><br />
+        </div>
+    </div>
+    <br />
+    <div class="boxit_container">
+        <!-- 2. Barred Galaxy -->
+        <div class="image-container">
+            <img id="image2" class="thumbnail" src="barred-galaxy-mwart_spitzer_f50.thumbnail.png" alt="Barred Galaxy" title="Barred Galaxy" onclick="showPopup('popupContainer2', 'barred-galaxy-mwart_spitzer_f50.png')">
+        </div>
+        <div id="popupContainer2" class="popupContainer" onclick="closePopup('popupContainer2')">
+            <img class="popupImage" src="barred-galaxy-mwart_spitzer_f50.png" alt="Barred Galaxy" title="Barred Galaxy">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Barred Galaxy<br /><br />
+        </div>
+    </div>
+    <br />
+    <div class="boxit_container">
+        <!-- 3. Galaxy Time lapse markers -->
+        <div class="image-container">
+            <img id="image3" class="thumbnail" src="galaxy.thumbnail.png" alt="Galaxy Time lapse" title="Galaxy Time lapse" onclick="showPopup('popupContainer3', 'galaxy.png')">
+        </div>
+        <div id="popupContainer3" class="popupContainer" onclick="closePopup('popupContainer3')">
+            <img class="popupImage" src="galaxy.png" alt="Galaxy Time lapse" title="Galaxy Time lapse">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Galaxy Time lapse<br /><br />
+        </div>
+    </div>
+    <br />
+    <div class="boxit_container">
+        <!-- 4. Dark Star Figure 8 -->
+        <div class="image-container">
+            <img id="image4" class="thumbnail" src="dark-star-222.thumbnail.png" alt="Dark Star Figure 8" title="Dark Star Figure 8" onclick="showPopup('popupContainer4', 'dark-star-222.png')">
+        </div>
+        <div id="popupContainer4" class="popupContainer" onclick="closePopup('popupContainer4')">
+            <img class="popupImage" src="dark-star-222.png" alt="Dark Star Figure 8" title="Dark Star Figure 8">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Dark Star Figure 8 Shows 1 Dark Star, and 333 Companion Trinary Engines<br /><br />
+        </div>
+    </div>
+    <br />
+    <div class="boxit_container">
+        <!-- 5. Dark Star Orbiting Galaxy with Sirius -->
+        <div class="image-container">
+            <img id="image5" class="thumbnail" src="dark-star-460.thumbnail.png" alt="Dark Star Orbiting Galaxy with Sirius" title="Dark Star Orbiting Galaxy with Sirius" onclick="showPopup('popupContainer5', 'dark-star-460.png')">
+        </div>
+        <div id="popupContainer5" class="popupContainer" onclick="closePopup('popupContainer5')">
+            <img class="popupImage" src="dark-star-460.png" alt="Dark Star Orbiting Galaxy with Sirius" title="Dark Star Orbiting Galaxy with Sirius">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Dark Star Orbiting Galaxy with Sirius<br /><br />
+        </div>
+    </div>
+    <br />
+    <div class="boxit_container">
+        <!-- 6. Dark Star Orbiting Pattern -->
+        <div class="image-container">
+            <img id="image6" class="thumbnail" src="dark-star-1391.thumbnail.png" alt="Dark Star Orbiting Pattern" title="Dark Star Orbiting Pattern" onclick="showPopup('popupContainer6', 'dark-star-1391.png')">
+        </div>
+        <div id="popupContainer6" class="popupContainer" onclick="closePopup('popupContainer6')">
+            <img class="popupImage" src="dark-star-1391.png" alt="Dark Star Orbiting Pattern" title="Dark Star Orbiting Pattern">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Dark Star Orbiting Pattern<br /><br />
+        </div>
+    </div>
+    <br />
+    <div class="boxit_container">
+        <!-- 7. Trinary Math Helix -->
+        <div class="image-container">
+            <img id="image7" class="thumbnail" src="trinary-math-helix-0026.thumbnail.png" alt="Trinary Math Helix" title="Trinary Math Helix" onclick="showPopup('popupContainer7', 'trinary-math-helix-0026.png')">
+        </div>
+        <div id="popupContainer7" class="popupContainer" onclick="closePopup('popupContainer7')">
+            <img class="popupImage" src="trinary-math-helix-0026.png" alt="Trinary Math Helix" title="Trinary Math Helix">
+        </div>
+        <div class="text_indent bold-text medium-font">
+            Trinary Math Helix<br /><br />
+        </div>
+    </div>
+
+    <p class="medium-font">
+        ​Please examine this diagram, and notice the ground is the center, and the Electron does not travel on the Ground, or any circuit board trace, it orbits around it. <br />
+        This is the same pattern that the Galaxy, Sun, Planets, and Moon, all follow.
+    </p>
+
+    <hr />
+
+    <p class="container">
+        <a class="medium-font" href="Trinary.Math.html">Trinary Math</a>
+        <br /><br />
+        <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a>
+        <br /><br />
+        <a class="medium-font" href="test.html">Test Suite</a>
+        <br /><br />
+        <a class="medium-font" href="https://github.com/AM-Tower/Galaxy-Calculator/" target="_blank">GitHub Code Repository</a>
+        <br /><br />
+    </p>
+
+    <hr />
+</body>
+</html>

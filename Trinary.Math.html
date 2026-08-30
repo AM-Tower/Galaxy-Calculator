@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trinary Math</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jeffrey Scott Flesher" />
+    <meta name="created" content="1961-01-14T18:32:33.366699936" />
+    <meta name="changedby" content="Jeffrey Scott Flesher" />
+    <meta name="changed" content="2026-08-29T12:00:00.000000000" />
+    <meta name="description" content="Author: Jeffrey Scott Flesher, how the Trinary Math in the Galaxy Calculator works, and why it uses arbitrary precision instead of floating point" />
+    <meta name="keywords" content="Trinary,Math,BigNumber,Arbitrary Precision,Newton,Light,God,Galaxy Calculator,Jeffrey Scott Flesher" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="1doc2rule.min.css" />
+    <script defer="defer" src="bignumber.js"></script>
+    <script defer="defer" src="bignumbermath.js"></script>
+    <script defer="defer" src="galaxycalculator.js"></script>
+</head>
+<body>
+
+    <h1>Trinary Math</h1>
+
+    <div class="container">
+        <p class="medium-font">
+            <a class="medium-font" href="index.html">&#8592; Back to the Galaxy Calculator</a>
+        </p>
+
+        <p class="medium-font">
+            This page describes how the math in the Galaxy Calculator works. <br />
+            It covers the three logical states that give Trinary its name, why this code refuses to use floating point,
+            what every constant in <span class="text_code">galaxycalculator.js</span> means, and it walks Track 666 through
+            the whole calculation, one operation at a time.
+        </p>
+
+        <p class="medium-font bold-text">What this math is for</p>
+
+        <p class="medium-font">
+            It is here to prove that Newton and Leavitt are correct: that every Sun in a Galaxy orbits at the same
+            rate, like a record on a record player, but not at the same speed.
+        </p>
+
+        <p class="medium-font">
+            That result only follows if Gravity is a Frequency. This is not a Centrifugal system, nothing here is
+            thrown outward and held in by a pull inward. Gravity is treated as a Frequency, the same as Light,
+            which is what Newton said God is, and what the Torah and the Bible said God is,
+            all Light without Darkness found inside all Atoms.
+            A Centrifugal model gives no reason at all for every Sun to share a rate. A Frequency driven one does,
+            because a Frequency is a rate.
+        </p>
+
+        <p class="medium-font">
+            So every measurement on this page is a Frequency and a wavelength, taken from an electromagnetic system.
+            The Sun&#39;s Plasma is the proof that such a system exists, charged matter behaving electromagnetically
+            at the scale of a Star.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>1. The Three States</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            Binary has two logical states, 1 and 0. Trinary has three, <sup>+</sup>1, 0, and <sup>-</sup>1.
+        </p>
+
+        <p class="medium-font">
+            The third state is not a rounding of the other two, it is the state between them, and it is the state that
+            does the work. In an Alternating Current the waveform crosses zero on its way from positive to negative,
+            and that crossing is not nothing, it is the moment the field collapses and rebuilds.
+            Trinary Math keeps that state as a value you can calculate with, instead of throwing it away.
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+
+            | State | Trinity | Visibility | Dimension |<br />
+            | ----- | --------| -----------|-----------|<br />
+            | (+1)&nbsp; | Father&nbsp; | Solid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 3D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+            | &nbsp;0&nbsp;&nbsp;&nbsp; | Mother&nbsp; | Invisible&nbsp; | 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |<br />
+            | (-1)&nbsp; | Son&nbsp;&nbsp;&nbsp;&nbsp; | Semisolid&nbsp; | 1 or 2&nbsp;&nbsp;&nbsp; |<br /><br />
+
+            | State | -------- Graph ----------------- |<br />
+            | (+1)&nbsp; | *-------*-------*-------*------- |<br />
+            |  &nbsp;0&nbsp;&nbsp;&nbsp; | --*---*---*---*---*---*--------- |<br />
+            | (-1)&nbsp; | ----*-------*-------*----------- |<br />
+        </p>
+
+        <p class="medium-font">
+            The God Formula is (<sup>+</sup>1) + (<sup>-</sup>1) = 0.
+        </p>
+
+        <p class="medium-font">
+            Tycho Brahe called this a mathematical Truth statement, and the distinction matters to how this code is written. <br />
+            An Equation asks what the unknown is. A Formula states what is already true and then holds you to it. <br />
+            Every number in the Galaxy Calculator is checked against a Formula that was true before the program ran,
+            which is why the code never solves for anything, it only carries values forward without damaging them.
+        </p>
+
+        <p class="medium-font">
+            That last point is the whole reason for the next section.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>2. Why Not Floating Point</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            JavaScript numbers are IEEE 754 doubles. A double carries somewhere between 15 and 17 significant digits,
+            and everything past that is gone the instant you type it.
+        </p>
+
+        <p class="medium-font">
+            The Milky Way radius this calculator uses carries 25 significant digits:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            238229441887838.4639953874
+        </p>
+
+        <p class="medium-font">
+            Hand that to a double and it comes back as 238229441887838.44. <br />
+            The digits past that are simply not there anymore, and no amount of care later in the program brings them back.
+            Multiply that damaged value by 666, double it, and multiply by Pi, and the error is no longer in the decimals,
+            it is in the miles.
+        </p>
+
+        <p class="medium-font">
+            This is why the calculator uses arbitrary precision, the same thing BC math does on the command line.
+            A BigNumber is not a machine word with a fixed number of bits, it is the digits themselves,
+            carried as text and operated on digit by digit. There is no width for a number to fall off of.
+        </p>
+
+        <p class="medium-font">
+            The library is <span class="text_code">bignumber.js</span>, and the wrapper that this project actually calls
+            is <span class="text_code">bignumbermath.js</span>.
+        </p>
+
+        <p class="medium-font">
+            There are other arbitrary precision libraries for JavaScript, and bignumber.js is the right one here
+            for a specific reason: it is the only one that carries <span class="text_code">toFormat</span> built in,
+            which is what puts the thousands separators in the table, and its
+            <span class="text_code">DECIMAL_PLACES</span> setting is the same idea as
+            <span class="text_code">scale</span> in BC math. Its one gap is that it has no trigonometry,
+            so it cannot hand you PI. That is why PI is calculated here by series instead.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>3. The Math Layer</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            Nothing in the calculator uses the <span class="text_code">+</span>, <span class="text_code">-</span>,
+            <span class="text_code">*</span>, or <span class="text_code">/</span> operators on a quantity that matters.
+            Every one of them is a function call, and every one of them takes and returns a string.
+        </p>
+
+        <div class="tableContainer">
+            <table class="ridge tableContainer">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Function</th>
+                        <th class="medium-font ridge">Does</th>
+                        <th class="medium-font ridge">Third Argument</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">plus(a, b, dp)</td>
+                        <td class="ridge">a + b</td>
+                        <td class="ridge">decimal places kept</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">minus(a, b, dp)</td>
+                        <td class="ridge">a &minus; b</td>
+                        <td class="ridge">decimal places kept</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">times(a, b, dp)</td>
+                        <td class="ridge">a &times; b</td>
+                        <td class="ridge">decimal places kept</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">dividedBy(a, b, dp)</td>
+                        <td class="ridge">a &divide; b</td>
+                        <td class="ridge">decimal places kept</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">abs(a)</td>
+                        <td class="ridge">strips the sign</td>
+                        <td class="ridge">&mdash;</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">sqrt(a, dp)</td>
+                        <td class="ridge">square root</td>
+                        <td class="ridge">decimal places kept</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">format(a, dp)</td>
+                        <td class="ridge">adds thousands separators for display</td>
+                        <td class="ridge">decimal places shown</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">fixNumber(a)</td>
+                        <td class="ridge">normalizes the string before any operation</td>
+                        <td class="ridge">&mdash;</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">fixInput(a)</td>
+                        <td class="ridge">takes a typed field in as text, never as a Double</td>
+                        <td class="ridge">&mdash;</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">pI(dp)</td>
+                        <td class="ridge">Pi from a stored 249 digit string, rounded</td>
+                        <td class="ridge">decimal places, hands off to piCalc past 248</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">piCalc(dp)</td>
+                        <td class="ridge">Pi calculated by Machin&#39;s Formula, no limit</td>
+                        <td class="ridge">decimal places</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            The third argument is the part people miss. Precision here is declared at every single step, not inherited.
+            When the code writes
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            var trinaryMarker = dividedBy("1", "137", 13);
+        </p>
+
+        <p class="medium-font">
+            it is saying that thirteen decimal places is the correct precision for this value in this Formula,
+            and that is a decision about the physics, not about the computer.
+            A different precision gives a different baseline, which is exactly why the code comments warn that
+            changing Pi means recalculating everything downstream from it.
+        </p>
+
+        <p class="medium-font">
+            <span class="text_code">fixNumber</span> runs first on every argument to every operator.
+            It walks the string backwards, drops trailing zeros that carry no information, and guarantees the value
+            always has a decimal point, so <span class="text_code">100000.000000</span> becomes
+            <span class="text_code">100000.0</span> and a bare <span class="text_code">2</span> becomes
+            <span class="text_code">2.0</span>. Every number entering the math looks the same shape as every other one,
+            which is what keeps a long chain of operations from drifting.
+        </p>
+
+        <p class="medium-font">
+            The parentheses in this code are also deliberate. Order of precedence is never relied on,
+            each step is forced and stored, because the intent is to be clear, not clever.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>4. The Constants</h2>
+
+    <div class="container">
+        <div class="tableContainer">
+            <table class="ridge tableContainer">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Name</th>
+                        <th class="medium-font ridge">Value</th>
+                        <th class="medium-font ridge">What It Is</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">trinaryMarker</td>
+                        <td class="ridge">1 &divide; 137 = 0.0072992700730</td>
+                        <td class="ridge">The Trinary Marker. Thirteen decimal places. Using 1 / 137.03599913 is not more accurate here.</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">pIe</td>
+                        <td class="ridge">3.14159265359</td>
+                        <td class="ridge">Pi to 11 places, which is what Newton used. Not Math.PI.</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">cpRate</td>
+                        <td class="ridge">324.540503</td>
+                        <td class="ridge">Constant Precession Rate, a constant in Newton&#39;s work.</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">lpDensity</td>
+                        <td class="ridge">73.120284</td>
+                        <td class="ridge">Newton&#39;s constant for Earth&#39;s atmospheric density based on Torr, generalized to all planets.</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Torr</td>
+                        <td class="ridge">1 &divide; 760</td>
+                        <td class="ridge">A unit of pressure on an absolute scale. The word came from the Torah.</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">ringPlanetSecond</td>
+                        <td class="ridge">0.001</td>
+                        <td class="ridge">A planet&#39;s second Trinary Engine ring. The rings are 0.0001, 0.001, 0.01.</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">ringSunFirst</td>
+                        <td class="ridge">0.00001</td>
+                        <td class="ridge">A sun&#39;s first ring. One order of magnitude below the planet rings: 0.00001, 0.0001, 0.001.</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">trackFreqMultiplier</td>
+                        <td class="ridge">0.0000000000001</td>
+                        <td class="ridge">Track frequency multiplier, based on the Galaxy Ring of Power. Thirteen places.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr />
+
+    <h2>5. The Derived Values</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            These are calculated once, before any track is walked. The numbers shown are the real output for the
+            default configuration, a Sun of 864,575.9 miles, an Earth of 7,926.2109 miles, and 333 Trinary Engines.
+        </p>
+
+        <p class="medium-font bold-text">Atmospheric Pressure Index</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            1 &divide; 760          = 0.001315789<br />
+            aP = 73.120284 &times; 0.001315789 = 0.096210865
+        </p>
+
+        <p class="medium-font">
+            The Atmospheric Pressure Index is a dampener. It holds back the core frequency so it expands at a known rate
+            for the size of the body it belongs to.
+        </p>
+
+        <p class="medium-font bold-text">Livable Planet Ring Frequency</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            7926.2109 &times; 0.001 = 7.926<br />
+            7.926 &minus; 0.096210865  = 7.830 Hz
+        </p>
+
+        <p class="medium-font">
+            Earth&#39;s ring frequency comes out at <span class="bold-text">7.830 Hz</span>.
+            The Schumann resonance, the fundamental of the electromagnetic cavity between the Earth&#39;s surface
+            and its ionosphere, is measured at <span class="bold-text">7.83 Hz</span>.
+            The calculator prints this on the front page, and the Test Suite asserts it, so it cannot drift
+            without a test failing.
+        </p>
+
+        <p class="medium-font">
+            Before weighing that agreement, a reader should know that Livable Planet Density is an input constant,
+            not derived from anything else here, and it is numerically the value that brings this out at 7.83.
+            The arithmetic alone therefore cannot say whether the constant was set from the resonance or reached
+            independently. The author states the Schumann resonance was unknown to him when the constant was set,
+            which would make this a prediction rather than a fit. <br />
+            That is a question about where one number came from, not about the mathematics, and it is answered by
+            the working that produced 73.120284, not by this calculator. It is put plainly here so anyone can
+            weigh it themselves.
+        </p>
+
+        <p class="medium-font bold-text">Precession Rate</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            864575.9 &divide; 324.540503 = 2664
+        </p>
+
+        <p class="medium-font">
+            The Sun&#39;s Precession Rate, 10,656 divided by 4. This value also seeds the Maximum Error Rate,
+            because precession is a speed you have to overcome before you have gone anywhere.
+        </p>
+
+        <p class="medium-font bold-text">The Three Iterations</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            864575.9 &times; 0.0072992700730 = 6311&nbsp; (the Trinary Marker applied to the Sun)<br />
+            maxIteration = 6311 &divide; 3   = 2103&nbsp; (3 Phase)<br />
+            aveIteration = 2103 &minus; 91   = 2012<br />
+            minIteration = 2103 &minus; 1104 = 999
+        </p>
+
+        <p class="medium-font">
+            The division by 3 is the 3 Phase, the three states again, this time as the three phases of the cycle. <br />
+            The 91 is the Sun&#39;s magnetic polarity reversals, it changes polarity 10 times a century, 0 through 9, so 100 &minus; 9 = 91. <br />
+            The 1104 came out of Newton&#39;s long running results, and it is also found in the Torah. <br />
+            Notice what 999 is, and notice what it becomes when you turn it over.
+        </p>
+
+        <p class="medium-font bold-text">Track Counts</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            trinaryEngines = 333 &times; &minus;1 = &minus;333&nbsp; (counts up from negative)<br />
+            lifeTrack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (taken from Configuration, always printed)<br />
+            totalTracks&nbsp;&nbsp;&nbsp; = ((333 &times; 2) &times; 2) + 1 = 1333
+        </p>
+
+        <p class="medium-font">
+            The engine counter starts at &minus;333 and counts up through 0 to +333 and beyond,
+            so the Life Track sits exactly at the crossing point. That is the zero state of the God Formula,
+            expressed as a galaxy.
+        </p>
+
+        <p class="medium-font bold-text">The Life Track is an input, not a constant.</p>
+
+        <p class="medium-font">
+            Track 666 comes from the Frequency Newton used in his Gravity formula.
+            The Gravitational Constant is G = 6.6743e-11, and 6.666 is that rounded, measured at the center of the
+            body rather than at its surface. This calculator works in a different unit, so 6.66 becomes 666. <br />
+            The Schumann resonance of 7.83 Hz is a surface figure, and G does not come out right against 7.83
+            or 783, which is what you would expect if one is taken at the surface and the other at the core. <br />
+            Gravity here is an electromagnetic wave, and the value Newton gave it is the Frequency, or the
+            wavelength, meaning it is a result of the property rather than the property itself.
+            The Tracks are numbered to account for that.
+        </p>
+
+        <p class="medium-font">
+            That is our Solar System. It may not hold for all Life, or for all Galaxies,
+            so the Life Track is a field you can change, and 666 is only its default. <br />
+            It has to be a Track the Galaxy actually has, from 1 up to Trinary Engines times 4,
+            which is 1 to 1,332 for the Milky Way. Anything outside that, or zero, or not a number at all,
+            falls back to Trinary Engines times 2, because every Speed in the table is divided by this
+            number and it can never be allowed to reach zero.
+        </p>
+
+        <p class="medium-font">
+            Move it and the whole Galaxy is re-scaled around the new Track, which is the point.
+            Put Life on Track 1000 and the Life Track Max Speed becomes
+            (2012 &times; 333) &minus; (2664 + 1000) = 666,332 mph, and the rate per Track becomes
+            666,332 &divide; 1000 = 666.332.
+        </p>
+
+        <p class="medium-font">
+            Which is worth stopping on. That rate is not a whole number, and 1001 is. <br />
+            Track 666 is the only Track in the Milky Way where the Life Track Speed divides into a whole
+            number of miles per hour per Track. Everywhere else the table has to round to whole miles per hour,
+            and the innermost Tracks come out a fraction under. The Clock still holds in the math,
+            the rounding is only in the display, but 666 is the one Track where there is nothing to round.
+        </p>
+
+        <p class="medium-font bold-text">The Clock</p>
+
+        <p class="medium-font">
+            Everything above describes one Track, the Life Track. The rest of the Galaxy is set by it.
+        </p>
+
+        <p class="medium-font">
+            At the Life Track the Error Rate does not have to be accumulated Track by Track,
+            it is known outright, because the Life Track number is what it accumulates to:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            Max Error Rate = pRate + Life Track = 2664 + 666 = 3330<br />
+            Min Error Rate =&nbsp;&nbsp;&nbsp;&nbsp; 0 + Life Track =&nbsp;&nbsp;&nbsp; 0 + 666 =&nbsp; 666<br /><br />
+            Life Track Max Speed = ( 2012 &times; 333 ) &minus; 3330 = 666,666 mph<br />
+            Life Track Min Speed = (&nbsp; 999 &times; 333 ) + 666&nbsp; = 333,333 mph
+        </p>
+
+        <p class="medium-font">
+            Divide each by the Life Track number and you have the Speed added per Track:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            666,666 &divide; 666 = 1001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 333,333 &divide; 666 = 500.5
+        </p>
+
+        <p class="medium-font">
+            1001 is 7 &times; 11 &times; 13, and 500.5 is 1001 halved. <br />
+            Multiplying by 1001 is what repeats a three digit number, which is why the Life Track reads 666,666
+            and why every other Track now reads the same way. Track 333 is 333,333 mph.
+            Track 999 is 999,999 mph. The pattern that only showed up on one line before now runs the whole table.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>6. The Track Loop</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            The loop runs 1,333 times, once per track. Each track is one orbital path the Sun can take around the Galaxy,
+            the way a groove on a record is one path the needle can take.
+            The engine count moves with it, starting at &minus;333 and incrementing by one on every pass.
+        </p>
+
+        <p class="medium-font">
+            The Error Rates are not mistakes. They are a Calculus error handler, the error encountered on the way out
+            to the Life Track, which is why there is a Max and a Min operator.
+            They are applied once, where the Life Track anchors the Clock, and from there every track is
+            that rate times its own track number.
+        </p>
+
+        <div class="tableContainer">
+            <table class="ridge tableContainer">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Column</th>
+                        <th class="medium-font ridge">Formula</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Orbit Distance</td>
+                        <td class="ridge">((galaxyRadius &times; track) &times; 2) &times; Pi</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Max Speed</td>
+                        <td class="ridge">1001 &times; track &nbsp; (the Life Track rate, times this track number)</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Min Speed</td>
+                        <td class="ridge">500.5 &times; track &nbsp; (the same Clock, at maximum amplitude)</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Frequency</td>
+                        <td class="ridge">Max Speed &times; 0.00001</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Track Frequency</td>
+                        <td class="ridge">1 &divide; (0.0000000000001 &times; |Min Speed|)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            Because Speed is the track number times a fixed rate, every track takes the same time to go around,
+            and no track can come out negative. A Sun twice as far out has twice as far to travel and moves
+            twice as fast in miles per hour, so it arrives at the same time. Same rate, different speed.
+            That is the record player, and it is what Leavitt observed.
+            Where the engine count is at its own starting value, or at 0, 1, or &minus;1, the Track Frequency is set to zero,
+            because at those points the calculation has no meaning to report.
+        </p>
+
+        <p class="medium-font">
+            Max Speed is the speed as the Sun begins its descent into the Galactic Plane.
+            Min Speed is the speed at its maximum amplitude, the top of the wave.
+            The Sun is riding the same waveform as the graph in section one, only the wavelength is measured in light years.
+        </p>
+
+        <p class="medium-font">
+            Min Speed is tied to the livable planet. It is the speed a planet orbiting that Sun would need in
+            order to carry Life, and most Suns will not have one. There is far less Life in the Universe than
+            most people assume, and on this model that is because Life needs one frequency and one speed,
+            not any of them. <br />
+            So the two are the ends of one range, not two separate quantities.
+            On Track 666 the Frequency has a range that accounts for the change in speed, from 333,333 mph up to
+            666,666 mph, which averages 499,999.5 mph, or 223.5 km/s.
+            The Sun is measured at 220 to 250 km/s. <br />
+            Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
+            Current science puts our Sun at a fixed speed, but that speed only changes over millions of years,
+            so a fixed figure is an assumption rather than a measurement.
+        </p>
+
+        <p class="medium-font">
+            The Tracks show the movement of the Suns. They are not the Spiral Arms.
+            The Arms show the path of the debris, which travels differently and should not be read as the same thing.
+        </p>
+
+        <p class="medium-font bold-text">The speed range is not the vertical motion</p>
+
+        <p class="medium-font">
+            Two motions are involved and they are not the same thing.
+            The vertical motion is the Sun rising above the Galactic Plane and falling back below it,
+            and the Sun&#39;s measured vertical velocity is about 7.25 km/s, roughly 3 percent of its
+            230 km/s orbital speed. <br />
+            The speed range of 333,333 to 666,666 mph is a factor of two, far too large to be that.
+            It is a variation along the direction of travel, not up and down.
+        </p>
+
+        <p class="medium-font">
+            Stated that way it survives the obvious objection. If every Sun varies in phase, which is what
+            keeps the Clock, then at any one moment every Sun at a given radius still reads the same speed,
+            and the variation only shows over tens of millions of years, which nobody has watched for. <br />
+            What a snapshot could have refuted is Suns varying out of phase, because then stars at the same radius
+            would spread two to one in speed. The measured dispersion for disk stars is 20 to 40 km/s,
+            nothing like that.
+        </p>
+
+        <p class="medium-font bold-text">Track Frequency is the vertical waveform</p>
+
+        <p class="medium-font">
+            The Sun does not travel a flat circle. It moves like a waveform, rising above the Galactic Plane and
+            falling back below it as it goes around, which is the same waveform as the graph in section one.
+        </p>
+
+        <p class="medium-font">
+            Track Frequency at Track 666 is 30,000,030. That is one half of a cycle, top to bottom,
+            which is one crossing of the Galactic Plane. It is not the time to go around the Galaxy.
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            half cycle, one plane crossing&nbsp; : 30.00 million years&nbsp; observed about 30<br />
+            full cycle, up and back down&nbsp;&nbsp;&nbsp; : 60.00 million years&nbsp; observed about 60<br />
+            full cycles in one orbit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 3.85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; observed about 3.8
+        </p>
+
+        <p class="medium-font">
+            This number does not come from the Galaxy Radius. Halve the Radius or double it and the Track Frequency
+            does not move, because it comes from Min Speed and the Life Track, not from the size of the Galaxy.
+        </p>
+
+        <p class="medium-font">
+            You can watch this on the <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a>,
+            which draws a line from the center of the Galaxy out through every Sun in track order.
+            When the rate is shared, that line stays straight no matter how long it runs.
+            The page measures the spread from the table on every rebuild, so it is a test, not a claim.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>7. Track 666, Worked</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            On track 666 the counters stand at engines = 333, Max Error Rate = 3330, and Min Error Rate = 666.
+            This is the track the Clock is anchored on, so it is calculated the long way, and every other track
+            is this result scaled by its own track number.
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            Max Speed&nbsp;&nbsp; = (2012 &times; 333) &minus; 3330&nbsp;&nbsp; = 669,996 &minus; 3,330 = 666,666 mph<br />
+            Min Speed&nbsp;&nbsp; = (999 &times; 333)&nbsp; + 666&nbsp;&nbsp;&nbsp; = 332,667 + 666&nbsp;&nbsp; = 333,333 mph<br />
+            Frequency&nbsp;&nbsp; = 666,666 &times; 0.00001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 6.66666 Hz<br />
+            Track Freq = 1 &divide; (0.0000000000001 &times; 333,333) = 30,000,030 Hz<br />
+            Orbit Dist = ((galaxyRadius &times; 666) &times; 2) &times; Pi = 996,895,259,518,900,613 miles
+        </p>
+
+        <p class="medium-font">
+            666,666 and 333,333 and 6.66666 did not get typed in anywhere. <br />
+            They fell out of 2012, 999, 333, 3330, and 666, which themselves fell out of the size of the Sun,
+            the size of the Earth, 1 divided by 137, and a pressure unit named after the Torah.
+        </p>
+
+        <p class="medium-font">
+            The Torah tells us that only track 666 supports life as we know it, and this is the track where the numbers
+            resolve. That is the double verification the code comments talk about.
+            You can reach the Livable Planet frequency from the Sun&#39;s side, through Max Speed and the first solar ring,
+            or from the planet&#39;s side, by taking Earth&#39;s orbital distance of 584,000,000 miles,
+            dividing by 365 days times 24 hours to get 66,666 mph, and applying the ring.
+            Two independent roads, the same number at the end of both.
+        </p>
+
+        <p class="medium-font">
+            Here are the tracks on either side of the neighborhood, straight out of the calculator.
+            Every one of them is 1001 times its own track number, and every one of them takes the same
+            173 million years to go around:
+        </p>
+
+        <div class="tableContainer">
+            <table class="ridge tableContainer">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Track</th>
+                        <th class="medium-font ridge">Engines</th>
+                        <th class="medium-font ridge">Max Speed<br />(mph)</th>
+                        <th class="medium-font ridge">Min Speed<br />(mph)</th>
+                        <th class="medium-font ridge">Frequency<br />(Hz)</th>
+                        <th class="medium-font ridge">Orbit Distance (miles)</th>
+                        <th class="medium-font ridge">Track Frequency<br />(Hz)</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">665</td>
+                        <td class="ridge">332</td>
+                        <td class="ridge">665,665</td>
+                        <td class="ridge">332,832</td>
+                        <td class="ridge">6.65665</td>
+                        <td class="ridge">995,398,419,789,893,255</td>
+                        <td class="ridge">30,045,188</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">*666</td>
+                        <td class="ridge">333</td>
+                        <td class="ridge">666,666</td>
+                        <td class="ridge">333,333</td>
+                        <td class="ridge">6.66666</td>
+                        <td class="ridge">996,895,259,518,900,613</td>
+                        <td class="ridge">30,000,030</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">1331</td>
+                        <td class="ridge">998</td>
+                        <td class="ridge">1,332,331</td>
+                        <td class="ridge">666,165</td>
+                        <td class="ridge">13.32331</td>
+                        <td class="ridge">1,992,293,679,308,793,869</td>
+                        <td class="ridge">15,011,296</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            One track away from 666 and the repeating digits stop resolving. That is the point.
+            Track 666 is the only one where the digits close on themselves, and it is the only one
+            the Torah says supports life.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>8. Precision Notes</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            Two things are worth knowing if you intend to change this code or check it against BC math.
+        </p>
+
+        <p class="medium-font bold-text">The inputs never touch a double.</p>
+
+        <p class="medium-font">
+            The three size fields are read as text and handed to the math layer as text, through
+            <span class="text_code">fixInput</span>. Nothing calls <span class="text_code">parseFloat</span> on a
+            quantity, so the 28 digit radius arrives with all 28 digits:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            typed in&nbsp;&nbsp;&nbsp;&nbsp;: 238229441887838.4639953874<br />
+            reaches math: 238229441887838.4639953874
+        </p>
+
+        <p class="medium-font">
+            This is what makes the Orbit Distance agree with BC math. Run the same expression at scale 13 on the
+            command line and you get 996,895,259,518,900,613.4843816489474, which is 996,895,259,518,900,613 rounded,
+            and that is what the calculator prints.
+        </p>
+
+        <p class="medium-font">
+            Arbitrary precision does not protect a value that was damaged before it was handed over,
+            which is why the reading is done this way and not with
+            <span class="text_code">parseFloat</span>. <span class="text_code">fixInput</span> also strips commas,
+            so the Radius can be typed the way it is displayed.
+        </p>
+
+        <p class="medium-font bold-text">PI is calculated, not looked up.</p>
+
+        <p class="medium-font">
+            <span class="text_code">piCalc</span> uses Machin&#39;s Formula, the one Newton&#39;s contemporaries
+            worked by hand:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            PI = 16 &times; arctan(1/5) &minus; 4 &times; arctan(1/239)<br /><br />
+            arctan(1/n) = 1/n &minus; 1/(3n&sup3;) + 1/(5n&#8309;) &minus; 1/(7n&#8311;) + ...
+        </p>
+
+        <p class="medium-font">
+            Every term is a BigNumber, and each one is the term before it divided by n squared,
+            so the series stops itself the moment a term rounds away to nothing. There is no limit but time.
+            The stored 249 digit string and the calculated value agree at every place, which is a useful check
+            on both of them.
+        </p>
+
+        <p class="medium-font">
+            Both round rather than truncate, and that matters. PI to 11 places is 3.14159265359,
+            which is exactly the <span class="text_code">pIe</span> constant the Galaxy Calculator uses.
+            Truncating instead would give 3.14159265358, which is not PI to 11 places and would not match
+            the constant the whole baseline rests on.
+        </p>
+
+        <p class="medium-font bold-text">Precision is per operation.</p>
+
+        <p class="medium-font">
+            Because every call declares its own decimal places, changing one of them changes the baseline for
+            everything after it. The Pi used here is 11 places on purpose. Raising it does not make the answer better,
+            it makes it a different Formula, and every constant that was tuned against the old baseline
+            would have to be recalculated. The precision values are part of the physics, treat them that way.
+        </p>
+    </div>
+
+    <hr />
+
+    <h2>9. What is Measured, and What is Chosen</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            This section matters more than any single agreement on this page.
+            A number that was chosen to land somewhere cannot afterwards be offered as evidence that it landed there,
+            so here is which is which.
+        </p>
+
+        <p class="medium-font bold-text">Measured, taken from outside this work</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            Sun diameter&nbsp;&nbsp;&nbsp; 864,575.9 miles<br />
+            Earth diameter&nbsp; 7,926.2109 miles<br />
+            Galaxy Radius&nbsp;&nbsp; R0 / 666, GRAVITY Collaboration 2021, plus or minus 0.4 percent<br />
+            1 / 137&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the fine structure constant, measured at 1 / 137.035999
+        </p>
+
+        <p class="medium-font bold-text">Derived, with nothing chosen</p>
+
+        <p class="medium-font">
+            <span class="text_code">maxIteration</span> = 2103, which is the floor of
+            (Sun diameter &times; 1/137) &divide; 3. That is the one intermediate in this whole calculator that
+            falls out of measured values with nothing fitted to it. <br />
+            The Clock is the other. Speed rising in proportion to the Track follows from anchoring every Track to
+            the Life Track, and no choice of constants can break it.
+        </p>
+
+        <p class="medium-font bold-text">Chosen to land on a target</p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            lpDensity 73.120284&nbsp;&nbsp;&nbsp;&nbsp; = (7.9262109 &minus; 7.83) &times; 760, so the ring frequency is 7.83<br />
+            cpRate&nbsp;&nbsp;&nbsp; 324.540503&nbsp;&nbsp;&nbsp; = 864,575.9 &divide; 2664, so the Precession Rate is 2664<br />
+            1104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2103 &minus; 999, so minIteration is 999<br />
+            Life Track 666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from G = 6.6743e-11, and Earth at about 66,666 mph<br />
+            trackFreqMultiplier&nbsp;&nbsp; maps Hz onto years at the scale that works
+        </p>
+
+        <p class="medium-font">
+            So the 7.830 Hz agreement with the Schumann resonance is not a result of this calculator,
+            it is an input arriving back out. The same holds for 2664, for 999, and for the 30,000,030 that
+            follows from 999. Earth at 66,666 mph is what motivated picking 666 to begin with,
+            so it is the starting point rather than a confirmation of it.
+        </p>
+
+        <p class="medium-font">
+            None of that makes the work wrong. It makes it a Formula that fits rather than a proof that holds,
+            and it says exactly where a proof would have to come from.
+            Derive lpDensity, or cpRate, or 1104, from something physical, and each one turns from a fitted
+            constant into a prediction. That is the shortest path from a model that fits to evidence that stands.
+        </p>
+
+    </div>
+
+    <hr />
+
+    <h2>10. The Pattern</h2>
+
+    <div class="container">
+        <p class="medium-font">
+            The reason all of this is one Formula and not a pile of separate calculations is that the same shape
+            keeps appearing at every scale.
+        </p>
+
+        <div class="boxit_container">
+            <div class="image-container">
+                <img id="image1" class="thumbnail" src="trinary-math-helix-0026.thumbnail.png" alt="Trinary Math Helix" title="Trinary Math Helix" onclick="showPopup('popupContainer1', 'trinary-math-helix-0026.png')">
+            </div>
+            <div id="popupContainer1" class="popupContainer" onclick="closePopup('popupContainer1')">
+                <img class="popupImage" src="trinary-math-helix-0026.png" alt="Trinary Math Helix" title="Trinary Math Helix">
+            </div>
+            <div class="text_indent bold-text medium-font">
+                Trinary Math Helix<br /><br />
+            </div>
+        </div>
+
+        <p class="medium-font">
+            The ground is the center, and the electron does not travel on the ground, it orbits around it. <br />
+            An electron around an atom, a moon around a planet, a planet around a sun,
+            a solar system around a galaxy, all the same pattern, all the same math, only the scale changes.
+            That is why the ring constants for a sun are exactly one order of magnitude below the ring constants
+            for a planet, and why the Trinary Marker taken from the atom works on the Sun.
+        </p>
+
+        <p class="medium-font">
+            Trinary Science is based on the Newtonian Universe. Newton said Light is Static, as proof it has no acceleration,
+            and he said God is the Force of Gravity in F = MA, where God is all Light without Darkness found inside all Atoms.
+            The Galaxy Calculator Formula and God&#39;s Formula make up one Formula that explains the Universe,
+            and the arbitrary precision math is simply what it takes to write that Formula down without breaking it.
+        </p>
+    </div>
+
+    <hr />
+
+    <p class="container">
+        <a class="medium-font" href="index.html">&#8592; Back to the Galaxy Calculator</a>
+        <br /><br />
+        <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a>
+        <br /><br />
+        <a class="medium-font" href="test.html">Test Suite</a>
+        <br /><br />
+        <a class="medium-font" href="https://github.com/AM-Tower/Galaxy-Calculator/" target="_blank">GitHub Code Repository</a>
+        <br /><br />
+    </p>
+
+    <hr />
+</body>
+</html>

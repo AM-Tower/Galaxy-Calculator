@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Galaxy Plot</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jeffrey Scott Flesher" />
+    <meta name="created" content="1961-01-14T18:32:33.366699936" />
+    <meta name="changedby" content="Jeffrey Scott Flesher" />
+    <meta name="changed" content="2026-08-29T12:00:00.000000000" />
+    <meta name="description" content="Author: Jeffrey Scott Flesher, plots the orbital course of every Sun in the Galaxy from the Galaxy Calculator table" />
+    <meta name="keywords" content="Galaxy,Plot,Orbit,Leavitt,Trinary,Dark Star,Newton,Jeffrey Scott Flesher" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="1doc2rule.min.css" />
+    <script src="bignumber.js"></script>
+    <script src="bignumbermath.js"></script>
+    <script src="galaxycalculator.js"></script>
+    <style>
+        .plotStage {
+            background: #05070d;
+            border: 2px ridge #888;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            touch-action: none;
+        }
+        .plotBar {
+            max-width: 900px;
+            margin: 12px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+        }
+        .plotBar label { white-space: nowrap; }
+        .plotReadout {
+            max-width: 900px;
+            margin: 12px auto;
+            border: 2px ridge #888;
+            padding: 12px;
+            overflow-x: auto;
+        }
+        .plotReadout table { border-collapse: collapse; width: 100%; }
+        .plotReadout td { padding: 3px 10px 3px 0; vertical-align: top; }
+        .plotReadout td:first-child { white-space: nowrap; font-weight: bold; }
+        .verdictBad  { color: #b00020; font-weight: bold; }
+        .verdictGood { color: #0a7d2c; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Galaxy Plot</h1>
+
+    <div class="container">
+        <p class="medium-font">
+            <a class="medium-font" href="index.html">&#8592; Galaxy Calculator</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a class="medium-font" href="Trinary.Math.html">Trinary Math</a>
+        </p>
+
+        <p class="medium-font">
+            This plots the course of every Sun in the Galaxy, using the same table the Galaxy Calculator generates. <br />
+            Each ring is one track, each dot is a Sun on that track, and the Life Track 666 is drawn in gold.
+        </p>
+
+        <p class="medium-font">
+            The cyan line is the test. It is drawn from the center of the Galaxy out through every Sun in track order.
+            Henrietta Swan Leavitt said the Suns orbit at the same rate, like a record on a record player,
+            but not at the same speed. If that is true, the line stays straight as everything turns.
+            If the rate were not the same, the line would wind up into a spiral.
+        </p>
+
+        <p class="medium-font">
+            It stays straight. The panel under the plot measures it from the table itself, every time you rebuild.
+        </p>
+    </div>
+
+    <canvas id="plotStage" class="plotStage" width="900" height="900"></canvas>
+
+    <div class="plotBar medium-font">
+        <button class="buttonStyle medium-font" id="btnPlay" type="button" onclick="togglePlay()">Pause</button>
+        <button class="buttonStyle medium-font" type="button" onclick="resetTime()">Reset</button>
+        <label for="plotSpeed">Speed</label>
+        <input type="range" id="plotSpeed" min="1" max="200" value="40" oninput="setSpeed(this.value)">
+        <label for="plotNth">Plot every Nth track</label>
+        <input class="medium-font" type="text" id="plotNth" value="13" size="4">
+        <button class="buttonStyle medium-font" type="button" onclick="buildPlot()">Rebuild</button>
+    </div>
+
+    <div class="plotReadout medium-font" id="plotReadout">
+        <p class="medium-font">Building the table&hellip;</p>
+    </div>
+
+    <div class="plotBar medium-font">
+        <label for="plotGalaxy">Galaxy</label>
+        <input class="medium-font" type="text" id="plotGalaxy" value="Milkyway" size="10">
+        <label for="plotSunSize">Sun Size</label>
+        <input class="medium-font" type="text" id="plotSunSize" value="864575.9" size="10">
+        <label for="plotPlanetSize">Livable Planet Size</label>
+        <input class="medium-font" type="text" id="plotPlanetSize" value="7926.2109" size="10">
+        <label for="plotEngines">Trinary Engines</label>
+        <input class="medium-font" type="text" id="plotEngines" value="333" size="5">
+        <label for="plotLifeTrack">Life Track</label>
+        <input class="medium-font" type="text" id="plotLifeTrack" value="666" size="6">
+        <label for="plotRadius">Galaxy Radius</label>
+        <input class="medium-font" type="text" id="plotRadius" value="238229441887838.4639953874" size="30">
+    </div>
+
+    <hr />
+
+    <div class="container">
+        <h2>How the Clock Works</h2>
+
+        <p class="medium-font">
+            A record player turns every groove at once. A Sun on an outer track has much farther to travel,
+            so it must move much faster in miles per hour, and it arrives at the same time as the inner one.
+            Same rate, different speed. That is what Leavitt described, and it is what this plot shows.
+        </p>
+
+        <p class="medium-font">
+            For that to happen the Speed has to rise in direct proportion to the Track Number.
+            The Life Track sets the rate for the whole Galaxy, because that is the Track the Torah says supports Life:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            Life Track Max Speed = ( aveIteration &times; |Engines| ) &minus; ( pRate + Life Track )<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = ( 2012 &times; 333 ) &minus; ( 2664 + 666 ) = 666,666 mph<br />
+            Life Track Min Speed = ( minIteration &times; |Engines| ) + Life Track<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = (&nbsp; 999 &times; 333 ) + 666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 333,333 mph<br /><br />
+            666,666 &divide; 666 = 1001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 333,333 &divide; 666 = 500.5<br /><br />
+            Max Speed(n) = 1001&nbsp; &times; n<br />
+            Min Speed(n) = 500.5 &times; n
+        </p>
+
+        <p class="medium-font">
+            1001 is 7 &times; 11 &times; 13, and 500.5 is 1001 halved. <br />
+            Multiplying by 1001 is what repeats a three digit number, which is why the whole table now reads
+            the way the Life Track always did:
+        </p>
+
+        <p class="monospace-paragraph medium-font bold-text">
+            track&nbsp; 333&nbsp; :&nbsp; 333,333 mph&nbsp;&nbsp; 3.33333 Hz<br />
+            track&nbsp; 666&nbsp; :&nbsp; 666,666 mph&nbsp;&nbsp; 6.66666 Hz&nbsp;&nbsp; &lt;-- the Life Track<br />
+            track&nbsp; 999&nbsp; :&nbsp; 999,999 mph&nbsp;&nbsp; 9.99999 Hz
+        </p>
+
+        <p class="medium-font">
+            Everything the Formula derives, the Trinary Marker, the Precession Rate, the three Iterations,
+            and the Error Rate, does its work here. It sets the Life Track, and the Life Track sets the Galaxy.
+        </p>
+
+        <p class="medium-font bold-text">Why a Frequency, and not a Centrifugal force</p>
+
+        <p class="medium-font">
+            A Centrifugal model gives no reason for every Sun to share a rate. Balance a pull inward against a
+            throw outward and what you get depends on where you are standing, so every ring keeps its own time.
+        </p>
+
+        <p class="medium-font">
+            A Frequency is a rate. If Gravity is a Frequency, the same as Light, then one rate runs the whole
+            Galaxy and every Sun on it, which is exactly what the straight line above is showing.
+            That is why the measurements here are Frequencies and wavelengths, taken from an electromagnetic
+            system, and the Sun&#39;s Plasma is the proof such a system is there to measure.
+        </p>
+
+        <p class="medium-font bold-text">Is the orbit reasonable</p>
+
+        <p class="medium-font">
+            The Life Track works out to a radius of about 27.4 thousand light years, and the Sun is measured to
+            sit 26 to 27 thousand light years from the center of the Galaxy. That is inside 3 percent. <br />
+            The outermost Track comes to about 54.8 thousand light years, and the Milky Way disk is measured at
+            roughly 50 thousand.
+        </p>
+
+        <p class="medium-font">
+            Speed on a Track is a range, not one number. On Track 666 a Sun travels between 333,333 and
+            666,666 mph, which averages 499,999.5 mph, or 223.5 km/s, against a measured 220 to 250 km/s.
+            At that average the orbit takes 231 million years, against a measured galactic year of 225 to 250 million.
+        </p>
+
+        <p class="medium-font">
+            The dots on this plot move at the Max Speed end of the range, so one turn here is 173 million years,
+            the short end. Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
+        </p>
+
+        <p class="medium-font">
+            The Tracks show the movement of the Suns. They are not the Spiral Arms.
+            The Arms show the path of the debris, which is a different path and should not be read as the same.
+        </p>
+    </div>
+
+    <hr />
+
+    <p class="container">
+        <a class="medium-font" href="index.html">Galaxy Calculator</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="medium-font" href="Trinary.Math.html">Trinary Math</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="medium-font" href="test.html">Test Suite</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="medium-font" href="https://github.com/AM-Tower/Galaxy-Calculator/" target="_blank">GitHub Code Repository</a>
+        <br /><br />
+    </p>
+
+    <hr />
+
+<script>
+/* ****************************************************************************
+ * galaxy.plot.html
+ * Plots the course of every Sun in the Galaxy from the Galaxy Calculator table.
+ * The table is built by calling galaxyCalculator() with insertRecord swapped out
+ * for a collector, so this page and index.html always run the exact same Math.
+ */
+var plot = {
+    tracks: [],      // { n, engines, speed, minSpeed, dist, omegaRel }
+    time: 0,         // in revolutions of the Life Track
+    step: 0.0004,    // revolutions advanced per frame
+    playing: true,
+    lifeTrack: 666,   // replaced from the calculator on every build
+    stats: null
+};
+/* ****************************************************************************
+ * unComma: the table stores display strings like "666,666"
+ */
+function unComma(sThis) {
+    return Number(String(sThis).replace(/,/g, ""));
+}
+/* ****************************************************************************
+ * buildPlot: run the real calculator, collect the rows, then analyze them
+ */
+function buildPlot() {
+    var readout = document.getElementById("plotReadout");
+    readout.innerHTML = '<p class="medium-font">Building the table&hellip;</p>';
+
+    // Quiet the calculator down, 1333 tracks of console.debug is very slow
+    isDebugMessage = 0;
+    debugMessage = 0;
+
+    var nth = parseInt(document.getElementById("plotNth").value, 10);
+    if (isNaN(nth) || nth < 1) nth = 1;
+
+    var collected = [];
+    var savedInsertRecord = insertRecord;
+    insertRecord = function (n, engines, maxSpeed, minSpeed, lpFrequency, orbitDist, trackFreq) {
+        collected.push({
+            n: parseInt(String(n).replace("*", ""), 10),
+            engines: unComma(engines),
+            speed: unComma(maxSpeed),
+            minSpeed: unComma(minSpeed),
+            dist: unComma(orbitDist)
+        });
+    };
+
+    try {
+        galaxyCalculator(
+            document.getElementById("plotGalaxy").value,
+            document.getElementById("plotSunSize").value,
+            document.getElementById("plotPlanetSize").value,
+            document.getElementById("plotEngines").value,
+            document.getElementById("plotRadius").value,
+            String(nth),
+            document.getElementById("plotLifeTrack").value
+        );
+    } finally {
+        insertRecord = savedInsertRecord;
+    }
+
+    // Whatever Life Track the calculator settled on, including the fallback it
+    // uses when the one asked for is out of range for this Galaxy.
+    plot.lifeTrack = lifeTrackNumber;
+    // Track 0 sits at the center and has no orbit, drop it
+    plot.tracks = collected.filter(function (t) { return t.dist > 0; });
+    analyzePlot();
+    plot.time = 0;
+    drawReadout();
+    drawPlot();
+}
+/* ****************************************************************************
+ * analyzePlot: measure the rate on every track, straight from the table.
+ * Period T = orbit distance / speed. A record player gives the same T everywhere.
+ * This is a live test, not a claim: if the Math ever stops being a Clock,
+ * the readout says so.
+ */
+function analyzePlot() {
+    var life = null;
+    var i = 0;
+    for (i = 0; i < plot.tracks.length; i++) {
+        if (plot.tracks[i].n === plot.lifeTrack) life = plot.tracks[i];
+    }
+    // If the Life Track was skipped by the Nth setting, anchor on the closest one
+    if (life === null && plot.tracks.length > 0) {
+        life = plot.tracks[0];
+        for (i = 0; i < plot.tracks.length; i++) {
+            if (Math.abs(plot.tracks[i].n - plot.lifeTrack) < Math.abs(life.n - plot.lifeTrack)) {
+                life = plot.tracks[i];
+            }
+        }
+    }
+    if (life === null) { plot.stats = null; return; }
+
+    var lifePeriod = life.dist / life.speed;   // hours per revolution
+    var minPeriod = Infinity;
+    var maxPeriod = 0;
+    var backward = 0;
+
+    for (i = 0; i < plot.tracks.length; i++) {
+        var t = plot.tracks[i];
+        // relative angular rate: 1.0 means it keeps step with the Life Track
+        t.omegaRel = (t.speed === 0) ? 0 : (lifePeriod / (t.dist / t.speed));
+        if (t.speed < 0) backward = backward + 1;
+        if (t.speed > 0) {
+            var p = t.dist / t.speed;
+            if (p < minPeriod) minPeriod = p;
+            if (p > maxPeriod) maxPeriod = p;
+        }
+    }
+
+    var spread = (minPeriod > 0 && isFinite(maxPeriod)) ? (maxPeriod / minPeriod) : 0;
+    plot.stats = {
+        life: life,
+        lifePeriod: lifePeriod,
+        lifeYears: lifePeriod / (24 * 365.25),
+        spread: spread,
+        // allow for the half mile per hour that Min Speed rounds off on odd tracks
+        isClock: (spread > 0 && spread < 1.000001),
+        backward: backward,
+        perTrack: life.speed / life.n
+    };
+}
+/* ****************************************************************************
+ * drawReadout
+ */
+function drawReadout() {
+    var readout = document.getElementById("plotReadout");
+    if (plot.stats === null) {
+        readout.innerHTML = '<p class="medium-font">No tracks to plot.</p>';
+        return;
+    }
+    var s = plot.stats;
+    var verdict = s.isClock
+        ? '<span class="verdictGood">Same rate on every track. This is the record player Leavitt described.</span>'
+        : '<span class="verdictBad">Not the same rate. The slowest track takes ' + s.spread.toFixed(1) +
+          ' times longer per revolution than the fastest, so the Suns do not hold formation.</span>';
+    var backward = (s.backward === 0)
+        ? 'none, every Sun runs forward'
+        : '<span class="verdictBad">' + s.backward + ' running backwards</span>';
+
+    var html = '<table class="medium-font">';
+    html += '<tr><td>Clock test</td><td>' + verdict + '</td></tr>';
+    html += '<tr><td>Period spread</td><td>' + s.spread.toFixed(6) +
+            ' to 1 &nbsp; (a record player is 1.000000 to 1)</td></tr>';
+    html += '<tr><td>Suns plotted</td><td>' + plot.tracks.length + '</td></tr>';
+    html += '<tr><td>Life Track</td><td>' + plot.lifeTrack + '</td></tr>';
+    html += '<tr><td>Negative tracks</td><td>' + backward + '</td></tr>';
+    html += '<tr><td>Speed per track</td><td>Max Speed(n) = ' + s.perTrack +
+            ' &times; n &nbsp; so track ' + s.life.n + ' is ' + s.life.speed.toLocaleString() + ' mph</td></tr>';
+    html += '<tr><td>Period</td><td>' + (s.lifeYears / 1e6).toFixed(1) +
+            ' million years per revolution, on every track' +
+            ' &nbsp; (the measured galactic year is about 225 to 250 million)</td></tr>';
+    html += '<tr><td>Elapsed</td><td><span id="plotElapsed">0.00</span> revolutions</td></tr>';
+    html += '</table>';
+    readout.innerHTML = html;
+}
+/* ****************************************************************************
+ * drawPlot
+ */
+function drawPlot() {
+    var canvas = document.getElementById("plotStage");
+    var ctx = canvas.getContext("2d");
+    var w = canvas.width;
+    var h = canvas.height;
+    var cx = w / 2;
+    var cy = h / 2;
+    var i = 0;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "#05070d";
+    ctx.fillRect(0, 0, w, h);
+
+    if (plot.tracks.length === 0) return;
+
+    var maxN = 0;
+    for (i = 0; i < plot.tracks.length; i++) {
+        if (plot.tracks[i].n > maxN) maxN = plot.tracks[i].n;
+    }
+    var maxR = (Math.min(w, h) / 2) - 24;
+
+    // the orbit rings
+    ctx.strokeStyle = "rgba(120,150,190,0.16)";
+    ctx.lineWidth = 1;
+    for (i = 0; i < plot.tracks.length; i++) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, maxR * (plot.tracks[i].n / maxN), 0, Math.PI * 2);
+        ctx.stroke();
+    }
+
+    // the Life Track ring, drawn brighter
+    for (i = 0; i < plot.tracks.length; i++) {
+        if (plot.tracks[i].n === plot.lifeTrack) {
+            ctx.strokeStyle = "rgba(255,205,70,0.55)";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(cx, cy, maxR * (plot.tracks[i].n / maxN), 0, Math.PI * 2);
+            ctx.stroke();
+        }
+    }
+
+    // work out every Sun position once
+    var pts = [];
+    for (i = 0; i < plot.tracks.length; i++) {
+        var t = plot.tracks[i];
+        var angle = 2 * Math.PI * plot.time * t.omegaRel;
+        var r = maxR * (t.n / maxN);
+        pts.push({
+            n: t.n,
+            x: cx + r * Math.cos(angle),
+            y: cy + r * Math.sin(angle),
+            back: (t.speed < 0)
+        });
+    }
+    pts.sort(function (a, b) { return a.n - b.n; });
+
+    // the formation line, center outward through every Sun in track order
+    ctx.strokeStyle = "rgba(80,225,235,0.85)";
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    for (i = 0; i < pts.length; i++) {
+        ctx.lineTo(pts[i].x, pts[i].y);
+    }
+    ctx.stroke();
+
+    // the Suns
+    for (i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        if (p.n === plot.lifeTrack) continue;
+        ctx.fillStyle = p.back ? "rgba(235,120,120,0.95)" : "rgba(255,248,225,0.95)";
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2.4, 0, Math.PI * 2);
+        ctx.fill();
+    }
+
+    // the Life Track Sun last so it sits on top
+    for (i = 0; i < pts.length; i++) {
+        if (pts[i].n !== plot.lifeTrack) continue;
+        ctx.fillStyle = "#ffcd46";
+        ctx.beginPath();
+        ctx.arc(pts[i].x, pts[i].y, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = "rgba(255,205,70,0.5)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(pts[i].x, pts[i].y, 11, 0, Math.PI * 2);
+        ctx.stroke();
+    }
+
+    // the Galactic center, the Dark Star
+    ctx.fillStyle = "#000000";
+    ctx.beginPath();
+    ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = "rgba(150,180,220,0.8)";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    var elapsed = document.getElementById("plotElapsed");
+    if (elapsed) elapsed.innerHTML = plot.time.toFixed(2);
+}
+/* ****************************************************************************
+ * animation loop
+ */
+function plotFrame() {
+    if (plot.playing) {
+        plot.time = plot.time + plot.step;
+        drawPlot();
+    }
+    window.requestAnimationFrame(plotFrame);
+}
+/* ****************************************************************************
+ * controls
+ */
+function togglePlay() {
+    plot.playing = !plot.playing;
+    document.getElementById("btnPlay").innerHTML = plot.playing ? "Pause" : "Play";
+}
+function resetTime() {
+    plot.time = 0;
+    drawPlot();
+}
+function setSpeed(thisValue) {
+    plot.step = parseInt(thisValue, 10) / 100000;
+}
+/* ****************************************************************************
+ * start
+ */
+window.addEventListener("load", function () {
+    // match the canvas backing store to its displayed size, so it is not blurry
+    var canvas = document.getElementById("plotStage");
+    var size = Math.min(900, Math.max(320, canvas.clientWidth || 900));
+    canvas.width = size;
+    canvas.height = size;
+    buildPlot();
+    window.requestAnimationFrame(plotFrame);
+});
+</script>
+</body>
+</html>

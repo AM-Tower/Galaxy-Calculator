@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Galaxy Calculator Test Suite</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jeffrey Scott Flesher" />
+    <meta name="created" content="1961-01-14T18:32:33.366699936" />
+    <meta name="changedby" content="Jeffrey Scott Flesher" />
+    <meta name="changed" content="2026-08-29T12:00:00.000000000" />
+    <meta name="description" content="Author: Jeffrey Scott Flesher, Test Suite for the Galaxy Calculator arbitrary precision math" />
+    <meta name="keywords" content="Test,BigNumber,Arbitrary Precision,Galaxy Calculator,Jeffrey Scott Flesher" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="1doc2rule.min.css" />
+    <script src="bignumber.js"></script>
+    <script src="bignumbermath.js"></script>
+    <script src="galaxycalculator.js"></script>
+    <style>
+        .testSummary {
+            max-width: 900px;
+            margin: 12px auto;
+            border: 2px ridge #888;
+            padding: 14px;
+            text-align: center;
+        }
+        .testPass { color: #0a7d2c; font-weight: bold; }
+        .testFail { color: #b00020; font-weight: bold; }
+        .testBar  { max-width: 900px; margin: 12px auto; text-align: center; }
+        .testList { max-width: 900px; margin: 12px auto; }
+        .testList td { padding: 4px 10px; vertical-align: top; }
+        .testBig  { font-size: 1.4em; }
+    </style>
+</head>
+<body>
+
+    <h1>Test Suite</h1>
+
+    <div class="container">
+        <p class="medium-font">
+            <a class="medium-font" href="index.html">&#8592; Galaxy Calculator</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a class="medium-font" href="Trinary.Math.html">Trinary Math</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a>
+        </p>
+
+        <p class="medium-font">
+            Every function this project relies on, checked against an answer worked out by hand.
+            The math functions come first, then the Galaxy Calculator itself, which is run in full
+            and its table examined, because that is the only way to know the Clock still holds.
+        </p>
+
+        <p class="medium-font">
+            The same tests run from the command line with <span class="text_code">node run-tests.js</span>,
+            and <span class="text_code">update.bc.sh</span> runs them before it will accept a new
+            copy of bignumber.js. If they fail there, it puts the old one back.
+        </p>
+    </div>
+
+    <div class="testBar">
+        <button class="buttonStyle medium-font" type="button" onclick="runTheTests()">Run the Tests Again</button>
+    </div>
+
+    <div class="testSummary medium-font" id="testSummary">
+        <span class="medium-font">Running&hellip;</span>
+    </div>
+
+    <div class="testList medium-font" id="testList"></div>
+
+    <hr />
+
+    <p class="container">
+        <a class="medium-font" href="index.html">Galaxy Calculator</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="medium-font" href="Trinary.Math.html">Trinary Math</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a>
+        <br /><br />
+    </p>
+
+    <hr />
+
+<script>
+/* ****************************************************************************
+ * test.html
+ * Runs testAll(), which lives in bignumbermath.js and galaxycalculator.js,
+ * so this page and run-tests.js are always running the very same checks.
+ */
+/* ****************************************************************************
+ * bigNumberState
+ * BigNumber carries its version only in the banner comment at the top of the
+ * file, not as a property, and a page on file:// cannot read its own scripts
+ * back to look. So report what the library can actually do, which is the part
+ * that matters here anyway. For the version number, run update.bc.sh or
+ * node run-tests.js, both of which read the banner.
+ */
+function bigNumberState() {
+    if (typeof BigNumber === "undefined") return "bignumber.js is NOT loaded";
+    var hasFormat = (typeof new BigNumber(1).toFormat === "function");
+    var hasClone = (typeof BigNumber.clone === "function");
+    var hasSqrt = (typeof new BigNumber(4).sqrt === "function");
+    if (hasFormat && hasClone && hasSqrt) {
+        return "bignumber.js loaded, with toFormat, clone and sqrt";
+    }
+    return "bignumber.js loaded, but MISSING" +
+        (hasFormat ? "" : " toFormat") + (hasClone ? "" : " clone") + (hasSqrt ? "" : " sqrt");
+}
+/* ****************************************************************************
+ * runTheTests
+ */
+function runTheTests() {
+    var summary = document.getElementById("testSummary");
+    var list = document.getElementById("testList");
+    summary.innerHTML = '<span class="medium-font">Running&hellip;</span>';
+    list.innerHTML = "";
+
+    var results;
+    try {
+        results = testAll();
+    }
+    catch (e) {
+        summary.innerHTML = '<span class="testFail testBig medium-font">The Test Suite itself threw</span>' +
+            '<br /><br /><span class="medium-font">' + String(e && e.message ? e.message : e) + '</span>';
+        return;
+    }
+
+    var passedAll = (results.failed === 0);
+    summary.innerHTML =
+        '<span class="' + (passedAll ? "testPass" : "testFail") + ' testBig medium-font">' +
+        (passedAll ? "All tests passed" : results.failed + " failed") + '</span>' +
+        '<br /><br /><span class="medium-font">' +
+        results.passed + " of " + results.total + " passed" +
+        '<br />' + bigNumberState() + '</span>';
+
+    if (!passedAll) {
+        var html = '<table class="ridge tableContainer"><thead class="ridge"><tr class="ridge">' +
+            '<th class="medium-font ridge">Failed</th></tr></thead><tbody class="medium-font">';
+        for (var i = 0; i < results.failures.length; i++) {
+            html += '<tr class="ridge ' + (i % 2 === 0 ? "oddRow" : "evenRow") + '">' +
+                '<td class="ridge monospace-paragraph">' + results.failures[i] + '</td></tr>';
+        }
+        html += '</tbody></table>';
+        list.innerHTML = html;
+    }
+}
+window.addEventListener("load", runTheTests);
+</script>
+</body>
+</html>
