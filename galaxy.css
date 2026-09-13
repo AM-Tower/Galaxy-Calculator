@@ -1,0 +1,219 @@
+/* ****************************************************************************
+ * Galaxy Calculator - application styles
+ *
+ * Companion to pico.min.css. Pico styles the semantic HTML (tables, forms,
+ * inputs, buttons, headings); this file holds only the pieces Pico has no
+ * opinion about: the help and image popups, the thumbnails, and a few
+ * typography helpers carried over from 1doc2rule.css.
+ *
+ * Colors come from Pico's custom properties rather than being hard-coded, so
+ * every rule below follows the light and dark theme automatically.
+ */
+
+/* ****************************************************************************
+ * Readable measure. The pages put their content straight in the body rather
+ * than inside a wrapper, so the width cap goes here; without it text runs the
+ * full width of a desktop monitor.
+ */
+body {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: var(--pico-spacing, 1rem);
+}
+
+/* ****************************************************************************
+ * Page container. No width is set, so Pico's responsive container governs.
+ */
+.container {
+    display: block;
+    margin: var(--pico-spacing, 0.5rem) 0;
+    width: auto;
+}
+
+/* ****************************************************************************
+ * Table wrapper. The track table can run to well over a thousand rows and is
+ * far wider than a phone, so it scrolls inside its own box instead of forcing
+ * the whole page sideways.
+ */
+.tableContainer {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* ****************************************************************************
+ * ridge - table borders, carried over so existing markup keeps its grid.
+ */
+table.ridge,
+thead.ridge,
+tbody.ridge,
+tfoot.ridge,
+tr.ridge,
+th.ridge,
+td.ridge {
+    border: 1px solid var(--pico-table-border-color);
+    border-collapse: collapse;
+}
+
+/* ****************************************************************************
+ * Table alternate row colors.
+ */
+.oddRow {
+    background-color: transparent;
+}
+
+.evenRow {
+    background-color: var(--pico-table-row-stripped-background-color);
+}
+
+/* ****************************************************************************
+ * Typography helpers.
+ */
+.medium-font {
+    font-size: 1rem;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.text_indent {
+    text-align: left;
+    text-indent: 1.33em;
+}
+
+.monospace-paragraph {
+    font-family: var(--pico-font-family-monospace);
+    line-height: 1.5;
+    color: var(--pico-color);
+    margin: var(--pico-spacing, 1rem) 0;
+}
+
+.text_code {
+    font-family: var(--pico-font-family-monospace);
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* ****************************************************************************
+ * Form controls. Fluid up to a comfortable reading width, so narrow screens
+ * are not forced to scroll to reach an input.
+ */
+.wide-input {
+    width: 100%;
+    max-width: 300px;
+}
+
+.buttonStyle {
+    background-color: var(--pico-primary);
+    color: var(--pico-primary-inverse);
+    border-color: var(--pico-primary);
+    cursor: pointer;
+}
+
+/* ****************************************************************************
+ * boxit container - double-ruled inline box.
+ */
+.boxit_container {
+    border: 0.3em double var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    margin: 0.3em;
+    padding: 0.1em 0.3em;
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* ****************************************************************************
+ * Thumbnails. Fluid, capped so they do not balloon on a wide monitor.
+ */
+.image-container {
+    width: 100%;
+    max-width: 333px;
+    overflow: hidden;
+}
+
+.thumbnail {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+
+/* ****************************************************************************
+ * Help popup. Shown by showHelp() setting display to block, so the default
+ * here stays none and carries no !important.
+ */
+.popupHelp {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 2rem);
+    max-width: 34rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    background-color: var(--pico-card-background-color);
+    color: var(--pico-color);
+    padding: 1.25rem;
+    border: 1px solid var(--pico-muted-border-color);
+    border-radius: var(--pico-border-radius);
+    box-shadow: var(--pico-card-box-shadow);
+    z-index: 1000;
+}
+
+.popupHelp-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--pico-muted-color);
+}
+
+.popupHelp-close:hover {
+    color: var(--pico-color);
+}
+
+/* ****************************************************************************
+ * Image popup. showPopup() sets display to block and sizes .popupImage to the
+ * viewport, so the rules here only need to cover the resting state.
+ */
+.popupContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    overflow: auto;
+    cursor: pointer;
+}
+
+.popupImage {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ****************************************************************************
+ * Narrow screens. Tables built for a desktop get their own scroll box rather
+ * than overflowing the page.
+ */
+@media (max-width: 40rem) {
+    table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .wide-input {
+        max-width: 100%;
+    }
+}
+/* ***************************** End of File ******************************* */

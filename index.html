@@ -11,7 +11,8 @@
     <meta name="description" content="Author: Jeffrey Scott Flesher, AM-Tower End of Time Simulator based on Wizards like Sir Isaac Newton and Nikola Tesla" />
     <meta name="keywords" content="Light,Wizard,Kepler,Newton,Tesla,God,Universe,Physics,Sun,Jeffrey Scott Flesher" />
     <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
-    <link rel="stylesheet" href="1doc2rule.min.css" />
+    <link rel="stylesheet" href="pico.min.css" />
+    <link rel="stylesheet" href="galaxy.css" />
     <script defer="defer" src="bignumber.js"></script>
     <script defer="defer" src="bignumbermath.js"></script>
     <script defer="defer" src="galaxycalculator.js"></script>
@@ -55,7 +56,7 @@
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myPrintNthTrack">Print Nth Track</label></td>
-                    <td class="ridge"><input class="medium-font" type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66"></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(6)">Help</button></td>
                 </tr>
             </table>
@@ -142,6 +143,85 @@
                 <!-- Rows will be inserted here -->
             </tbody>
         </table>
+    </div>
+
+    <hr>
+
+    <h2 id="orbitalspeeds">Calculate Celestial Body Rotational and Orbital Speeds</h2>
+
+    <div>
+        <form id="orbitCalculatorForm" class="tableContainer">
+            <p class="medium-font">
+                <label class="medium-font" for="presetBody">Select Celestial Body from the drop-down, or enter numbers manually:</label>
+                <select class="medium-font" id="presetBody" name="presetBody" onchange="presetCB(this.options[this.selectedIndex].value);">
+                    <option value="0">Select</option>
+                    <option value="1">Sun</option>
+                    <option value="2">Mercury</option>
+                    <option value="3">Venus</option>
+                    <option value="4" selected="selected">Earth</option>
+                    <option value="5">Moon</option>
+                    <option value="6">Mars</option>
+                    <option value="7">Jupiter</option>
+                    <option value="8">Saturn</option>
+                    <option value="9">Uranus</option>
+                    <option value="10">Neptune</option>
+                </select>
+            </p>
+
+            <table id="myRotationTable" class="ridge">
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="txtDiameter">Celestial Body Diameter in Miles</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtDiameter" name="txtDiameter" value="7926.2109"></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="txtRotation">Celestial Body Sidereal Period in Days</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtRotation" name="txtRotation" value="0.99726968"></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font">Average Rotational Speed</label></td>
+                    <td class="ridge"><span class="medium-font" id="rotation_speed"></span></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font">Average Rotational Speed (Big Number)</label></td>
+                    <td class="ridge"><span class="medium-font" id="rotation_speedbig"></span></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge" colspan="2"><span class="medium-font">CBARS = ( Diameter &times; PI ) / ( Rotation &times; 24 )</span></td>
+                </tr>
+            </table>
+
+            <table id="myOrbitTable" class="ridge">
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="txtOrbitalDistance">Celestial Body Orbital Distance in Miles</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtOrbitalDistance" name="txtOrbitalDistance" value="584000000"></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font" for="txtOrbitalPeriod">Celestial Body Orbital Period in Days</label></td>
+                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtOrbitalPeriod" name="txtOrbitalPeriod" value="365"></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font">Average Orbital Speed</label></td>
+                    <td class="ridge"><span class="medium-font" id="orbital_speed"></span></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge"><label class="medium-font">Average Orbital Speed (Big Number)</label></td>
+                    <td class="ridge"><span class="medium-font" id="orbital_speedbig"></span></td>
+                </tr>
+                <tr class="ridge">
+                    <td class="ridge" colspan="2"><span class="medium-font">AOS = Distance / ( Days &times; 24 )</span></td>
+                </tr>
+            </table>
+
+            <input class="buttonStyle medium-font" type="button" value="Calculate Speeds" onclick="calcAll()">
+
+            <p class="medium-font">
+                All speeds are in Miles Per Hour. Two functions run the same arithmetic:
+                one uses the JavaScript base Math, the other uses Big Number Math, so the
+                results can be compared decimal by decimal. Both truncate at 3 decimal
+                places rather than rounding, so any difference between the rows is the
+                math and not the formatting.
+            </p>
+        </form>
     </div>
 
     <hr>

@@ -751,6 +751,51 @@ function testAll() {
     };
 } // end testAll
 /* ****************************************************************************
+ *  number With Commas
+ *  123,456 returns numberWithCommas(123456)
+ */
+function numberWithCommas(x) {
+    "use strict";
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+/* ****************************************************************************
+ *  number To Decimal Places
+ *  Truncates rather than rounds, and takes a String so BigNumber results work.
+ *  @param {number|string} value - The number to be truncated.
+ *  @param {number} decimalPlaces - The number of decimal places to keep.
+ *  @returns {string} - The truncated number as a string.
+ */
+function numberToDecimalPlaces(value, decimalPlaces) {
+    "use strict";
+    var strValue = value.toString();
+    var decimalPointIndex = strValue.indexOf(".");
+    if (decimalPointIndex === -1) {
+        return strValue;
+    }
+    return strValue.slice(0, decimalPointIndex + 1 + decimalPlaces);
+}
+/* ****************************************************************************
+ *  calc Speeds Big Number Math
+ *  Same arithmetic as calcSpeeds, run through bignumbermath.js instead of the
+ *  JavaScript Math base, so the two can be compared decimal by decimal.
+ */
+function calcSpeedsBigNumber() {
+    "use strict";
+    /* Rotational */
+    var aDiameter = parseFloat(document.getElementById("txtDiameter").value);
+    var aRotation = parseFloat(document.getElementById("txtRotation").value);
+    var diPIresult = times(aDiameter, Math.PI, 13);
+    var rotDayResult = times(aRotation, 24, 13);
+    var rotation_result = dividedBy(diPIresult, rotDayResult, 16);
+    document.getElementById("rotation_speedbig").innerHTML = numberWithCommas(numberToDecimalPlaces(rotation_result, 3));
+    /* Orbital */
+    var aOrbitalDistance = parseFloat(document.getElementById("txtOrbitalDistance").value);
+    var aOrbitalPeriod = parseFloat(document.getElementById("txtOrbitalPeriod").value);
+    var orbPeriodResult = times(aOrbitalPeriod, 24, 13);
+    var obrital_result = dividedBy(aOrbitalDistance, orbPeriodResult, 16);
+    document.getElementById("orbital_speedbig").innerHTML = numberWithCommas(numberToDecimalPlaces(obrital_result, 3));
+}
+/* ****************************************************************************
  *  calc Speeds
     Orbital Speeds
     Minimum: 333,333
@@ -771,12 +816,12 @@ function calcSpeeds() {
     var aDiameter = parseFloat(document.getElementById("txtDiameter").value);
     var aRotation = parseFloat(document.getElementById("txtRotation").value);
     var rotation_result = (aDiameter * Math.PI) / (aRotation * 24);
-    document.getElementById("rotation_speed").innerHTML = rotation_result.toLocaleString("en-US", { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+    document.getElementById("rotation_speed").innerHTML = numberWithCommas(numberToDecimalPlaces(rotation_result, 3));
     /* Orbital */
     var aOrbitalDistance = parseFloat(document.getElementById("txtOrbitalDistance").value);
     var aOrbitalPeriod = parseFloat(document.getElementById("txtOrbitalPeriod").value);
     var obrital_result = aOrbitalDistance / (aOrbitalPeriod * 24);
-    document.getElementById("orbital_speed").innerHTML = obrital_result.toLocaleString("en-US", { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+    document.getElementById("orbital_speed").innerHTML = numberWithCommas(numberToDecimalPlaces(obrital_result, 3));
 }
 /* ****************************************************************************
  *  preset Combo Box
@@ -876,6 +921,24 @@ function presetCB(cb) {
     document.getElementById("txtRotation").value = cb_sidereal_day;
     document.getElementById("txtOrbitalDistance").value = cb_orbital_distance_miles;
     document.getElementById("txtOrbitalPeriod").value   = cb_orbital_period_days;
+    calcAll();
+}
+/* ****************************************************************************
+ *  Run calcSpeeds and calcSpeedsBigNumber
+ */
+function calcAll() {
+    "use strict";
     calcSpeeds();
+    calcSpeedsBigNumber();
+}
+/* ****************************************************************************
+ *  Fill in the orbit values on load, so the prefilled Earth defaults are not
+ *  sitting next to two empty result rows.
+ */
+if (typeof window !== "undefined") {
+    window.addEventListener("load", function () {
+        "use strict";
+        calcAll();
+    });
 }
 /* ***************************** End of File ******************************* */
