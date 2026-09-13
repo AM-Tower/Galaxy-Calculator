@@ -98,10 +98,22 @@ td.ridge {
 /* ****************************************************************************
  * Form controls. Fluid up to a comfortable reading width, so narrow screens
  * are not forced to scroll to reach an input.
+ *
+ * The width is definite rather than a percentage with a cap: a percentage
+ * leaves the table free to decide how much room the input gets, and the widest
+ * value on the page - the Galaxy Radius, 238229441887838.4639953874 - came out
+ * clipped. It is in rem rather than pixels because Pico scales the root font
+ * size with the viewport, so a pixel width that fits on a laptop clips the same
+ * text on a large monitor, where the 1.2rem input font is bigger. 20rem is what
+ * the Galaxy Radius needs, with a character or so to spare.
  */
+:root {
+    --gc-input-width: 20rem;
+}
+
 .wide-input {
-    width: 100%;
-    max-width: 300px;
+    width: var(--gc-input-width);
+    max-width: 100%;
 }
 
 .buttonStyle {
@@ -216,4 +228,107 @@ td.ridge {
         max-width: 100%;
     }
 }
+
+/* ****************************************************************************
+ * Form controls, tightened. Pico's defaults are sized for a full width form,
+ * which leaves the calculators looking spread out, so the inputs carry less
+ * padding and the buttons are a little smaller.
+ */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+input[type="password"] {
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+button {
+    padding: 0.6rem;
+    font-size: 1.1rem;
+}
+
+/* ****************************************************************************
+ * Calculator forms, collapsed to their content.
+ *
+ * Pico stretches both tables and text inputs to 100%, so left alone each form
+ * runs the full width of the page. Each form is a flex column sized to
+ * fit-content instead: the width comes from the widest table inside it - which
+ * is the sum of what that table's columns actually need - and every child is
+ * then stretched back out to that one width, so the two tables in the Orbit
+ * form line up column for column rather than each ending somewhere different.
+ *
+ * The forms keep class tableContainer, so anything still too wide for a phone
+ * scrolls in its own box rather than pushing the page sideways.
+ */
+#galaxyCalculatorForm,
+#orbitCalculatorForm {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: fit-content;
+    max-width: 100%;
+}
+
+/* Percentage widths cannot be resolved while the form is measuring itself, so
+ * the browser falls back to each table's content width for the measurement and
+ * only then resolves the 100% against the collapsed form. That is what makes
+ * the narrower table match the wider one.
+ */
+#galaxyCalculatorForm table,
+#orbitCalculatorForm table {
+    width: 100%;
+}
+
+/* The Calculate buttons are input[type=button], which Pico sizes at 100%. Left
+ * that way they would run the whole width of the collapsed form.
+ */
+#galaxyCalculatorForm .buttonStyle,
+#orbitCalculatorForm .buttonStyle {
+    width: auto;
+    align-self: flex-start;
+}
+
+/* The value column is pinned to one input plus the cell padding either side.
+ * Without it the table treats an input as something it may shrink, and the
+ * Galaxy Radius ends up clipped; with it the label column takes up whatever
+ * slack is left. In the Orbit form that is also what makes the two tables
+ * split at the same place and line up column for column.
+ *
+ * The cells are matched on holding an input, so the Help column in the Galaxy
+ * form and the formula rows that span both columns are left alone.
+ */
+#galaxyCalculatorForm td:has(.wide-input),
+#orbitCalculatorForm td:has(.wide-input) {
+    width: calc(var(--gc-input-width) + 2 * var(--pico-spacing, 1rem));
+}
+
+/* The drop-down is a full width form control by default, and the prose in the
+ * Orbit form is a single long line until it wraps. Both sit in the same flex
+ * column as the tables, so both are capped: otherwise the length of a sentence
+ * would decide the width of the form instead of the columns.
+ */
+#orbitCalculatorForm select {
+    width: auto;
+    max-width: 100%;
+}
+
+#galaxyCalculatorForm p,
+#orbitCalculatorForm p {
+    max-width: 34rem;
+}
+
+/* On a phone there is no slack to line up, and the pinned column would be
+ * wider than the screen, so the tables go back to sizing themselves.
+ */
+@media (max-width: 40rem) {
+    #galaxyCalculatorForm td:has(.wide-input),
+    #orbitCalculatorForm td:has(.wide-input) {
+        width: auto;
+    }
+}
+
 /* ***************************** End of File ******************************* */
