@@ -1,0 +1,82 @@
+# ============================================================
+# Galaxy Calculator — only deployable site files are tracked.
+# ============================================================
+
+# --- Reference copies of the live site pulled down for comparison ---
+# Duplicate assets + a 539 MB video; source of truth is the repo root.
+orbit.calculator/
+
+# --- Personal working notes (not part of the published site) ---
+FIXME.md
+ISSUES.md
+TODO.md
+NOTES.md
+notes/
+scratch/
+scratchpad/
+
+# --- Claude Code local-only settings (machine-specific) ---
+.claude/settings.local.json
+.claude/*.local.json
+
+# --- Backups, scratch copies, editor leftovers ---
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+*.save
+*.tmp
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# --- Logs and crash output ---
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# --- Node / tooling (if ever added) ---
+node_modules/
+.npm/
+.cache/
+dist/
+build/
+
+# --- Generated media: too large for a git repo, host these elsewhere ---
+*.m4v
+*.mp4
+*.mov
+*.webm
+*.ogv
+*.ogg
+*.mp3
+*.wav
+*.mobi
+*.epub
+
+# --- Archives ---
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+# --- Nextcloud sync artifacts (this repo lives inside a synced folder) ---
+*conflicted copy*
+*(conflicted copy)*
+.nextcloudsync.log
+.owncloudsync.log
+*.~lock.*#
+~$*
+
+# --- OS cruft ---
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
