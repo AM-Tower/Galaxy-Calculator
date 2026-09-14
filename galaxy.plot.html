@@ -69,7 +69,7 @@
 
         <p class="medium-font">
             The cyan line is the test. It is drawn from the center of the Galaxy out through every Sun in track order.
-            Henrietta Swan Leavitt said the Suns orbit at the same rate, like a record on a record player,
+            Henrietta Swan Leavitt implied the Suns orbit at the same rate, like a record on a record player,
             but not at the same speed. If that is true, the line stays straight as everything turns.
             If the rate were not the same, the line would wind up into a spiral.
         </p>
@@ -118,7 +118,7 @@
         <p class="medium-font">
             A record player turns every groove at once. A Sun on an outer track has much farther to travel,
             so it must move much faster in miles per hour, and it arrives at the same time as the inner one.
-            Same rate, different speed. That is what Leavitt described, and it is what this plot shows.
+            Same rate, different speed. That is what Leavitt implied, and it is what this plot shows.
         </p>
 
         <p class="medium-font">
@@ -342,7 +342,7 @@ function drawReadout() {
     }
     var s = plot.stats;
     var verdict = s.isClock
-        ? '<span class="verdictGood">Same rate on every track. This is the record player Leavitt described.</span>'
+        ? '<span class="verdictGood">Same rate on every track. This is the record player Leavitt implied.</span>'
         : '<span class="verdictBad">Not the same rate. The slowest track takes ' + s.spread.toFixed(1) +
           ' times longer per revolution than the fastest, so the Suns do not hold formation.</span>';
     var backward = (s.backward === 0)

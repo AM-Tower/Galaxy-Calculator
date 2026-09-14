@@ -22,7 +22,7 @@ Published as a book in 2019, written in 1988.
 
 This is not a Centrifugal system. Nothing here is thrown outward and balanced by a
 pull inward. Gravity is treated as a **frequency**, the same as Light, which is what
-Newton said God is, and what the Torah and the Bible said God is: all Light without
+Newton implied God is, and what the Torah and the Bible imply God is: all Light without
 Darkness, found inside all Atoms.
 
 Newton did not write this in so many words, but taking his notes together with the
@@ -83,22 +83,28 @@ the Clock stays the same and only the speed changes.
 
 | Quantity | Model | Measured | Error |
 |---|---|---|---|
-| Sun orbital radius | 26,989 light years | 8275 pc, GRAVITY 2021 | input, 0% |
-| Sun orbital speed, mean of range | 223.5 km/s | 233 km/s, Gaia era | −4.07% |
-| Galactic year | 227.4 million years | 225 to 250 million | −4.23% |
-| Vertical half cycle, one plane crossing | 30.00 million years | 26 to 37 million | 0% at 30 |
-| Vertical full cycle | 60.00 million years | 52 to 74 million | 0% at 60 |
+| Sun orbital radius | 26,989 light years, 8,275 pc | 8,178 pc, GRAVITY 2019 | +1.19% |
+| Sun orbital speed, mean of range | 223.5 km/s | 220 to 250 km/s | inside the band |
+| Galactic year | 227.6 million years | 225 to 250 million | inside the band |
+| Vertical half cycle, one plane crossing | 30.00 million years | 26 to 37 million | inside the band |
+| Vertical full cycle | 60.00 million years | 52 to 74 million | inside the band |
 | Vertical cycles per orbit | 3.79 | about 3.96 | −4.27% |
 | Earth orbital speed, Max Speed ÷ 10 | 29.80 km/s | 29.7827 km/s | **+0.07%** |
 | Earth ring frequency | 7.830 Hz | 7.83 Hz, Schumann | **0.00%** |
 
-Nothing in that table is off by more than 4.3 percent, and two land inside a tenth of a
-percent. The Clock itself is exact: the period is identical on all 1,332 orbiting Tracks,
-a spread of 1.000000 to 1.
+Nothing in that table is off by more than 4.3 percent, two land inside a tenth of a percent,
+and the galactic figures sit inside the measured bands rather than against a single number.
+The Clock itself is exact: the period is identical on all 1,332 orbiting Tracks, a spread of
+1.000000 to 1.
 
-The single systematic error is the speed, about 4 percent low, and the galactic year and
-the cycle count follow from it. The radius is measured, so the deviation is in the rate,
-not the geometry.
+**Read the speed with one caveat first.** Published figures assume the Sun holds a constant
+speed. This model does not — the path is a corkscrew, slowing above and below the galactic
+disk and speeding through it — so only the average of the range can be compared against a
+single published number.
+
+**[ACCURACY.md](ACCURACY.md) holds the full comparison** — every value the calculator uses
+against the current published figure, in miles and in percent, with sources named. That file
+owns the numbers; this one explains them.
 
 Max Speed comes out as 1001 times the Track number, so Track 333 reads 333,333 mph,
 Track 666 reads 666,666 mph, and Track 999 reads 999,999 mph.
@@ -123,61 +129,58 @@ Earth's surface and its ionosphere, measured at **7.83 Hz**. The formula gives *
 The calculator prints this on the page, and the Test Suite asserts it, so it cannot drift
 without a test failing.
 
-**What a reader should know before weighing it.** Livable Planet Density is an input
-constant, not derived from anything else in this project, and it is numerically the value
-that makes this come out at 7.83. So the arithmetic on its own cannot tell you whether the
-constant was set from the resonance or arrived at independently. The author states the
-Schumann resonance was unknown to him when the constant was set, which would make this a
-prediction rather than a fit. That is a question about the provenance of one number, not
-about the mathematics, and it is settled by the working that produced 73.120284, not by
-this calculator. Documented plainly so that anyone can weigh it for themselves.
+**Where Livable Planet Density came from.** 73.120284 is atmospheric resistance — the
+viscosity a body passes through on the way down, which varies with altitude and is thickest
+at the surface. It is the resistance a meteor meets, and the reason one that is any faster
+does not get as far and one that is any slower does not burn up.
+
+No published figure for it could be found, so it was worked out by reverse engineering the
+resistance from the data that does exist: reentry measurements, satellites decaying out of
+orbit, and years spent with SpaceX telemetry, which put the value close. That work was done
+long before the Schumann resonance was known to this project at all — the match to 7.83 Hz
+was found afterwards, and is what made the value look right rather than what set it. Newton
+had written the same number down on a page of working, with no note of what it was.
+
+It is worth being precise about what the arithmetic can and cannot settle here. The number
+is numerically equal to (7.9262109 - 7.83) x 760 — but it would be, under either account,
+because a constant that produces 7.830 Hz satisfies that identity whichever way it was
+arrived at. The identity is therefore evidence for neither story. What decides it is the
+provenance above, which is documentary rather than re-derivable from this calculator.
 
 ## What is Measured, and What is Chosen
 
-This section matters more than any single agreement in the table, and it is here so that
-nobody has to reverse engineer it to find out. A number that was chosen to land somewhere
-cannot afterwards be offered as evidence that it landed there.
+This distinction matters more than any single agreement in the results, and it is here so
+nobody has to reverse engineer it. **A number that was chosen to land somewhere cannot
+afterwards be offered as evidence that it landed there.** So the values this calculator uses
+fall into three kinds, and which kind each one is says what weight it can carry.
 
-### Measured, taken from outside this work
+**Measured, taken from outside this work.** The Sun's diameter, Earth's diameter, the speed
+of light, 1/137, the orbital distances and periods of every body in the Orbit Calculator.
+These can be checked against a published figure by anyone, and
+[ACCURACY.md](ACCURACY.md) does exactly that, line by line.
 
-| Value | Source |
-|---|---|
-| Sun diameter, 864,575.9 miles | measured |
-| Earth diameter, 7,926.2109 miles | measured |
-| Galaxy Radius, R0 / 666 | GRAVITY Collaboration 2021, geometric, plus or minus 0.4 percent |
-| 1 divided by 137 | the fine structure constant, measured at 1 / 137.035999 |
+**Derived, with nothing chosen.** maxIteration = 2103 is the floor of (Sun diameter × 1/137)
+÷ 3 — the one intermediate in this whole calculator that falls out of measured values with
+nothing fitted to it. The Clock is the other: Speed proportional to Track follows from
+anchoring every Track to the Life Track, and no choice of constants can break it. These two
+are results in the strict sense.
 
-### Derived, with nothing chosen
+**Carried in from outside this calculator.** lpDensity, cpRate, the Track Frequency offset,
+the three ring constants, the Life Track number. Each has an origin — a measurement made
+elsewhere, a figure from Newton's or Tesla's notes, a count from Leavitt's plates — but none
+can be re-derived from the other numbers on this page. Their provenance is documentary, and
+[ACCURACY.md](ACCURACY.md) lists each one with where it came from.
 
-| Value | How it arises |
-|---|---|
-| maxIteration = 2103 | floor of (Sun diameter x 1/137) divided by 3 |
-| the Clock, Speed proportional to Track | structural, and cannot be tuned |
+That third group is why this is a **framework** rather than a proof, and it says exactly
+where a proof would have to come from: derive lpDensity, or cpRate, or 1104 from first
+principles instead of from a measurement or a notebook, and each one turns from an input into
+a prediction. That is the shortest path from a model that fits to evidence that holds.
 
-maxIteration is the one intermediate in this whole calculator that falls out of measured
-values with nothing fitted to it. The Clock is not fitted either: it follows from anchoring
-every Track to the Life Track, and no choice of constants can break it.
-
-### Chosen to land on a target
-
-| Constant | What it was set to produce |
-|---|---|
-| lpDensity = 73.120284 | exactly (7.9262109 - 7.83) x 760, so the ring frequency comes out 7.83 |
-| cpRate = 324.540503 | exactly 864,575.9 / 2664, so the Precession Rate comes out 2664 |
-| 1104 | exactly 2103 - 999, so minIteration comes out 999 |
-| Life Track 666 | from G = 6.6743e-11, and from Earth orbiting at about 66,666 mph |
-| trackFreqMultiplier, 1e-13 | maps Hz onto years at the scale that works |
-| ring constants, 0.001 and 0.00001 | set the magnitudes for planets and suns |
-
-So the 7.830 Hz agreement with the Schumann resonance is not a result of this calculator.
-It is an input arriving back out. The same holds for 2664, for 999, and for the 30,000,030
-that follows from 999. Earth at 66,666 mph is the observation that motivated picking 666
-in the first place, so it is the starting point, not a confirmation of it.
-
-None of that makes the work wrong. It makes it a **framework**, not yet a proof, and it
-says exactly where a proof would have to come from: derive lpDensity, or cpRate, or 1104,
-from something physical, and each one turns from a fitted constant into a prediction.
-That is the shortest path from this being a model that fits to being evidence that holds.
+What the model does **not** do is add anything unobservable to make the arithmetic work.
+There is no invisible mass in it, and no term that exists only to close a gap. Every quantity
+in the calculator is either measured, derived from something measured, or carried in with a
+stated origin. Whether that is a strength is for a reader to judge; that it is true of every
+number here is checkable in one file.
 
 ## Files
 
@@ -200,7 +203,7 @@ That is the shortest path from this being a model that fits to being evidence th
 | Galaxy | Milkyway | the name |
 | Sun Size | 864575.9 | diameter in miles |
 | Livable Planet Size | 7926.2109 | diameter in miles, Earth |
-| Trinary Engines | 333 | Dark Stars, what Halley called them. Last Track is this times 4 |
+| Trinary Engines | 333 | Dark Stars, a term Halley implied. Last Track is this times 4 |
 | Life Track | 666 | the Track that supports Life, 1 to Engines x 4 |
 | Galaxy Radius | 238229441887838.4639953874 | miles, per Track |
 | Print Nth Track | 66 | how many rows to skip |
@@ -253,15 +256,17 @@ are hard to measure in real life because they are so close in to the center.
 ## On Newton, Leavitt, and the record
 
 Newton did not write, in so many words, that God is the Force of Gravity in his
-equations. In the Principia he wrote that the system "could only proceed from the counsel
-and dominion of an intelligent and powerful Being", and on the cause of Gravity he wrote
-"hypotheses non fingo", I frame no hypotheses. His published books leave out a great deal
+equations. In the General Scholium to the Principia, second edition of 1713, he wrote that
+the system "could only proceed from the counsel and dominion of an intelligent and powerful
+Being", and on the cause of Gravity, in the same passage, "hypotheses non fingo", I frame no
+hypotheses. Those two are his own words and can be checked in any edition. His published books leave out a great deal
 that is in his notes. Taking the notes together with the Principia, his work implies it,
 In My Opinion.
 
 Henrietta Swan Leavitt worked for Edward Charles Pickering at the Harvard College
 Observatory from 1902, and died in 1921. She did not work for Edwin Hubble. Hubble used
-her work after her death and said she deserved the Nobel Prize. Her published discovery
+her work after her death and is reported to have said she deserved the Nobel Prize, an account
+widely repeated but with no original source located. Her published discovery
 is the period to luminosity relation for Cepheid variables, Leavitt's Law. Her
 observations also showed the inner stars moving faster than expected, and the Suns
 orbiting the Galaxy together. The phrase "same rate, but not the same speed" is mine, not

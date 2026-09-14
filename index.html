@@ -50,7 +50,7 @@
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(7)">Help</button></td>
                 </tr>
                 <tr class="ridge">
-                    <td class="ridge"><label class="medium-font" for="myGalaxyRadius">Galaxy Radius</label></td>
+                    <td class="ridge"><label class="medium-font" for="myGalaxyRadius">Track Radius</label></td>
                     <td class="ridge"><input class="medium-font wide-input" type="text" id="myGalaxyRadius" name="myGalaxyRadius" value="238229441887838.4639953874"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(5)">Help</button></td>
                 </tr>
@@ -100,7 +100,13 @@
 
         <div id="helppopupHelp5" class="popupHelp medium-font">
             <span class="popupHelp-close" onclick="closeHelp(5)">&times;</span>
-            <p class="medium-font">Enter the Radius of the Galaxy, for example: The Milkyway has 241,828,072,282,107.5071453596951.</p>
+            <p class="medium-font">Enter the Radius of one Track, in miles. This is not the radius of the Galaxy.</p>
+            <p class="medium-font">Track n sits at this radius &times; n, so the Milkyway's default of
+            238,229,441,887,838.4639953874 miles puts Track 666, the Life Track, at 26,990 light years
+            from the centre &mdash; where the Sun is measured to be.</p>
+            <p class="medium-font">The last Track, Trinary Engines &times; 4, gives the radius of the
+            Galaxy: 53,979 light years for the Milkyway. That is the size the model allows, not a count
+            of where Suns are. The outer Tracks may be empty.</p>
         </div>
 
         <div id="helppopupHelp6" class="popupHelp medium-font">
@@ -136,7 +142,7 @@
                     <th class="medium-font ridge">Min Speed<br />(mph)</th>
                     <th class="medium-font ridge">Frequency<br />(Hz)</th>
                     <th class="medium-font ridge">Orbit Distance (miles)</th>
-                    <th class="medium-font ridge">Track Frequency<br />(Hz)</th>
+                    <th class="medium-font ridge">Track Frequency<br />(Hz, or years)</th>
                 </tr>
             </thead>
             <tbody id="myGalacticTable" class="medium-font">
@@ -248,16 +254,20 @@
         <p class="medium-font">
             The Sun does not travel a flat circle. It moves like a waveform, rising above the Galactic Plane
             and falling back below it while it goes around. <br />
-            The Track Frequency column is that waveform. At Track 666 it reads 30,000,030, which is one half
-            of a cycle, top to bottom, and that is one crossing of the Galactic Plane.
-            It is not the time to go around the Galaxy. Going around takes many of these cycles.
+            The Track Frequency column is that waveform. At Track 666 it reads 60,000,060: a whole cycle,
+            up through the Galactic Plane and back down again. Half of it, 30,000,030, is one crossing.
+            It is not the time to go around the Galaxy. Going around takes about 3.791 of these cycles. <br />
+            The number reads two ways, and both are meant. As a frequency it is 60 MHz, the carrier the
+            Galaxy sweeps its Tracks with, in the band where galactic noise is strongest in the radio sky.
+            As time it is 60,000,060 years, the period of the same wave. Frequency is Time and wavelength
+            is Distance, at different scale.
         </p>
 
         <p class="medium-font">
             A full cycle up and back down is 60 million years, and the orbit holds about 3.85 of them. <br />
             Astronomers measure the Sun crossing the Galactic Plane about every 30 million years,
             with a full vertical period near 60 million, and about 3.8 of those to one trip around. <br />
-            This number does not come from the Galaxy Radius. Halve the Radius or double it and the Track
+            This number does not come from the Track Radius. Halve the Radius or double it and the Track
             Frequency does not move, because it comes from Min Speed and the Life Track,
             not from the size of the Galaxy.
         </p>
@@ -283,8 +293,8 @@
             <a href="https://en.wikipedia.org/wiki/Henrietta_Swan_Leavitt" target="_blank">Henrietta Swan Leavitt</a>
             worked for Edward Charles Pickering at the Harvard College Observatory, where she was hired in 1902,
             and she died in 1921. She did not work for Edwin Hubble, the man the telescope is named after.
-            Hubble used her work after her death to measure the distance to other Galaxies, and he said she
-            deserved the Nobel Prize for it.
+            Hubble used her work after her death to measure the distance to other Galaxies, and is reported to have said she
+            deserved the Nobel Prize for it. That account is widely repeated but I have not found the original source for it.
         </p>
 
         <p class="medium-font">
@@ -301,7 +311,8 @@
         </p>
 
         <p class="medium-font">
-            Kepler said Christ is a Star, and we know it as Sirius.  <br />
+            Kepler wrote about the Star of Bethlehem in <i>De Stella Nova</i>, and implied Christ is a Star,
+            and we know it as Sirius. <br />
             It aligns with the Great Pyramid every year on 25 December under the Julian Calendar or 14 January under the Gregorian Calendar.  <br />
             It is a Binary Star, combined with our Sun, which is also a Star; you have 3 Stars; this is Trinity. <br />
             This system will orbit the Galaxy together, in the pattern an electron orbits an atom, and for the same reason, they are the same, only on a different scale.
@@ -337,11 +348,12 @@
         </p>
 
         <p class="medium-font">
-            Newton said Light is Static, as proof it has no acceleration.
+            Newton implied Light is Static, as proof it has no acceleration.
         </p>
 
         <p class="medium-font">
-            Einstein said Light is Dynamic; the opposite and Newton disproved by saying Light has no acceleration, 3 centuries before Einstein was born.
+            Einstein implied Light is Dynamic; the opposite, and Newton ruled it out by holding Light has no acceleration,
+            three centuries before Einstein was born.
         </p>
 
         <p class="medium-font">
@@ -349,7 +361,8 @@
         </p>
 
         <p class="medium-font">
-            Leavitt did not call them Dark Stars, Newton called them Dark Angels, and Halley said they are Dark Stars, but the term Star was not always accurate. <br />
+            Leavitt did not call them Dark Stars. Newton implied they are Dark Angels, in the notes I was given, and
+            Halley implied they are Dark Stars, though the term Star was not always accurate. <br />
             Women at the Harvard College Observatory were hired as computers, paid less than the men, and were not
             credited the way the men were. Leavitt was one of them, and her Law carried Hubble&#39;s career. <br />
             I am going with Henrietta on this subject in science.
@@ -365,7 +378,7 @@
         </p>
 
         <p class="medium-font">
-            Einstein called this an Alternate Universe in Alternate Reality. <br />
+            Einstein implied this is an Alternate Universe in Alternate Reality. <br />
             Alternate and Alternative do not mean the same thing, we cannot apply Dynamic Light to a Universe where Light has no acceleration.
         </p>
 
@@ -383,7 +396,7 @@
         </p>
 
         <p class="medium-font">
-            Trinary Science added Trinary Engines, which are called Dark Stars, according to Edmond Halley, who was taking dictation from Sir Isaac Newton. <br />
+            Trinary Science added Trinary Engines, which Edmond Halley implied are Dark Stars, from dictation he took for Sir Isaac Newton. <br />
             The term Star sounded more scientific than Dark Angel and its Fallen Angel Companies. <br />
             The prefix Trinary means this is based on 3 Logical State changes in Atoms.
         </p>
@@ -395,7 +408,8 @@
         </p>
 
         <p class="medium-font">
-            Newton said the Dark Angels are heavenly bodies that we orbit around, without ever knowing they are there. <br />
+            Newton implied the Dark Angels are heavenly bodies we orbit around without ever knowing they are there,
+            in the notes rather than in the Principia. <br />
             Fallen Angels are the Companies of the Dark Angel that orbit around a Galaxy, to keep all the Suns on the right track. <br />
             This is from the Torah, the one with the Pagan Beliefs in them.
         </p>
@@ -418,7 +432,7 @@
         </p>
 
         <p class="medium-font">
-            The God Formula is (<sup>+</sup>1) + (<sup>-</sup>1) = 0. Tycho Brahe said it was a mathematical Truth statement.
+            The God Formula is (<sup>+</sup>1) + (<sup>-</sup>1) = 0. Tycho Brahe implied it is a mathematical Truth statement.
         </p>
 
         <p class="medium-font">
@@ -432,21 +446,18 @@
 
         <p class="medium-font">
             Sir Isaac Newton did not write, in so many words, that God is the Force of Gravity in his Equations. <br />
-            In the Principia he wrote that the system <q>could only proceed from the counsel and dominion of an
-            intelligent and powerful Being</q>, and on what causes Gravity he wrote
-            <q>hypotheses non fingo</q>, I frame no hypotheses. <br />
+            In the General Scholium to the Principia, second edition of 1713, he wrote that the system
+            <q>could only proceed from the counsel and dominion of an intelligent and powerful Being</q>, and on what
+            causes Gravity, in the same passage, <q>hypotheses non fingo</q> &mdash; I frame no hypotheses.
+            Those two are his own words and can be checked in any edition. <br />
             His published books leave out a great deal that is in his notes, and taking those notes together
             with the Principia, his work implies it, In My Opinion.
         </p>
 
         <p class="medium-font">
             So F = MA, where F is the Force of Gravity in terms of the Light without Darkness found inside all the
-            Atoms in the Universe, and everything is made of Atoms. That is my reading of Newton, and it is what
+            Atoms in the Universe, and everything is made of Atoms. That is what Newton implied, and it is what
             this calculator is built on.
-        </p>
-
-        <p class="medium-font">
-            We are Light Beings and Light is Everything. Tesla
         </p>
 
         <p class="medium-font">
@@ -471,7 +482,7 @@
         <p class="medium-font">
             <a class="medium-font" href="galaxy.plot.html">Galaxy Plot</a> takes the table above and plots the course
             of every Sun in the Galaxy, so you can watch them orbit in relationship to each other,
-            and see for yourself whether they hold formation the way Leavitt said they do.
+            and see for yourself whether they hold formation the way Leavitt implied they do.
         </p>
 
         <p class="monospace-paragraph medium-font bold-text">

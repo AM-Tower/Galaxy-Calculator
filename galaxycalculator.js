@@ -251,7 +251,11 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     var ringSunFirst = "0.00001";
     // Orbital Distance in Miles around the Track.
     var orbitDist = 0;
-    // Track Frequency Multiplier based on Galaxy Ring of Power; 13 is Masonic Number in Bible
+    // Valence Gap Offset. An offset for the error that accumulates over an
+    // iteration, from resistance to signal propagation, scaled on the gap
+    // between the valence rings of an atom -- the ratio holds even though the
+    // distances do not. Known as the Galaxy Ring of Power; 13 is the Masonic
+    // number in the Bible.
     var trackFreqMultiplier = "0.0000000000001"; // JavaScript=1e-13
     // Track Frequency: .0000000000001 * |minSpeed|
     var trackFreq = "0.0";
@@ -362,6 +366,11 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
             // Now do the Math
             trackFreq = dividedBy(1, trackFreq, 16);
         }
+        // Full wave, not half. The reciprocal above gives one half cycle -- the
+        // Sun crossing the Galactic Plane once, top to bottom. Doubling it gives
+        // the whole cycle, up through the Plane and back down, which is what the
+        // column reports: 60,000,060 at Track 666.
+        trackFreq = times(trackFreq, "2", 16);
         // Format: Round
         trackFreq = format(trackFreq, 0);
         //
@@ -379,7 +388,7 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
         }
         //
         if (printThis === 1) {
-            // 666 | 333 | 666,666 | 333,333 | 6.66666 | 1,011,954,093,357,316,200 | 30,000,030
+            // 666 | 333 | 666,666 | 333,333 | 6.66666 | 1,011,954,093,357,316,200 | 60,000,060
             // 666 | 666 |
             //console.debug("trackEngines=" + trackEngines);
             trackEngines = Math.floor(trackEngines);
@@ -636,7 +645,7 @@ function testGalaxy() {
         testIs("Life Track Min Speed", life.minSpeed, "333,333");
         testIs("Life Track Frequency", life.lpFrequency, "6.66666");
         testIs("Life Track Orbit Distance", life.orbitDist, "996,895,259,518,900,613");
-        testIs("Life Track Frequency of Track", life.trackFreq, "30,000,030");
+        testIs("Life Track Frequency of Track, full wave", life.trackFreq, "60,000,060");
     }
 
     // ---- no Track may run backwards -------------------------------------
@@ -847,8 +856,14 @@ function presetCB(cb) {
     if (cb === "1") {
         cb_diameter_miles         = 864575.9; // 864948.7  864575.9 864938
         cb_sidereal_day           = 25.379995;
-        cb_orbital_distance_miles = (2 * 161057496139894200) * Math.PI; // 1011954093357316200
-        cb_orbital_period_days    = 242000000 * earthYearInDays;  // 88330000000
+        // Taken from Track 666 in the Galaxy table, so the two halves of this
+        // calculator give the same answer for the Sun's own orbit. 
+        // The old pair (radius 161,057,496,139,894,200 mi over 242,000,000 years) 
+        // put the Sun at 27,397 ly and 213 km/s; 
+        // the Life Track puts it at 26,990 ly and
+        // 223.5 km/s, which is inside the measured band on both counts.
+        cb_orbital_distance_miles = 996895259518900613;  // Life Track orbit distance
+        cb_orbital_period_days    = 227601885 * earthYearInDays;  // 499,999.5 mph, the Track 666 average
     }
     /* Mercury orbits the sun 105,947 or 105,954.682 miles */
     if (cb === "2") {
@@ -899,22 +914,22 @@ function presetCB(cb) {
     /* Saturn orbits the sun 21,637 miles per hour or 21,561.823 */
     if (cb === "8") {
         cb_diameter_miles         = 74974.6481;
-        cb_sidereal_day           = 0.426;
-        cb_orbital_distance_miles = 5565900000;
+        cb_sidereal_day           = 0.426389;   // was 0.426
+        cb_orbital_distance_miles = 5586900000; // was 5565900000, the ellipse perimeter
         cb_orbital_period_days    = 10755.7;
     }
     /* Uranus orbits the sun 15,290 miles per hour or 15,210.065 Equatorial rotation velocity 5791.18 mph */
     if (cb === "9") {
         cb_diameter_miles         = 31763.253;
         cb_sidereal_day           = 0.71833;
-        cb_orbital_distance_miles = 11201300000;
+        cb_orbital_distance_miles = 11187300000; // was 11201300000, the ellipse perimeter
         cb_orbital_period_days    = 30685;
     }
     /* Neptune orbits the sun 12,253 miles per hour or 12,157.543 */
     if (cb === "10") {
         cb_diameter_miles         = 30775.272;
         cb_sidereal_day           = 0.67125;
-        cb_orbital_distance_miles = 17562300000;
+        cb_orbital_distance_miles = 17626900000; // was 17562300000, the ellipse perimeter
         cb_orbital_period_days    = 60190;
     }
     document.getElementById("txtDiameter").value = cb_diameter_miles;
