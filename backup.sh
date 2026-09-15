@@ -22,7 +22,7 @@
 #   cd /data/Nextcloud/workspace/GalaxyCalculator3/GalaxyCalculator
 #   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup
 #   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup --github
-#   clear; chmod +x backup.sh && bash -n backup.sh && shellcheck backup.sh && ./backup.sh --backup --message="$(date)"
+#   clear; chmod +x backup.sh && bash -n backup.sh && shellcheck backup.sh && ./backup.sh --backup --message="Updates and bug fixes for $(date)"
 #   ./backup.sh --backup        back up, then commit locally
 #   ./backup.sh --backup --github   back up, commit, push to GitHub
 #   ./backup.sh --github        commit and push, no backup
