@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # *****************************************************************************
 # backup.sh
+# Written for the Galaxy Calculator, Jeffrey Scott Flesher
+# Used AI: Claude.ai
 # Timestamped source backup for the Galaxy Calculator, the same idea as the
 # DocVoxVid deploy.sh --backup switch: rsync the source tree into a dated
 # folder, keeping the directory structure, taking only the file types that
@@ -19,6 +21,8 @@
 #   ../Backups/GalaxyCalculator/2026-09-13_1500/
 #   cd /data/Nextcloud/workspace/GalaxyCalculator3/GalaxyCalculator
 #   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup
+#   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup --github
+#   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup --message="..."
 #   ./backup.sh --backup        back up, then commit locally
 #   ./backup.sh --backup --github   back up, commit, push to GitHub
 #   ./backup.sh --github        commit and push, no backup
@@ -29,7 +33,6 @@
 #   ./backup.sh --list          show the backups already taken
 #   ./backup.sh --help
 #
-# Written for the Galaxy Calculator, Jeffrey Scott Flesher
 # *****************************************************************************
 set -euo pipefail
 
