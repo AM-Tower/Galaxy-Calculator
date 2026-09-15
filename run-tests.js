@@ -72,11 +72,40 @@ try {
     process.exit(1);
 }
 
+// ---------------------------------------------------------------------------
+// Smart quotes in HTML tags. An editor set to curly quotes will silently turn
+// class="ridge" into class=“ridge”, which the browser parses as an
+// attribute value that includes the quote marks. Every class, id, src and
+// onclick then stops matching, the stylesheet does nothing and the scripts do
+// not load - and the page still looks half right, so it is easy to miss.
+// This happened once. It is checked here so it cannot happen quietly again.
+const smartQuoteFailures = [];
+for (const name of fs.readdirSync(here)) {
+    if (!name.endsWith('.html')) continue;
+    const text = fs.readFileSync(path.join(here, name), 'utf8');
+    let count = 0;
+    for (const tag of text.match(/<[^<>]*>/g) || []) {
+        for (const ch of tag) {
+            if (ch === '\u201C' || ch === '\u201D') count = count + 1;
+        }
+    }
+    if (count > 0) {
+        smartQuoteFailures.push(name + ' has ' + count + ' smart quotes inside HTML tags');
+    }
+}
+
 console.log('Galaxy Calculator Test Suite');
 console.log('  bignumber.js v' + version);
 console.log('  ' + results.passed + ' of ' + results.total + ' passed, ' + results.failed + ' failed');
 
-if (results.failed > 0) {
+if (smartQuoteFailures.length > 0) {
+    console.log('');
+    for (const failure of smartQuoteFailures) {
+        console.log('  FAIL  ' + failure);
+    }
+}
+
+if (results.failed > 0 || smartQuoteFailures.length > 0) {
     console.log('');
     for (const failure of results.failures) {
         console.log('  FAIL  ' + failure);

@@ -1,0 +1,1111 @@
+
+
+===== index.html =====
+
+[index-1]
+Enter the Name of the Galaxy, for example: Milkyway.
+
+[index-2]
+Enter the average size of the Sun, for example: 864,575.9 miles in diameter.
+
+[index-3]
+Enter the Livable Planet Size, for example: Earth is 7926.2109 miles in diameter.
+
+[index-4]
+Trinary means 3 logical states, meaning God.
+
+[index-5]
+Enter the Number of Trinary Engines, for example: The Milkyway has 333.
+
+[index-6]
+The Track that supports Life, for example: 666 in our Solar System.
+
+[index-7]
+The Torah tells us Life is on Track 666, and that is our Galaxy, not every Galaxy, so you can change it. 
+
+ This Track also sets the rate for every other Track, because they all orbit at the same rate, like a record player. 
+
+ It must be a Track this Galaxy has, from 1 up to Trinary Engines times 4. 
+
+ With 333 Trinary Engines that is 1 to 1,332, and out of range falls back to Trinary Engines times 2.
+
+[index-8]
+Enter the Radius of one Track, in miles. This is not the radius of the Galaxy.
+
+[index-9]
+Track n sits at this radius x n, so the Milkyway's default of
+ 238,229,441,887,838.4639953874 miles puts Track 666, the Life Track, at 26,990 light years
+ from the centre — where the Sun is measured to be.
+
+[index-10]
+The last Track, Trinary Engines x 4, gives the radius of the
+ Galaxy: 53,979 light years for the Milkyway. That is the size the model allows, not a count
+ of where Suns are. The outer Tracks may be empty.
+
+[index-11]
+Enter the Number of Track records to skip. 
+
+ The smaller the number, the longer the list. 
+
+ The number must be greater than 0, and less than 1,000. 
+
+ For example: If you skip every 66 records, you get a list of 21 records.
+
+[index-13]
+Every number in the table below comes from the values above, so each step can be checked
+ rather than taken on trust. 
+
+ The Livable Planet Ring Frequency is the one to look at first: it comes out at 7.830 Hz,
+ and the Schumann resonance, the frequency of the cavity between the Earth and its ionosphere,
+ is measured at 7.83 Hz.
+
+[index-14]
+Some of the values this calculator uses are not the ones a textbook gives, and a reader is entitled to know
+ which, by how much, and why. Nothing here is hidden in a footnote. 
+
+ The full line by line comparison, every value against the current published figure, in miles and in percent,
+ with sources named, is in ACCURACY.md.
+
+[index-15]
+Where a value differs, it is a choice that is stated, not an error left in. Where it agrees, it agrees without
+ anything having been tuned to make it agree.
+
+[index-16]
+Select Celestial Body from the drop-down, or enter numbers manually:
+ 
+ Select
+ Sun
+ Mercury
+ Venus
+ Earth
+ Moon
+ Mars
+ Jupiter
+ Saturn
+ Uranus
+ Neptune
+
+[index-17]
+All speeds are in Miles Per Hour. Two functions run the same arithmetic:
+ one uses the JavaScript base Math, the other uses Big Number Math, so the
+ results can be compared decimal by decimal. Both truncate at 3 decimal
+ places rather than rounding, so any difference between the rows is the
+ math and not the formatting.
+
+[index-18]
+Each line in the table is a track that represents the Sun's path as it orbits the Galaxy.
+
+[index-19]
+The last Track a Galaxy can have is its Trinary Engines times 4, so the Milky Way runs from
+ Track 1 to Track 1,332, and the heading above the table says so for whatever Galaxy you enter. 
+
+ This calculator does not know how many Tracks a Galaxy has. The Engine count is an input, not a
+ result: counting Tracks is a visual account taken from images, and no formula here produces it. 
+
+ Not every Track carries a Sun. This is written for any Galaxy, and there is no way to know from
+ here how many Suns a given Galaxy has or which Tracks they sit on. 
+
+ The inner Tracks are hard to measure in real life because they are so close in to the center.
+
+[index-20]
+The Tracks show the movement of the Suns. They are not the Spiral Arms.
+ The Arms show the path of the debris, which is a different thing on a different path,
+ and the two should not be read as the same.
+
+[index-21]
+The Sun does not travel a flat circle. It moves like a waveform, rising above the Galactic Plane
+ and falling back below it while it goes around. 
+
+ The Track Frequency column is that waveform. At Track 666 it reads 60,000,060: a whole cycle,
+ up through the Galactic Plane and back down again. Half of it, 30,000,030, is one crossing.
+ It is not the time to go around the Galaxy. Going around takes about 3.791 of these cycles. 
+
+ The number reads two ways, and both are meant. As a frequency it is 60 MHz, the carrier the
+ Galaxy sweeps its Tracks with, in the band where galactic noise is strongest in the radio sky.
+ As time it is 60,000,060 years, the period of the same wave. Frequency is Time and wavelength
+ is Distance, at different scale.
+
+[index-22]
+A full cycle up and back down is 60 million years, and the orbit holds about 3.791 of them. 
+
+ Astronomers measure the Sun crossing the Galactic Plane about every 30 million years,
+ with a full vertical period near 60 million, and about 3.8 of those to one trip around. 
+
+ This number does not come from the Track Radius. Halve the Radius or double it and the Track
+ Frequency does not move, because it comes from Min Speed and the Life Track,
+ not from the size of the Galaxy.
+
+[index-23]
+The Torah tells us that only track 666 supports life as we know it.
+
+[index-24]
+Max Speed and Min Speed are the two ends of one range, not two separate numbers.
+ A Sun on Track 666 travels somewhere between 333,333 and 666,666 mph, which averages
+ 499,999.5 mph, which is 223.5 km/s. The Sun is measured at 220 to 250 km/s, or 492,126 to 559,234 mph. 
+
+ Current science puts our Sun at a fixed speed, but the speed only changes over millions of years,
+ so a fixed figure is an assumption, not a measurement. 
+
+ Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
+
+[index-25]
+You can use this data to plot the orbital path of any Star, in any Galaxy, and given a Planet Size, you can determine where Life exists in the Galaxy.
+
+[index-26]
+Henrietta Swan Leavitt
+ worked for Edward Charles Pickering at the Harvard College Observatory, where she was hired in 1902,
+ and she died in 1921. She did not work for Edwin Hubble, the man the telescope is named after.
+ Hubble used her work after her death to measure the distance to other Galaxies, and is reported to have said she
+ deserved the Nobel Prize for it. That account is widely repeated but I have not found the original source for it.
+
+[index-27]
+Her published discovery is the period to luminosity relation for Cepheid variables, now called
+ Leavitt's Law, which gave astronomy its first way to measure distance. 
+
+ Her observations also showed the inner stars moving faster than anyone expected, and that the Suns
+ orbit the Galaxy together. 
+
+ The words they orbit at the same rate, but not the same speed are mine, not a quote from her.
+ That is my reading of what her observations show, and this calculator is here to test it.
+
+[index-28]
+This means they all travel around the galaxy as if they were a record on an old-fashioned record player.
+
+[index-29]
+Kepler wrote about the Star of Bethlehem in De Stella Nova, and implied Christ is a Star,
+ and we know it as Sirius. 
+
+ It aligns with the Great Pyramid every year on 25 December under the Julian Calendar or 14 January under the Gregorian Calendar. 
+
+ It is a Binary Star, combined with our Sun, which is also a Star; you have 3 Stars; this is Trinity. 
+
+ This system will orbit the Galaxy together, in the pattern an electron orbits an atom, and for the same reason, they are the same, only on a different scale.
+
+[index-30]
+Trinary and Trinity mean the same thing, with the exception that Trinary is a Science based on 3 Logical State Changes shown in the graph below.
+
+[index-31]
+At the Atomic Level, atoms will have a Solid State, which means it is in all 3 dimensions of space, width, depth, and height.
+
+[index-32]
+The Arabic numbering system is based on angles, for example, 1 has one angle, 2 has two, 3 has three, and so on. 0 has zero angles. 
+
+ Trinity uses the logic of 1 and 0, much like Binary, but Trinary makes it 3 states, +1, -1, and 0.
+
+[index-33]
+Trinary Science is based on the Newtonian Universe and does not change anything, unlike Einstein, who did the complete opposite.
+
+[index-34]
+This combines Kepler, Newton, and Nikola Tesla into one Science. 
+
+ The math and the concepts for treating Gravity as a wave come from Tesla,
+ the orbital work from Kepler and Newton, and the rest I added to get the results I needed. 
+
+ Published as a book in 2019, written in 1988.
+
+[index-35]
+There is no proof that Gravity is caused by Centrifugal force. 
+
+ There is proof that electromagnetic forces act over great distances, and that is what this is built on.
+
+[index-36]
+Newton implied Light is Static, as proof it has no acceleration.
+
+[index-37]
+Einstein implied Light is Dynamic; the opposite, and Newton ruled it out by holding Light has no acceleration,
+ three centuries before Einstein was born.
+
+[index-38]
+Trinary Science is based on what can be proven, and a Dark Star and its Companions are well-documented in images, like the ones Leavitt studied and observed.
+
+[index-39]
+Leavitt did not call them Dark Stars. Newton implied they are Dark Angels, in the notes I was given, and
+ Halley implied they are Dark Stars, though the term Star was not always accurate. 
+
+ Women at the Harvard College Observatory were hired as computers, paid less than the men, and were not
+ credited the way the men were. Leavitt was one of them, and her Law carried Hubble's career. 
+
+ I am going with Henrietta on this subject in science.
+
+[index-40]
+The world was taught that Black Holes existed when Dark Stars existed, and the name changed everything.
+
+[index-41]
+A Black Hole is some magical hole that defies all known physics, or common sense. 
+
+ The theory states a collapsed Galaxy or Star, created a vortex to another dimension in Space.
+
+[index-42]
+Einstein implied this is an Alternate Universe in Alternate Reality. 
+
+ Alternate and Alternative do not mean the same thing, we cannot apply Dynamic Light to a Universe where Light has no acceleration.
+
+[index-43]
+Do not confuse a Deity God that does not exist to a God who is all Light without Darkness which exists.
+
+ As proof, ask the Church if God physically exists, we know the answer is no.
+
+ In Trinary Science, Christ is the Binary Star we know as Sirius, which is key to the End of Time Event.
+
+[index-44]
+In the Torah, when it said Christ is Born on 25 December under the Julian Calendar, is now 14 January,
+ so we know this is when Sirius or Christ the Star, aligns with the Great Pyramid,
+ and it when Earth is closest to the Sun, giving it the power to be born.
+ In reality, this event can be viewed by looking for Sirius in the Sky; it only marks this date.
+
+[index-45]
+Trinary Science added Trinary Engines, which Edmond Halley implied are Dark Stars, from dictation he took for Sir Isaac Newton. 
+
+ The term Star sounded more scientific than Dark Angel and its Fallen Angel Companies. 
+
+ The prefix Trinary means this is based on 3 Logical State changes in Atoms.
+
+[index-46]
+Trinary, Trinity, and God, all mean the same thing and are interchangeable.
+
+ Trinary means the Science of God, the same as Newtonian Science, only Trinary Science added Trinary Engines. 
+
+ Halley might have been the first one to use the term Dark Star, which is a Trinary Engine.
+
+[index-47]
+Newton implied the Dark Angels are heavenly bodies we orbit around without ever knowing they are there,
+ in the notes rather than in the Principia. 
+
+ Fallen Angels are the Companies of the Dark Angel that orbit around a Galaxy, to keep all the Suns on the right track. 
+
+ This is from the Torah, the one with the Pagan Beliefs in them.
+
+[index-48]
+To prove to anyone that Newton is right, I give you the following 3 facts we can all agree on.
+
+[index-49]
+Planetary Orbital Speed Calculator:
+
+ https://am-tower.com/documents/#orbitalspeeds
+
+
+ The source code is on GitHub:
+
+ https://github.com/AM-Tower/Planetary-Orbital-Speed-Calculator/
+
+[index-50]
+The God Formula is (+1) + (-1) = 0. Tycho Brahe implied it is a mathematical Truth statement.
+
+[index-51]
+This is not an Equation; it is a Formula.
+
+[index-52]
+This graph will show you the Waveform of an Alternating Current (AC),
+ much like our Brainwave, it is our Soul, because it takes electricity to make Light and God is all Light without Darkness found inside Atoms.
+
+[index-53]
+Sir Isaac Newton did not write, in so many words, that God is the Force of Gravity in his Equations. 
+
+ In the General Scholium to the Principia, second edition of 1713, he wrote that the system
+ could only proceed from the counsel and dominion of an intelligent and powerful Being, and on what
+ causes Gravity, in the same passage, hypotheses non fingo — I frame no hypotheses.
+ Those two are his own words and can be checked in any edition. 
+
+ His published books leave out a great deal that is in his notes, and taking those notes together
+ with the Principia, his work implies it, In My Opinion.
+
+[index-54]
+So F = MA, where F is the Force of Gravity in terms of the Light without Darkness found inside all the
+ Atoms in the Universe, and everything is made of Atoms. That is what Newton implied, and it is what
+ this calculator is built on.
+
+[index-55]
+The calculator uses 1 divided by 137 as the Trinary Marker. That is the fine structure constant,
+ which mainstream physics writes as alpha, and measures at 1 divided by 137.035999. 
+
+ It is the coupling constant of electromagnetism, the number that sets how strongly Light and
+ charged matter interact. For a model that treats Gravity as a Frequency, the same as Light,
+ in an electromagnetic system, that is the right constant to be holding, and it is not an
+ arbitrary choice. It is the one number in physics that already ties Light to matter.
+
+[index-56]
+The Galaxy Calculator Formula, together with God's Formula, make up one Formula that explains the Universe.
+
+[index-57]
+Trinary Math describes how this math works,
+ what every constant means, why it uses arbitrary precision instead of floating point,
+ and it walks Track 666 through the whole calculation.
+
+[index-58]
+Galaxy Plot takes the table above and plots the course
+ of every Sun in the Galaxy, so you can watch them orbit in relationship to each other,
+ and see for yourself whether they hold formation the way Leavitt implied they do.
+
+[index-59]
+| State | Trinity | Visibility | Dimension |
+
+ | ----- | --------| -----------|-----------|
+
+ | (+1) | Father | Solid | 3D |
+
+ | 0 | Mother | Invisible | 0 |
+
+ | (-1) | Son | Semisolid | 1 or 2 |
+
+
+
+ | State | -------- Graph ----------------- |
+
+ | (+1) | *-------*-------*-------*------- |
+
+ | 0 | --*---*---*---*---*---*--------- |
+
+ | (-1) | ----*-------*-------*----------- |
+
+[index-60]
+​Please examine this diagram, and notice the ground is the center, and the Electron does not travel on the Ground, or any circuit board trace, it orbits around it. 
+
+ This is the same pattern that the Galaxy, Sun, Planets, and Moon, all follow.
+
+[index-61]
+Trinary Math
+ 
+
+
+ Galaxy Plot
+ 
+
+
+ Test Suite
+ 
+
+
+ GitHub Code Repository
+
+[index-62]
+This is the question the whole calculator was built to answer, and the answer is in the table rather than in
+ an argument.
+
+[index-63]
+The Galaxy drives its Tracks. The signal sweeps out from the centre, every Ring reads it, and every Sun
+ keeps pace with it. One rate for all of them. A Sun on an outer Track has farther to go, so it must travel
+ faster in miles per hour to arrive at the same time, and it does: Max Speed is 1001 times the Track number, so
+ Track 333 runs at 333,333 mph and Track 999 at 999,999 mph. Same rate, different speed. That is a record on a
+ record player, and the Test Suite checks it on all 1,332 Tracks at once — the slowest Track divided by the
+ fastest comes out at 1.000000.
+
+[index-64]
+The Sun does not drive the Planets that way. Each Planet falls around it on its own and keeps its own
+ time. Mercury goes round in 88 days and Neptune takes 60,190, and nothing makes them arrive together because
+ nothing is driving them together. Run the Orbit Calculator on any two of them and the periods have nothing in
+ common.
+
+[index-65]
+That is the whole of it. A Galaxy is one driven system with one clock. A Solar System is a set of separate
+ falls around one Star. The same Science covers both, and it is the driving that makes the difference, not the
+ size.
+
+[index-66]
+It also says what to look for. If the Suns were not driven, the formation would wind up: the inner ones would
+ lap the outer ones and the shape of the Galaxy would smear out within a few turns. It has not. The arms are
+ still there. Something is holding the rate, and a frequency is the only thing that holds a rate.
+
+[index-67]
+This has to be said plainly, because a reader who mixes them will get a wrong answer and blame the
+ arithmetic. 
+
+ The only theory in this work is the Trinary Engine. I cannot prove what is inside a Galaxy, a Sun,
+ a Planet, or a Moon, so that one is a theory and I call it one. Everything else here is a measurement, a
+ value carried in with a stated origin, or arithmetic done on those.
+
+[index-68]
+Einstein cannot be mixed in. He sets Light as dynamic, and has the Universe as both dynamic and
+ static. Trinary Science is the opposite: Light is static and the Universe is dynamic. The two do not
+ combine, and an argument that starts by assuming his position has already left this model behind. 
+
+ That is not a complaint about him. It is a statement that the two systems answer different questions, and
+ their answers cannot be added together.
+
+[index-69]
+So review this on its own terms: check the values against what is measured, check the arithmetic, and check
+ whether the numbers that arrive twice by unrelated routes really do agree. Those are all things anyone can
+ do without accepting anything.
+
+[index-70]
+Written by Jeffrey Scott Flesher. 
+
+ The Science is mine: the concepts, the constants, the values, and the conclusions. Where a value came from
+ someone else's notes or measurements, it says so where it appears. 
+
+ The code, the documentation, and the checking of the arithmetic were worked out with the help of
+ Claude, an AI made by Anthropic. It found errors, ran the numbers, and wrote much of the wording.
+ It did not decide what is true here.
+
+
+===== Trinary.Math.html =====
+
+[Trina-2]
+This page describes how the math in the Galaxy Calculator works. 
+
+ It covers the three logical states that give Trinary its name, why this code refuses to use floating point,
+ what every constant in galaxycalculator.js means, and it walks Track 666 through
+ the whole calculation, one operation at a time.
+
+[Trina-4]
+It is here to prove that Newton and Leavitt are correct: that every Sun in a Galaxy orbits at the same
+ rate, like a record on a record player, but not at the same speed.
+
+[Trina-5]
+That result only follows if Gravity is a Frequency. This is not a Centrifugal system, nothing here is
+ thrown outward and held in by a pull inward. Gravity is treated as a Frequency, the same as Light,
+ which is what Newton implied God is, and what the Torah and the Bible imply God is:
+ all Light without Darkness found inside all Atoms.
+ A Centrifugal model gives no reason at all for every Sun to share a rate. A Frequency driven one does,
+ because a Frequency is a rate.
+
+[Trina-6]
+So every measurement on this page is a Frequency and a wavelength, taken from an electromagnetic system.
+ The Sun's Plasma is the proof that such a system exists, charged matter behaving electromagnetically
+ at the scale of a Star.
+
+[Trina-7]
+Binary has two logical states, 1 and 0. Trinary has three, +1, 0, and -1.
+
+[Trina-8]
+The third state is not a rounding of the other two, it is the state between them, and it is the state that
+ does the work. In an Alternating Current the waveform crosses zero on its way from positive to negative,
+ and that crossing is not nothing, it is the moment the field collapses and rebuilds.
+ Trinary Math keeps that state as a value you can calculate with, instead of throwing it away.
+
+[Trina-9]
+| State | Trinity | Visibility | Dimension |
+
+ | ----- | --------| -----------|-----------|
+
+ | (+1) | Father | Solid | 3D |
+
+ | 0 | Mother | Invisible | 0 |
+
+ | (-1) | Son | Semisolid | 1 or 2 |
+
+
+
+ | State | -------- Graph ----------------- |
+
+ | (+1) | *-------*-------*-------*------- |
+
+ | 0 | --*---*---*---*---*---*--------- |
+
+ | (-1) | ----*-------*-------*----------- |
+
+[Trina-11]
+Tycho Brahe implied this is a mathematical Truth statement, and the distinction matters to how this code is written. 
+
+ An Equation asks what the unknown is. A Formula states what is already true and then holds you to it. 
+
+ Every number in the Galaxy Calculator is checked against a Formula that was true before the program ran,
+ which is why the code never solves for anything, it only carries values forward without damaging them.
+
+[Trina-12]
+That last point is the whole reason for the next section.
+
+[Trina-13]
+JavaScript numbers are IEEE 754 doubles. A double carries somewhere between 15 and 17 significant digits,
+ and everything past that is gone the instant you type it.
+
+[Trina-14]
+The Milky Way radius this calculator uses carries 25 significant digits:
+
+[Trina-16]
+Hand that to a double and it comes back as 238229441887838.44. 
+
+ The digits past that are simply not there anymore, and no amount of care later in the program brings them back.
+ Multiply that damaged value by 666, double it, and multiply by Pi, and the error is no longer in the decimals,
+ it is in the miles.
+
+[Trina-17]
+This is why the calculator uses arbitrary precision, the same thing BC math does on the command line.
+ A BigNumber is not a machine word with a fixed number of bits, it is the digits themselves,
+ carried as text and operated on digit by digit. There is no width for a number to fall off of.
+
+[Trina-18]
+The library is bignumber.js, and the wrapper that this project actually calls
+ is bignumbermath.js.
+
+[Trina-19]
+There are other arbitrary precision libraries for JavaScript, and bignumber.js is the right one here
+ for a specific reason: it is the only one that carries toFormat built in,
+ which is what puts the thousands separators in the table, and its
+ DECIMAL_PLACES setting is the same idea as
+ scale in BC math. Its one gap is that it has no trigonometry,
+ so it cannot hand you PI. That is why PI is calculated here by series instead.
+
+[Trina-20]
+Nothing in the calculator uses the +, -,
+ *, or / operators on a quantity that matters.
+ Every one of them is a function call, and every one of them takes and returns a string.
+
+[Trina-21]
+The third argument is the part people miss. Precision here is declared at every single step, not inherited.
+ When the code writes
+
+[Trina-22]
+var trinaryMarker = dividedBy("1", "137", 13);
+
+[Trina-23]
+it is saying that thirteen decimal places is the correct precision for this value in this Formula,
+ and that is a decision about the physics, not about the computer.
+ A different precision gives a different baseline, which is exactly why the code comments warn that
+ changing Pi means recalculating everything downstream from it.
+
+[Trina-24]
+fixNumber runs first on every argument to every operator.
+ It walks the string backwards, drops trailing zeros that carry no information, and guarantees the value
+ always has a decimal point, so 100000.000000 becomes
+ 100000.0 and a bare 2 becomes
+ 2.0. Every number entering the math looks the same shape as every other one,
+ which is what keeps a long chain of operations from drifting.
+
+[Trina-25]
+The parentheses in this code are also deliberate. Order of precedence is never relied on,
+ each step is forced and stored, because the intent is to be clear, not clever.
+
+[Trina-26]
+These are calculated once, before any track is walked. The numbers shown are the real output for the
+ default configuration, a Sun of 864,575.9 miles, an Earth of 7,926.2109 miles, and 333 Trinary Engines.
+
+[Trina-28]
+1 / 760 = 0.001315789
+
+ aP = 73.120284 x 0.001315789 = 0.096210865
+
+[Trina-29]
+The Atmospheric Pressure Index is a dampener. It holds back the core frequency so it expands at a known rate
+ for the size of the body it belongs to.
+
+[Trina-31]
+7926.2109 x 0.001 = 7.926
+
+ 7.926 - 0.096210865 = 7.830 Hz
+
+[Trina-32]
+Earth's ring frequency comes out at 7.830 Hz.
+ The Schumann resonance, the fundamental of the electromagnetic cavity between the Earth's surface
+ and its ionosphere, is measured at 7.83 Hz.
+ The calculator prints this on the front page, and the Test Suite asserts it, so it cannot drift
+ without a test failing.
+
+[Trina-33]
+Before weighing that agreement, a reader should know that Livable Planet Density is an input constant,
+ not derived from anything else here, and it is numerically the value that brings this out at 7.83.
+ The arithmetic alone therefore cannot say whether the constant was set from the resonance or reached
+ independently. The author states the Schumann resonance was unknown to him when the constant was set,
+ which would make this a prediction rather than a fit. 
+
+ That is a question about where one number came from, not about the mathematics, and it is answered by
+ the working that produced 73.120284, not by this calculator. It is put plainly here so anyone can
+ weigh it themselves.
+
+[Trina-36]
+The Sun's Precession Rate, 10,656 divided by 4. This value also seeds the Maximum Error Rate,
+ because precession is a speed you have to overcome before you have gone anywhere.
+
+[Trina-38]
+864575.9 x 0.0072992700730 = 6311 (the Trinary Marker applied to the Sun)
+
+ maxIteration = 6311 / 3 = 2103 (3 Phase)
+
+ aveIteration = 2103 - 91 = 2012
+
+ minIteration = 2103 - 1104 = 999
+
+[Trina-39]
+The division by 3 is the 3 Phase, the three states again, this time as the three phases of the cycle. 
+
+ The 91 is the Sun's magnetic polarity reversals, it changes polarity 10 times a century, 0 through 9, so 100 - 9 = 91. 
+
+ The 1104 came out of Newton's long running results, and it is also found in the Torah. 
+
+ Notice what 999 is, and notice what it becomes when you turn it over.
+
+[Trina-41]
+trinaryEngines = 333 x -1 = -333 (counts up from negative)
+
+ lifeTrack = 666 (taken from Configuration, always printed)
+
+ totalTracks = ((333 x 2) x 2) + 1 = 1333
+
+[Trina-42]
+The engine counter starts at -333 and counts up through 0 to +333 and beyond,
+ so the Life Track sits exactly at the crossing point. That is the zero state of the God Formula,
+ expressed as a galaxy.
+
+[Trina-43]
+The Life Track is an input, not a constant.
+
+[Trina-44]
+Track 666 comes from the Frequency Newton used in his Gravity formula.
+ The Gravitational Constant is G = 6.6743e-11, and 6.666 is that rounded, measured at the center of the
+ body rather than at its surface. This calculator works in a different unit, so 6.66 becomes 666. 
+
+ The Schumann resonance of 7.83 Hz is a surface figure, and G does not come out right against 7.83
+ or 783, which is what you would expect if one is taken at the surface and the other at the core. 
+
+ Gravity here is an electromagnetic wave, and the value Newton gave it is the Frequency, or the
+ wavelength, meaning it is a result of the property rather than the property itself.
+ The Tracks are numbered to account for that.
+
+[Trina-45]
+That is our Solar System. It may not hold for all Life, or for all Galaxies,
+ so the Life Track is a field you can change, and 666 is only its default. 
+
+ It has to be a Track the Galaxy actually has, from 1 up to Trinary Engines times 4,
+ which is 1 to 1,332 for the Milky Way. Anything outside that, or zero, or not a number at all,
+ falls back to Trinary Engines times 2, because every Speed in the table is divided by this
+ number and it can never be allowed to reach zero.
+
+[Trina-46]
+Move it and the whole Galaxy is re-scaled around the new Track, which is the point.
+ Put Life on Track 1000 and the Life Track Max Speed becomes
+ (2012 x 333) - (2664 + 1000) = 666,332 mph, and the rate per Track becomes
+ 666,332 / 1000 = 666.332.
+
+[Trina-47]
+Which is worth stopping on. That rate is not a whole number, and 1001 is. 
+
+ Track 666 is the only Track in the Milky Way where the Life Track Speed divides into a whole
+ number of miles per hour per Track. Everywhere else the table has to round to whole miles per hour,
+ and the innermost Tracks come out a fraction under. The Clock still holds in the math,
+ the rounding is only in the display, but 666 is the one Track where there is nothing to round.
+
+[Trina-49]
+Everything above describes one Track, the Life Track. The rest of the Galaxy is set by it.
+
+[Trina-50]
+At the Life Track the Error Rate does not have to be accumulated Track by Track,
+ it is known outright, because the Life Track number is what it accumulates to:
+
+[Trina-51]
+Max Error Rate = pRate + Life Track = 2664 + 666 = 3330
+
+ Min Error Rate = 0 + Life Track = 0 + 666 = 666
+
+
+ Life Track Max Speed = ( 2012 x 333 ) - 3330 = 666,666 mph
+
+ Life Track Min Speed = ( 999 x 333 ) + 666 = 333,333 mph
+
+[Trina-52]
+Divide each by the Life Track number and you have the Speed added per Track:
+
+[Trina-53]
+666,666 / 666 = 1001 333,333 / 666 = 500.5
+
+[Trina-54]
+1001 is 7 x 11 x 13, and 500.5 is 1001 halved. 
+
+ Multiplying by 1001 is what repeats a three digit number, which is why the Life Track reads 666,666
+ and why every other Track now reads the same way. Track 333 is 333,333 mph.
+ Track 999 is 999,999 mph. The pattern that only showed up on one line before now runs the whole table.
+
+[Trina-55]
+The loop runs 1,333 times, once per track. Each track is one orbital path the Sun can take around the Galaxy,
+ the way a groove on a record is one path the needle can take.
+ The engine count moves with it, starting at -333 and incrementing by one on every pass.
+
+[Trina-56]
+The Error Rates are not mistakes. They are a Calculus error handler, the error encountered on the way out
+ to the Life Track, which is why there is a Max and a Min operator.
+ They are applied once, where the Life Track anchors the Clock, and from there every track is
+ that rate times its own track number.
+
+[Trina-57]
+Because Speed is the track number times a fixed rate, every track takes the same time to go around,
+ and no track can come out negative. A Sun twice as far out has twice as far to travel and moves
+ twice as fast in miles per hour, so it arrives at the same time. Same rate, different speed.
+ That is the record player, and it is what Leavitt implied.
+ Where the engine count is at its own starting value, or at 0, 1, or -1, the Track Frequency is set to zero,
+ because at those points the calculation has no meaning to report.
+
+[Trina-58]
+Max Speed is the speed as the Sun begins its descent into the Galactic Plane.
+ Min Speed is the speed at its maximum amplitude, the top of the wave.
+ The Sun is riding the same waveform as the graph in section one, only the wavelength is measured in light years.
+
+[Trina-59]
+Min Speed is tied to the livable planet. It is the speed a planet orbiting that Sun would need in
+ order to carry Life, and most Suns will not have one. There is far less Life in the Universe than
+ most people assume, and on this model that is because Life needs one frequency and one speed,
+ not any of them. 
+
+ So the two are the ends of one range, not two separate quantities.
+ On Track 666 the Frequency has a range that accounts for the change in speed, from 333,333 mph up to
+ 666,666 mph, which averages 499,999.5 mph, or 223.5 km/s.
+ The Sun is measured at 220 to 250 km/s, which is 492,126 to 559,234 mph. 
+
+ Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
+ Current science puts our Sun at a fixed speed, but that speed only changes over millions of years,
+ so a fixed figure is an assumption rather than a measurement.
+
+[Trina-60]
+The Tracks show the movement of the Suns. They are not the Spiral Arms.
+ The Arms show the path of the debris, which travels differently and should not be read as the same thing.
+
+[Trina-61]
+The speed range is not the vertical motion
+
+[Trina-62]
+Two motions are involved and they are not the same thing.
+ The vertical motion is the Sun rising above the Galactic Plane and falling back below it,
+ and the Sun's measured vertical velocity is about 16,219 mph, or 7.25 km/s, roughly 3 percent of its
+ 514,495 mph, or 230 km/s, orbital speed. 
+
+ The speed range of 333,333 to 666,666 mph is a factor of two, far too large to be that.
+ It is a variation along the direction of travel, not up and down.
+
+[Trina-63]
+Stated that way it survives the obvious objection. If every Sun varies in phase, which is what
+ keeps the Clock, then at any one moment every Sun at a given radius still reads the same speed,
+ and the variation only shows over tens of millions of years, which nobody has watched for. 
+
+ What a snapshot could have refuted is Suns varying out of phase, because then stars at the same radius
+ would spread two to one in speed. The measured dispersion for disk stars is 44,738 to 89,477 mph, or 20 to 40 km/s,
+ nothing like that.
+
+[Trina-65]
+The Sun does not travel a flat circle. It moves like a waveform, rising above the Galactic Plane and
+ falling back below it as it goes around, which is the same waveform as the graph in section one.
+
+[Trina-66]
+Track Frequency at Track 666 is 30,000,030. That is one half of a cycle, top to bottom,
+ which is one crossing of the Galactic Plane. It is not the time to go around the Galaxy.
+
+[Trina-67]
+half cycle, one plane crossing : 30.00 million years observed about 30
+
+ full cycle, up and back down : 60.00 million years observed about 60
+
+ The Track Frequency column reports the full cycle, 60,000,060, not the half.
+
+ full cycles in one orbit : 3.791 observed about 3.8
+
+[Trina-68]
+This number does not come from the Galaxy Radius. Halve the Radius or double it and the Track Frequency
+ does not move, because it comes from Min Speed and the Life Track, not from the size of the Galaxy.
+
+[Trina-69]
+You can watch this on the Galaxy Plot,
+ which draws a line from the center of the Galaxy out through every Sun in track order.
+ When the rate is shared, that line stays straight no matter how long it runs.
+ The page measures the spread from the table on every rebuild, so it is a test, not a claim.
+
+[Trina-70]
+On track 666 the counters stand at engines = 333, Max Error Rate = 3330, and Min Error Rate = 666.
+ This is the track the Clock is anchored on, so it is calculated the long way, and every other track
+ is this result scaled by its own track number.
+
+[Trina-71]
+Max Speed = (2012 x 333) - 3330 = 669,996 - 3,330 = 666,666 mph
+
+ Min Speed = (999 x 333) + 666 = 332,667 + 666 = 333,333 mph
+
+ Frequency = 666,666 x 0.00001 = 6.66666 Hz
+
+ Track Freq = 1 / (0.0000000000001 x 333,333) = 30,000,030 Hz
+
+ Orbit Dist = ((galaxyRadius x 666) x 2) x Pi = 996,895,259,518,900,613 miles
+
+[Trina-72]
+666,666 and 333,333 and 6.66666 did not get typed in anywhere. 
+
+ They fell out of 2012, 999, 333, 3330, and 666, which themselves fell out of the size of the Sun,
+ the size of the Earth, 1 divided by 137, and a pressure unit named after the Torah.
+
+[Trina-73]
+The Torah tells us that only track 666 supports life as we know it, and this is the track where the numbers
+ resolve. That is the double verification the code comments talk about.
+ You can reach the Livable Planet frequency from the Sun's side, through Max Speed and the first solar ring,
+ or from the planet's side, by taking Earth's orbital distance of 584,000,000 miles,
+ dividing by 365 days times 24 hours to get 66,666 mph, and applying the ring.
+ Two independent roads, the same number at the end of both.
+
+[Trina-74]
+Here are the tracks on either side of the neighborhood, straight out of the calculator.
+ Every one of them is 1001 times its own track number, and every one of them takes the same
+ 173 million years to go around:
+
+[Trina-75]
+One track away from 666 and the repeating digits stop resolving. That is the point.
+ Track 666 is the only one where the digits close on themselves, and it is the only one
+ the Torah says supports life.
+
+[Trina-76]
+Two things are worth knowing if you intend to change this code or check it against BC math.
+
+[Trina-78]
+The three size fields are read as text and handed to the math layer as text, through
+ fixInput. Nothing calls parseFloat on a
+ quantity, so the 28 digit radius arrives with all 28 digits:
+
+[Trina-79]
+typed in : 238229441887838.4639953874
+
+ reaches math: 238229441887838.4639953874
+
+[Trina-80]
+This is what makes the Orbit Distance agree with BC math. Run the same expression at scale 13 on the
+ command line and you get 996,895,259,518,900,613.4843816489474, which is 996,895,259,518,900,613 rounded,
+ and that is what the calculator prints.
+
+[Trina-81]
+Arbitrary precision does not protect a value that was damaged before it was handed over,
+ which is why the reading is done this way and not with
+ parseFloat. fixInput also strips commas,
+ so the Radius can be typed the way it is displayed.
+
+[Trina-83]
+piCalc uses Machin's Formula, the one Newton's contemporaries
+ worked by hand:
+
+[Trina-84]
+PI = 16 x arctan(1/5) - 4 x arctan(1/239)
+
+
+ arctan(1/n) = 1/n - 1/(3n&sup3;) + 1/(5n&#8309;) - 1/(7n&#8311;) + ...
+
+[Trina-85]
+Every term is a BigNumber, and each one is the term before it divided by n squared,
+ so the series stops itself the moment a term rounds away to nothing. There is no limit but time.
+ The stored 249 digit string and the calculated value agree at every place, which is a useful check
+ on both of them.
+
+[Trina-86]
+Both round rather than truncate, and that matters. PI to 11 places is 3.14159265359,
+ which is exactly the pIe constant the Galaxy Calculator uses.
+ Truncating instead would give 3.14159265358, which is not PI to 11 places and would not match
+ the constant the whole baseline rests on.
+
+[Trina-88]
+Because every call declares its own decimal places, changing one of them changes the baseline for
+ everything after it. The Pi used here is 11 places on purpose. Raising it does not make the answer better,
+ it makes it a different Formula, and every constant that was tuned against the old baseline
+ would have to be recalculated. The precision values are part of the physics, treat them that way.
+
+[Trina-89]
+This section matters more than any single agreement on this page.
+ A value carried in from elsewhere is not the same as a value this calculator produced,
+ and the two should not be weighed alike, so here is which is which.
+
+[Trina-91]
+Sun diameter 864,575.9 miles
+
+ Earth diameter 7,926.2109 miles
+
+ Track Radius 238,229,441,887,838.46 miles, the radius of one Track, 40.52 light years.
+
+ Track 666 lands at 26,989 light years, against 26,673 measured by GRAVITY in 2019, 1.19 percent.
+
+ 1 / 137 the fine structure constant, measured at 1 / 137.035999
+
+[Trina-93]
+maxIteration = 2103, which is the floor of
+ (Sun diameter x 1/137) / 3. That is the one intermediate in this whole calculator that
+ falls straight out of measured values. 
+
+ The Clock is the other. Speed rising in proportion to the Track follows from anchoring every Track to
+ the Life Track, and no choice of constants can break it.
+
+[Trina-95]
+These are inputs, not results. Each has an origin outside this arithmetic, and none can be re-derived
+ from the other numbers on this page, which is why they are listed apart rather than offered as findings.
+
+[Trina-96]
+lpDensity 73.120284 atmospheric resistance, from reentry and orbital decay data
+
+ cpRate 324.540503 the lag between a force and a mass's response, scaled on the size of the star
+
+ 1104 the interval between maxIteration and minIteration
+
+ Life Track 666 Leavitt's count of the tracks, from her notes and the plate archive
+
+ trackFreqMultiplier the Valence Gap Offset, scaled on the gap between valence rings
+
+ ring constants 0.01, 0.001, 0.0001, the three rings of a Trinary Engine
+
+[Trina-97]
+So the agreements this calculator produces — 7.830 Hz against the measured Schumann resonance, 2664,
+ 999, and the 60,000,060 that follows from 999 — are agreements between inputs carried in from elsewhere
+ and figures measured since. That is worth something, and it is not the same as a derivation, so it is said
+ plainly here rather than left for a reader to work out. 
+
+ lpDensity was arrived at before the Schumann resonance was known to this work at all; the match to 7.83 Hz
+ was found afterwards, and is what made the value look right rather than what set it.
+
+[Trina-98]
+None of that makes the work wrong. It makes it a Formula that fits rather than a proof that holds, and it says
+ exactly where a proof would have to come from. Derive lpDensity, or cpRate, or 1104 from first principles
+ rather than from a measurement or a notebook, and each one turns from an input into a prediction.
+ That is the shortest path from a model that fits to evidence that stands. 
+
+ What the model does not do is add anything unobservable to make the arithmetic work. There is no invisible
+ mass in it, and no term that exists only to close a gap. Every quantity is measured, derived from something
+ measured, or carried in with a stated origin. 
+
+ The full comparison of every value against the current published figure is in
+ ACCURACY.md.
+
+[Trina-99]
+The reason all of this is one Formula and not a pile of separate calculations is that the same shape
+ keeps appearing at every scale.
+
+[Trina-100]
+The ground is the center, and the electron does not travel on the ground, it orbits around it. 
+
+ An electron around an atom, a moon around a planet, a planet around a sun,
+ a solar system around a galaxy, all the same pattern, all the same math, only the scale changes.
+ That is why the ring constants for a sun are exactly one order of magnitude below the ring constants
+ for a planet, and why the Trinary Marker taken from the atom works on the Sun.
+
+[Trina-101]
+Trinary Science is based on the Newtonian Universe. Newton implied Light is Static, as proof it has no acceleration,
+ and implied God is the Force of Gravity in F = MA, where God is all Light without Darkness found inside all Atoms.
+ The Galaxy Calculator Formula and God's Formula make up one Formula that explains the Universe,
+ and the arbitrary precision math is simply what it takes to write that Formula down without breaking it.
+
+[Trina-102]
+&#8592; Back to the Galaxy Calculator
+ 
+
+
+ Galaxy Plot
+ 
+
+
+ Test Suite
+ 
+
+
+ GitHub Code Repository
+
+[Trina-103]
+Written by Jeffrey Scott Flesher. 
+
+ The Science is mine: the concepts, the constants, the values, and the conclusions. Where a value came from
+ someone else's notes or measurements, it says so where it appears. 
+
+ The code, the documentation, and the checking of the arithmetic were worked out with the help of
+ Claude, an AI made by Anthropic. It found errors, ran the numbers, and wrote much of the wording.
+ It did not decide what is true here.
+
+
+===== galaxy.plot.html =====
+
+[galax-1]
+&#8592; Galaxy Calculator
+ | 
+ Trinary Math
+
+[galax-2]
+This plots the course of every Sun in the Galaxy, using the same table the Galaxy Calculator generates. 
+
+ Each ring is one track, each dot is a Sun on that track, and the Life Track 666 is drawn in gold.
+
+[galax-3]
+The cyan line is the test. It is drawn from the center of the Galaxy out through every Sun in track order.
+ Henrietta Swan Leavitt implied the Suns orbit at the same rate, like a record on a record player,
+ but not at the same speed. If that is true, the line stays straight as everything turns.
+ If the rate were not the same, the line would wind up into a spiral.
+
+[galax-4]
+It stays straight. The panel under the plot measures it from the table itself, every time you rebuild.
+
+[galax-6]
+A record player turns every groove at once. A Sun on an outer track has much farther to travel,
+ so it must move much faster in miles per hour, and it arrives at the same time as the inner one.
+ Same rate, different speed. That is what Leavitt implied, and it is what this plot shows.
+
+[galax-7]
+For that to happen the Speed has to rise in direct proportion to the Track Number.
+ The Life Track sets the rate for the whole Galaxy, because that is the Track the Torah says supports Life:
+
+[galax-8]
+Life Track Max Speed = ( aveIteration x |Engines| ) - ( pRate + Life Track )
+
+ = ( 2012 x 333 ) - ( 2664 + 666 ) = 666,666 mph
+
+ Life Track Min Speed = ( minIteration x |Engines| ) + Life Track
+
+ = ( 999 x 333 ) + 666 = 333,333 mph
+
+
+ 666,666 / 666 = 1001 333,333 / 666 = 500.5
+
+
+ Max Speed(n) = 1001 x n
+
+ Min Speed(n) = 500.5 x n
+
+[galax-9]
+1001 is 7 x 11 x 13, and 500.5 is 1001 halved. 
+
+ Multiplying by 1001 is what repeats a three digit number, which is why the whole table now reads
+ the way the Life Track always did:
+
+[galax-10]
+track 333 : 333,333 mph 3.33333 Hz
+
+ track 666 : 666,666 mph 6.66666 Hz <-- the Life Track
+
+ track 999 : 999,999 mph 9.99999 Hz
+
+[galax-11]
+Everything the Formula derives, the Trinary Marker, the Precession Rate, the three Iterations,
+ and the Error Rate, does its work here. It sets the Life Track, and the Life Track sets the Galaxy.
+
+[galax-12]
+Why a Frequency, and not a Centrifugal force
+
+[galax-13]
+A Centrifugal model gives no reason for every Sun to share a rate. Balance a pull inward against a
+ throw outward and what you get depends on where you are standing, so every ring keeps its own time.
+
+[galax-14]
+A Frequency is a rate. If Gravity is a Frequency, the same as Light, then one rate runs the whole
+ Galaxy and every Sun on it, which is exactly what the straight line above is showing.
+ That is why the measurements here are Frequencies and wavelengths, taken from an electromagnetic
+ system, and the Sun's Plasma is the proof such a system is there to measure.
+
+[galax-16]
+The Life Track works out to a radius of 26,989 light years, and the Sun is measured at 26,673 light years
+ from the center of the Galaxy by the GRAVITY Collaboration in 2019. That is 1.19 percent. 
+
+ The outermost Track comes to 53,979 light years, and the Milky Way disk is measured at roughly 50 thousand.
+ That last Track is the radius the model allows, not a count of where Suns are; the outer Tracks may be empty.
+
+[galax-17]
+Speed on a Track is a range, not one number. On Track 666 a Sun travels between 333,333 and
+ 666,666 mph, which averages 499,999.5 mph, or 223.5 km/s, against a measured 220 to 250 km/s,
+ which is 492,126 to 559,234 mph.
+ At that average the orbit takes 227.4 million years, against a measured galactic year of 225 to 250 million.
+
+[galax-18]
+The dots on this plot move at the Max Speed end of the range, so one turn here is 170.6 million years,
+ the short end. Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
+
+[galax-19]
+The Tracks show the movement of the Suns. They are not the Spiral Arms.
+ The Arms show the path of the debris, which is a different path and should not be read as the same.
+
+[galax-20]
+Galaxy Calculator
+ | 
+ Trinary Math
+ | 
+ Test Suite
+ | 
+ GitHub Code Repository
+
+[galax-21]
+Written by Jeffrey Scott Flesher. 
+
+ The Science is mine: the concepts, the constants, the values, and the conclusions. Where a value came from
+ someone else's notes or measurements, it says so where it appears. 
+
+ The code, the documentation, and the checking of the arithmetic were worked out with the help of
+ Claude, an AI made by Anthropic. It found errors, ran the numbers, and wrote much of the wording.
+ It did not decide what is true here.
