@@ -87,12 +87,47 @@ disk and speeding through it, so Track 666 carries a maximum of 666,666 mph and 
 333,333 mph. Only the average, 499,999.5 mph = 223.5 km/s, can be compared against a
 single published figure.
 
+## The Sun's motion against the cosmic microwave background
+
+A separate measurement worth setting beside the Track speeds, because it is the one figure
+that describes the whole Solar System's motion rather than its orbit inside the Galaxy.
+
+The **CMB dipole** is the Sun's motion relative to the cosmic microwave background — the
+closest thing there is to a rest frame for the Universe. It is measured at about
+**370 km/s, which is 827,666 mph.**
+
+| | Speed | |
+|---|---|---|
+| Track 666, Max Speed | 666,666 mph | 298.0 km/s |
+| **CMB dipole, measured** | **827,666 mph** | **370 km/s** |
+| Track 1332, Max Speed | 1,333,332 mph | 596.1 km/s |
+
+It falls between the Life Track and the last Track. Since Max Speed is 1001 times the Track
+number, 827,666 mph lands on **Track 827**, and it is 0.621 of the outermost Track's speed.
+
+This is not the same quantity as the galactic orbital speed and should not be compared
+against it directly: one is motion around the galactic centre, the other is motion of the
+whole system through the background. It is recorded here because the two are often confused,
+and because a model that has the Sun moving at 666,666 mph should say plainly which motion
+it is talking about.
+
 ## Tracks are a capacity, not a census
 
-The Track count is deliberately generous so the calculator works for galaxies larger than
-ours. Track 1,332 — the last one the Milky Way's 333 Trinary Engines allow — sits at 53,979
+**This calculator does not know how many Tracks a Galaxy has.** The Engine count is an
+input, not a result. Counting Tracks is a visual account taken from images, not something
+any formula here produces.
+
+The count is deliberately generous so the calculator works for galaxies larger than ours.
+Track 1,332 — the last one the Milky Way's 333 Trinary Engines allow — sits at 53,979
 light-years. That is the radius the model permits, not a claim that stars reach that far.
 The outer Tracks may be empty.
+
+For what it is worth as a cross-check, inverting the arithmetic gives an Engine count from
+a disk radius: one Track is 40.52 light-years, so Engines = radius ÷ (4 × 40.52). A 50,000
+light-year disk gives 308; the Gaia warp edge near 52,850 gives 326; 333 Engines needs
+53,979. Published disk edges run from about 46,000 to 62,000 light-years, so 333 sits
+inside the range. That is a consistency check, not a measurement, and it does not replace
+counting.
 
 ## Nothing unobservable
 
@@ -111,7 +146,7 @@ These are inputs carried in from outside, not results. Origins are documentary.
 | `cpRate` 324.540503 | the lag between an applied electromagnetic force and a mass's response, scaled on the size of the star — Newton's constant via Tesla's notes |
 | `trackFreqMultiplier` 1e-13 | offset for error accumulating over an iteration from resistance to signal propagation, scaled on the gap between valence rings |
 | ring constants 0.01 / 0.001 / 0.0001 | the three rings of a Trinary Engine |
-| Life Track 666 | Leavitt's count of the tracks, from her notes and the plate archive — not from the published period-luminosity work, and separate from Rubin's rotation curves |
+| Life Track 666 | Leavitt's count of the Tracks, from her notes rather than her published work. There is no formula for it — counting Tracks is a visual account, and this calculator does not know how many Tracks a Galaxy has; it takes the Engine count as an input |
 
 ## Independent routes that agree
 
@@ -123,6 +158,7 @@ Each of these is reached twice, by different arithmetic, without being fitted:
 | Sun's galactic orbit | Track 666 distance ÷ speed | Kepler's law from galactic radius | **0.2%** |
 | Sun's distance from centre | Track 666 × Track Radius | GRAVITY 2019 measurement | **1.19%** |
 | Galaxy radius | Track 1,332 × Track Radius | accepted disk radius, ~50,000 ly | within the capacity note above |
+| **The Life Track number** | **Leavitt's count of the Tracks: 666** | **the arithmetic: 667,332 − 666,666 = 666** | **exact** |
 | Sirius century | two binary cycles at the model's 50 years | measured period 50.1284 yr × 2 = 100.26 yr | **0.26%** |
 | Vertical full cycle | Track 666 full wave, 60,000,060 years | measured 60–70 My between plane crossings, doubled | inside the band |
 
@@ -137,3 +173,14 @@ Each of these is reached twice, by different arithmetic, without being fitted:
 | Sun galactic orbit | radius 1.61 × 10¹⁷ mi over 242 My | Track 666 distance over 227.6 My | the preset disagreed with this calculator's own Track table |
 | Track Frequency | 30,000,030 (half wave) | **60,000,060** (full wave) | one crossing of the Galactic Plane → the whole cycle, up and back down |
 | "Galaxy Radius" field | labelled as the Galaxy's radius | **Track Radius** | it is the radius of one Track, 41 light years — the Galaxy's radius is this × the last Track |
+
+## Credits
+
+Written by Jeffrey Scott Flesher.
+
+The Science is mine: the concepts, the constants, the values, and the conclusions. Where a
+value came from someone else's notes or measurements, it says so where it appears.
+
+The code, the documentation, and the checking of the arithmetic in this repository were
+worked out with the help of **Claude**, an AI made by Anthropic. It found errors, ran the
+numbers, and wrote much of the wording. It did not decide what is true here.

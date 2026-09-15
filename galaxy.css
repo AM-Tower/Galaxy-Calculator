@@ -293,6 +293,8 @@ button {
 }
 
 /* The value column is pinned to one input plus the cell padding either side.
+ * Matched on a class, not on a :has() selector, so it works in every browser
+ * rather than only in Chrome 105, Safari 15.4 and Firefox 121 and later.
  * Without it the table treats an input as something it may shrink, and the
  * Galaxy Radius ends up clipped; with it the label column takes up whatever
  * slack is left. In the Orbit form that is also what makes the two tables
@@ -301,8 +303,8 @@ button {
  * The cells are matched on holding an input, so the Help column in the Galaxy
  * form and the formula rows that span both columns are left alone.
  */
-#galaxyCalculatorForm td:has(.wide-input),
-#orbitCalculatorForm td:has(.wide-input) {
+#galaxyCalculatorForm .valueCell,
+#orbitCalculatorForm .valueCell {
     width: calc(var(--gc-input-width) + 2 * var(--pico-spacing, 1rem));
 }
 
@@ -325,8 +327,8 @@ button {
  * wider than the screen, so the tables go back to sizing themselves.
  */
 @media (max-width: 40rem) {
-    #galaxyCalculatorForm td:has(.wide-input),
-    #orbitCalculatorForm td:has(.wide-input) {
+    #galaxyCalculatorForm .valueCell,
+    #orbitCalculatorForm .valueCell {
         width: auto;
     }
 }

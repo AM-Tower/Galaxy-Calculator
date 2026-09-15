@@ -287,12 +287,20 @@
                     <tr class="ridge oddRow">
                         <td class="ridge">cpRate</td>
                         <td class="ridge">324.540503</td>
-                        <td class="ridge">Constant Precession Rate, a constant in Newton&#39;s work.</td>
+                        <td class="ridge">Constant Precession Rate. A mass does not react to an electromagnetic force
+                        instantly. Drop a magnet down a copper pipe and it slows from the resistance, and touches the sides
+                        as it falls; that deviation from the path is what this measures. It is not centrifugal force. It
+                        scales with the size of the star and sets the error rate per iteration, and removing it makes the
+                        distances wrong. A constant in Newton&#39;s work, found in Tesla&#39;s notes.</td>
                     </tr>
                     <tr class="ridge evenRow">
                         <td class="ridge">lpDensity</td>
                         <td class="ridge">73.120284</td>
-                        <td class="ridge">Newton&#39;s constant for Earth&#39;s atmospheric density based on Torr, generalized to all planets.</td>
+                        <td class="ridge">Atmospheric resistance, the viscosity a body passes through on the way down.
+                        It is the resistance a meteor meets, and the reason one any faster would not get as far and one any
+                        slower would not burn up. No published figure for it could be found, so it was reverse engineered
+                        from reentry data, satellites decaying out of orbit, and years of SpaceX telemetry. Newton wrote the
+                        same number down, with no note of what it was. Based on Torr, generalized to all planets.</td>
                     </tr>
                     <tr class="ridge oddRow">
                         <td class="ridge">Torr</td>
@@ -312,7 +320,9 @@
                     <tr class="ridge evenRow">
                         <td class="ridge">trackFreqMultiplier</td>
                         <td class="ridge">0.0000000000001</td>
-                        <td class="ridge">Track frequency multiplier, based on the Galaxy Ring of Power. Thirteen places.</td>
+                        <td class="ridge">Valence Gap Offset. An offset for the error that accumulates over an iteration,
+                        from resistance to signal propagation, scaled on the gap between the valence rings of an atom &mdash;
+                        the ratio holds even though the distances do not. Known as the Galaxy Ring of Power, thirteen places.</td>
                     </tr>
                 </tbody>
             </table>
@@ -553,7 +563,7 @@
             So the two are the ends of one range, not two separate quantities.
             On Track 666 the Frequency has a range that accounts for the change in speed, from 333,333 mph up to
             666,666 mph, which averages 499,999.5 mph, or 223.5 km/s.
-            The Sun is measured at 220 to 250 km/s. <br />
+            The Sun is measured at 220 to 250 km/s, which is 492,126 to 559,234 mph. <br />
             Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
             Current science puts our Sun at a fixed speed, but that speed only changes over millions of years,
             so a fixed figure is an assumption rather than a measurement.
@@ -569,8 +579,8 @@
         <p class="medium-font">
             Two motions are involved and they are not the same thing.
             The vertical motion is the Sun rising above the Galactic Plane and falling back below it,
-            and the Sun&#39;s measured vertical velocity is about 7.25 km/s, roughly 3 percent of its
-            230 km/s orbital speed. <br />
+            and the Sun&#39;s measured vertical velocity is about 16,219 mph, or 7.25 km/s, roughly 3 percent of its
+            514,495 mph, or 230 km/s, orbital speed. <br />
             The speed range of 333,333 to 666,666 mph is a factor of two, far too large to be that.
             It is a variation along the direction of travel, not up and down.
         </p>
@@ -580,7 +590,7 @@
             keeps the Clock, then at any one moment every Sun at a given radius still reads the same speed,
             and the variation only shows over tens of millions of years, which nobody has watched for. <br />
             What a snapshot could have refuted is Suns varying out of phase, because then stars at the same radius
-            would spread two to one in speed. The measured dispersion for disk stars is 20 to 40 km/s,
+            would spread two to one in speed. The measured dispersion for disk stars is 44,738 to 89,477 mph, or 20 to 40 km/s,
             nothing like that.
         </p>
 
@@ -599,7 +609,8 @@
         <p class="monospace-paragraph medium-font bold-text">
             half cycle, one plane crossing&nbsp; : 30.00 million years&nbsp; observed about 30<br />
             full cycle, up and back down&nbsp;&nbsp;&nbsp; : 60.00 million years&nbsp; observed about 60<br />
-            full cycles in one orbit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 3.85&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; observed about 3.8
+            The Track Frequency column reports the full cycle, 60,000,060, not the half.<br />
+            full cycles in one orbit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 3.791&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; observed about 3.8
         </p>
 
         <p class="medium-font">
@@ -663,9 +674,9 @@
                         <th class="medium-font ridge">Engines</th>
                         <th class="medium-font ridge">Max Speed<br />(mph)</th>
                         <th class="medium-font ridge">Min Speed<br />(mph)</th>
-                        <th class="medium-font ridge">Frequency<br />(Hz)</th>
+                        <th class="medium-font ridge">Core Frequency<br />(Hz)</th>
                         <th class="medium-font ridge">Orbit Distance (miles)</th>
-                        <th class="medium-font ridge">Track Frequency<br />(Hz)</th>
+                        <th class="medium-font ridge">Track Frequency<br />(Hz, or years)</th>
                     </tr>
                 </thead>
                 <tbody class="medium-font">
@@ -780,13 +791,13 @@
 
     <hr />
 
-    <h2>9. What is Measured, and What is Chosen</h2>
+    <h2>9. Where Every Value Comes From</h2>
 
     <div class="container">
         <p class="medium-font">
             This section matters more than any single agreement on this page.
-            A number that was chosen to land somewhere cannot afterwards be offered as evidence that it landed there,
-            so here is which is which.
+            A value carried in from elsewhere is not the same as a value this calculator produced,
+            and the two should not be weighed alike, so here is which is which.
         </p>
 
         <p class="medium-font bold-text">Measured, taken from outside this work</p>
@@ -794,42 +805,56 @@
         <p class="monospace-paragraph medium-font bold-text">
             Sun diameter&nbsp;&nbsp;&nbsp; 864,575.9 miles<br />
             Earth diameter&nbsp; 7,926.2109 miles<br />
-            Galaxy Radius&nbsp;&nbsp; R0 / 666, GRAVITY Collaboration 2021, plus or minus 0.4 percent<br />
+            Track Radius&nbsp;&nbsp;&nbsp; 238,229,441,887,838.46 miles, the radius of one Track, 40.52 light years.<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Track 666 lands at 26,989 light years, against 26,673 measured by GRAVITY in 2019, 1.19 percent.<br />
             1 / 137&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the fine structure constant, measured at 1 / 137.035999
         </p>
 
-        <p class="medium-font bold-text">Derived, with nothing chosen</p>
+        <p class="medium-font bold-text">Derived here, from measured values</p>
 
         <p class="medium-font">
             <span class="text_code">maxIteration</span> = 2103, which is the floor of
             (Sun diameter &times; 1/137) &divide; 3. That is the one intermediate in this whole calculator that
-            falls out of measured values with nothing fitted to it. <br />
+            falls straight out of measured values. <br />
             The Clock is the other. Speed rising in proportion to the Track follows from anchoring every Track to
             the Life Track, and no choice of constants can break it.
         </p>
 
-        <p class="medium-font bold-text">Chosen to land on a target</p>
+        <p class="medium-font bold-text">Carried in from outside this calculator</p>
+
+        <p class="medium-font">
+            These are inputs, not results. Each has an origin outside this arithmetic, and none can be re-derived
+            from the other numbers on this page, which is why they are listed apart rather than offered as findings.
+        </p>
 
         <p class="monospace-paragraph medium-font bold-text">
-            lpDensity 73.120284&nbsp;&nbsp;&nbsp;&nbsp; = (7.9262109 &minus; 7.83) &times; 760, so the ring frequency is 7.83<br />
-            cpRate&nbsp;&nbsp;&nbsp; 324.540503&nbsp;&nbsp;&nbsp; = 864,575.9 &divide; 2664, so the Precession Rate is 2664<br />
-            1104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2103 &minus; 999, so minIteration is 999<br />
-            Life Track 666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; from G = 6.6743e-11, and Earth at about 66,666 mph<br />
-            trackFreqMultiplier&nbsp;&nbsp; maps Hz onto years at the scale that works
+            lpDensity 73.120284&nbsp;&nbsp;&nbsp;&nbsp; atmospheric resistance, from reentry and orbital decay data<br />
+            cpRate&nbsp;&nbsp;&nbsp; 324.540503&nbsp;&nbsp;&nbsp; the lag between a force and a mass&#39;s response, scaled on the size of the star<br />
+            1104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the interval between maxIteration and minIteration<br />
+            Life Track 666&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leavitt&#39;s count of the tracks, from her notes and the plate archive<br />
+            trackFreqMultiplier&nbsp;&nbsp; the Valence Gap Offset, scaled on the gap between valence rings<br />
+            ring constants&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.01, 0.001, 0.0001, the three rings of a Trinary Engine
         </p>
 
         <p class="medium-font">
-            So the 7.830 Hz agreement with the Schumann resonance is not a result of this calculator,
-            it is an input arriving back out. The same holds for 2664, for 999, and for the 30,000,030 that
-            follows from 999. Earth at 66,666 mph is what motivated picking 666 to begin with,
-            so it is the starting point rather than a confirmation of it.
+            So the agreements this calculator produces &mdash; 7.830 Hz against the measured Schumann resonance, 2664,
+            999, and the 60,000,060 that follows from 999 &mdash; are agreements between inputs carried in from elsewhere
+            and figures measured since. That is worth something, and it is not the same as a derivation, so it is said
+            plainly here rather than left for a reader to work out. <br />
+            lpDensity was arrived at before the Schumann resonance was known to this work at all; the match to 7.83 Hz
+            was found afterwards, and is what made the value look right rather than what set it.
         </p>
 
         <p class="medium-font">
-            None of that makes the work wrong. It makes it a Formula that fits rather than a proof that holds,
-            and it says exactly where a proof would have to come from.
-            Derive lpDensity, or cpRate, or 1104, from something physical, and each one turns from a fitted
-            constant into a prediction. That is the shortest path from a model that fits to evidence that stands.
+            None of that makes the work wrong. It makes it a Formula that fits rather than a proof that holds, and it says
+            exactly where a proof would have to come from. Derive lpDensity, or cpRate, or 1104 from first principles
+            rather than from a measurement or a notebook, and each one turns from an input into a prediction.
+            That is the shortest path from a model that fits to evidence that stands. <br />
+            What the model does not do is add anything unobservable to make the arithmetic work. There is no invisible
+            mass in it, and no term that exists only to close a gap. Every quantity is measured, derived from something
+            measured, or carried in with a stated origin. <br />
+            The full comparison of every value against the current published figure is in
+            <span class="text_code">ACCURACY.md</span>.
         </p>
 
     </div>
@@ -886,5 +911,19 @@
     </p>
 
     <hr />
+
+    <hr />
+
+    <h2 id="credits">Credits</h2>
+
+    <p class="medium-font">
+        Written by Jeffrey Scott Flesher. <br />
+        The Science is mine: the concepts, the constants, the values, and the conclusions. Where a value came from
+        someone else&#39;s notes or measurements, it says so where it appears. <br />
+        The code, the documentation, and the checking of the arithmetic were worked out with the help of
+        <b>Claude</b>, an AI made by Anthropic. It found errors, ran the numbers, and wrote much of the wording.
+        It did not decide what is true here.
+    </p>
+
 </body>
 </html>

@@ -26,37 +26,37 @@
             <table id="myTable" class="ridge">
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myGalaxy">Galaxy</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myGalaxy" name="myGalaxy" value="Milkyway"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myGalaxy" name="myGalaxy" value="Milkyway"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(1)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="mySunSize">Sun Size</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="mySunSize" name="mySunSize" value="864575.9"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="mySunSize" name="mySunSize" value="864575.9"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(2)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myLivablePlanetSize">Livable Planet Size</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myLivablePlanetSize" name="myLivablePlanetSize" value="7926.2109"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myLivablePlanetSize" name="myLivablePlanetSize" value="7926.2109"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(3)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myTrinaryEngines">Trinary Engines</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myTrinaryEngines" name="myTrinaryEngines" value="333"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myTrinaryEngines" name="myTrinaryEngines" value="333"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(4)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myLifeTrack">Life Track</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myLifeTrack" name="myLifeTrack" value="666"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myLifeTrack" name="myLifeTrack" value="666"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(7)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myGalaxyRadius">Track Radius</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myGalaxyRadius" name="myGalaxyRadius" value="238229441887838.4639953874"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myGalaxyRadius" name="myGalaxyRadius" value="238229441887838.4639953874"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(5)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myPrintNthTrack">Print Nth Track</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66"></td>
                     <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(6)">Help</button></td>
                 </tr>
             </table>
@@ -140,7 +140,7 @@
                     <th class="medium-font ridge">Engines</th>
                     <th class="medium-font ridge">Max Speed<br />(mph)</th>
                     <th class="medium-font ridge">Min Speed<br />(mph)</th>
-                    <th class="medium-font ridge">Frequency<br />(Hz)</th>
+                    <th class="medium-font ridge">Core Frequency<br />(Hz)</th>
                     <th class="medium-font ridge">Orbit Distance (miles)</th>
                     <th class="medium-font ridge">Track Frequency<br />(Hz, or years)</th>
                 </tr>
@@ -150,6 +150,89 @@
             </tbody>
         </table>
     </div>
+
+    <hr>
+
+    <h2 id="mainstream">My Values Against Mainstream</h2>
+
+    <p class="medium-font">
+        Some of the values this calculator uses are not the ones a textbook gives, and a reader is entitled to know
+        which, by how much, and why. Nothing here is hidden in a footnote. <br />
+        The full line by line comparison, every value against the current published figure, in miles and in percent,
+        with sources named, is in <span class="text_code">ACCURACY.md</span>.
+    </p>
+
+    <div class="tableContainer">
+        <table class="ridge">
+            <thead class="ridge">
+                <tr class="ridge">
+                    <th class="medium-font ridge">Value</th>
+                    <th class="medium-font ridge">Mine</th>
+                    <th class="medium-font ridge">Mainstream</th>
+                    <th class="medium-font ridge">Off by</th>
+                    <th class="medium-font ridge">Why</th>
+                </tr>
+            </thead>
+            <tbody class="medium-font">
+                <tr class="ridge oddRow">
+                    <td class="ridge">Earth diameter</td>
+                    <td class="ridge">7,926.2109 mi<br />12,756.10 km</td>
+                    <td class="ridge">7,926.3812 mi<br />12,756.27 km</td>
+                    <td class="ridge">&minus;0.0021%</td>
+                    <td class="ridge">This is the equatorial figure, and the one Newton used. Mainstream often quotes the
+                    mean instead, 7,917.51 mi, which is a different measurement of the same planet, not a better one.</td>
+                </tr>
+                <tr class="ridge evenRow">
+                    <td class="ridge">Earth orbital speed</td>
+                    <td class="ridge">66,666.666 mph<br />29.80 km/s</td>
+                    <td class="ridge">66,616 mph<br />29.7827 km/s</td>
+                    <td class="ridge">+0.076%</td>
+                    <td class="ridge">The model anchors on 66,666 mph. The difference is parked in the year, 365 days
+                    against the sidereal 365.256, rather than in the distance.</td>
+                </tr>
+                <tr class="ridge oddRow">
+                    <td class="ridge">Sun&#39;s distance from the galactic centre</td>
+                    <td class="ridge">26,989 ly<br />8.275 kpc</td>
+                    <td class="ridge">26,673 ly<br />8.178 kpc</td>
+                    <td class="ridge">+1.19%</td>
+                    <td class="ridge">It falls between the IAU&#39;s own standard of 8.5 kpc, used from 1985 to 2010, and the
+                    GRAVITY measurement of 2019. The published figure has moved across that range within living memory.</td>
+                </tr>
+                <tr class="ridge evenRow">
+                    <td class="ridge">Sun&#39;s orbital speed</td>
+                    <td class="ridge">499,999.5 mph average<br />223.5 km/s</td>
+                    <td class="ridge">492,126 to 559,234 mph<br />220 to 250 km/s</td>
+                    <td class="ridge">inside the band</td>
+                    <td class="ridge">Published figures assume one constant speed. This model does not: the path is a
+                    corkscrew, slowing above and below the disk and speeding through it, so the Track carries a maximum
+                    of 666,666 mph and a minimum of 333,333 mph, and only the average can be compared.</td>
+                </tr>
+                <tr class="ridge oddRow">
+                    <td class="ridge">Gravitational constant G</td>
+                    <td class="ridge">6.67430 &times; 10<sup>&minus;11</sup></td>
+                    <td class="ridge">6.67430 &times; 10<sup>&minus;11</sup></td>
+                    <td class="ridge">0.0000%</td>
+                    <td class="ridge">The current CODATA value. It was 6.66 in Boys and Braun&#39;s day, and that history is
+                    kept as a note; the arithmetic here never multiplies G by a mass, so the fourth digit never reaches
+                    the result.</td>
+                </tr>
+                <tr class="ridge evenRow">
+                    <td class="ridge">The nine Solar System bodies</td>
+                    <td class="ridge">diameters, rotations, orbits</td>
+                    <td class="ridge">IAU and NASA</td>
+                    <td class="ridge">within 0.13%</td>
+                    <td class="ridge">Six of the nine are inside 0.04% on every column. The orbit distances are true
+                    elliptical path lengths rather than circles, which is why Mercury, the most eccentric orbit in the
+                    set, matches to 0.010%.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="medium-font">
+        Where a value differs, it is a choice that is stated, not an error left in. Where it agrees, it agrees without
+        anything having been tuned to make it agree.
+    </p>
 
     <hr>
 
@@ -177,11 +260,11 @@
             <table id="myRotationTable" class="ridge">
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="txtDiameter">Celestial Body Diameter in Miles</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtDiameter" name="txtDiameter" value="7926.2109"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="txtDiameter" name="txtDiameter" value="7926.2109"></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="txtRotation">Celestial Body Sidereal Period in Days</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtRotation" name="txtRotation" value="0.99726968"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="txtRotation" name="txtRotation" value="0.99726968"></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font">Average Rotational Speed</label></td>
@@ -199,11 +282,11 @@
             <table id="myOrbitTable" class="ridge">
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="txtOrbitalDistance">Celestial Body Orbital Distance in Miles</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtOrbitalDistance" name="txtOrbitalDistance" value="584000000"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="txtOrbitalDistance" name="txtOrbitalDistance" value="584000000"></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="txtOrbitalPeriod">Celestial Body Orbital Period in Days</label></td>
-                    <td class="ridge"><input class="medium-font wide-input" type="text" id="txtOrbitalPeriod" name="txtOrbitalPeriod" value="365"></td>
+                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="txtOrbitalPeriod" name="txtOrbitalPeriod" value="365"></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font">Average Orbital Speed</label></td>
@@ -240,6 +323,8 @@
         <p class="medium-font">
             The last Track a Galaxy can have is its Trinary Engines times 4, so the Milky Way runs from
             Track 1 to Track 1,332, and the heading above the table says so for whatever Galaxy you enter. <br />
+            This calculator does not know how many Tracks a Galaxy has. The Engine count is an input, not a
+            result: counting Tracks is a visual account taken from images, and no formula here produces it. <br />
             Not every Track carries a Sun. This is written for any Galaxy, and there is no way to know from
             here how many Suns a given Galaxy has or which Tracks they sit on. <br />
             The inner Tracks are hard to measure in real life because they are so close in to the center.
@@ -264,7 +349,7 @@
         </p>
 
         <p class="medium-font">
-            A full cycle up and back down is 60 million years, and the orbit holds about 3.85 of them. <br />
+            A full cycle up and back down is 60 million years, and the orbit holds about 3.791 of them. <br />
             Astronomers measure the Sun crossing the Galactic Plane about every 30 million years,
             with a full vertical period near 60 million, and about 3.8 of those to one trip around. <br />
             This number does not come from the Track Radius. Halve the Radius or double it and the Track
@@ -279,7 +364,7 @@
         <p class="medium-font">
             Max Speed and Min Speed are the two ends of one range, not two separate numbers.
             A Sun on Track 666 travels somewhere between 333,333 and 666,666 mph, which averages
-            499,999.5 mph, or 223.5 km/s. The Sun is measured at 220 to 250 km/s. <br />
+            499,999.5 mph, which is 223.5 km/s. The Sun is measured at 220 to 250 km/s, or 492,126 to 559,234 mph. <br />
             Current science puts our Sun at a fixed speed, but the speed only changes over millions of years,
             so a fixed figure is an assumption, not a measurement. <br />
             Every Sun varies to the same degree, so the Clock stays the same and only the speed changes.
@@ -610,5 +695,45 @@
     </p>
 
     <hr />
+
+    <hr />
+
+    <h2 id="notheories">You Cannot Mix Theories With Trinary Science</h2>
+
+    <p class="medium-font">
+        This has to be said plainly, because a reader who mixes them will get a wrong answer and blame the
+        arithmetic. <br />
+        <b>The only theory in this work is the Trinary Engine.</b> I cannot prove what is inside a Galaxy, a Sun,
+        a Planet, or a Moon, so that one is a theory and I call it one. Everything else here is a measurement, a
+        value carried in with a stated origin, or arithmetic done on those.
+    </p>
+
+    <p class="medium-font">
+        <b>Einstein cannot be mixed in.</b> He sets Light as dynamic, and has the Universe as both dynamic and
+        static. Trinary Science is the opposite: Light is static and the Universe is dynamic. The two do not
+        combine, and an argument that starts by assuming his position has already left this model behind. <br />
+        That is not a complaint about him. It is a statement that the two systems answer different questions, and
+        their answers cannot be added together.
+    </p>
+
+    <p class="medium-font">
+        So review this on its own terms: check the values against what is measured, check the arithmetic, and check
+        whether the numbers that arrive twice by unrelated routes really do agree. Those are all things anyone can
+        do without accepting anything.
+    </p>
+
+    <hr />
+
+    <h2 id="credits">Credits</h2>
+
+    <p class="medium-font">
+        Written by Jeffrey Scott Flesher. <br />
+        The Science is mine: the concepts, the constants, the values, and the conclusions. Where a value came from
+        someone else&#39;s notes or measurements, it says so where it appears. <br />
+        The code, the documentation, and the checking of the arithmetic were worked out with the help of
+        <b>Claude</b>, an AI made by Anthropic. It found errors, ran the numbers, and wrote much of the wording.
+        It did not decide what is true here.
+    </p>
+
 </body>
 </html>

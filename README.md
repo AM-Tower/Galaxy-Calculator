@@ -42,12 +42,28 @@ electromagnetic forces act over great distances, and that is what this is built 
 
 ## Track 666
 
-Track 666 is the Life Track, the Track that supports Life as we know it. It comes from
-the frequency Newton used in his Gravity formula. G = 6.6743e-11, and 6.666 is that
-rounded, taken at the center of the body rather than at its surface. This calculator
-works in a different unit, so 6.66 becomes 666. The Schumann resonance of 7.83 Hz is a
-surface figure, and G does not come out right against 7.83 or 783, which is what you
-would expect when one is measured at the surface and the other at the core.
+Track 666 is the Life Track, the Track that supports Life as we know it.
+
+The number comes from Leavitt's count. She counted the Tracks on the plates and this is
+the number that came back. That count is from her notes rather than from her published
+work, and the drawing that showed it is not in my hands, so to most people it is a story.
+I have tried to find other ways to arrive at the number and I have not found one.
+
+**The arithmetic arrives at the same number.** Given this Sun, the Life Track that makes
+the Core Frequency come out at 6.66666 Hz is 666 and nothing else. Max Speed is
+(aveIteration × Engines) − (pRate + Life Track), which is 667,332 − Life Track, and
+6.66666 Hz needs a Max Speed of 666,666 mph, so the Life Track has to be 666. Track 665
+gives 6.66667 and Track 667 gives 6.66665. Both aveIteration and pRate come from the Sun's
+diameter, so the honest statement is: this is the Sun that puts Life on Track 666.
+
+Leavitt counted it and the arithmetic derives it, by routes that share no step. That
+agreement is the reason the number is used.
+
+**There is still no formula for how many Tracks a Galaxy has.** Counting them is a visual
+account, not a calculation, and this calculator does not know the number. It takes the
+Engine count as an input and works from there. The plate archive still exists, and a
+recount would settle it; counting them is something a machine could now do better than a
+person, because the human eye loses its place.
 
 Gravity here is an electromagnetic wave, and the value Newton gave it is the Frequency,
 or the wavelength, meaning it is a result of the property rather than the property
@@ -88,7 +104,7 @@ the Clock stays the same and only the speed changes.
 | Galactic year | 227.6 million years | 225 to 250 million | inside the band |
 | Vertical half cycle, one plane crossing | 30.00 million years | 26 to 37 million | inside the band |
 | Vertical full cycle | 60.00 million years | 52 to 74 million | inside the band |
-| Vertical cycles per orbit | 3.79 | about 3.96 | −4.27% |
+| Vertical cycles per orbit | 3.791 | about 3.8 | −0.24% |
 | Earth orbital speed, Max Speed ÷ 10 | 29.80 km/s | 29.7827 km/s | **+0.07%** |
 | Earth ring frequency | 7.830 Hz | 7.83 Hz, Schumann | **0.00%** |
 
@@ -147,26 +163,30 @@ because a constant that produces 7.830 Hz satisfies that identity whichever way 
 arrived at. The identity is therefore evidence for neither story. What decides it is the
 provenance above, which is documentary rather than re-derivable from this calculator.
 
-## What is Measured, and What is Chosen
+## Where Every Value Comes From
 
-This distinction matters more than any single agreement in the results, and it is here so
-nobody has to reverse engineer it. **A number that was chosen to land somewhere cannot
-afterwards be offered as evidence that it landed there.** So the values this calculator uses
-fall into three kinds, and which kind each one is says what weight it can carry.
+This matters more than any single agreement in the results, and it is here so nobody has to
+reverse engineer it. **A value carried in from elsewhere is not the same as a value this
+calculator produced, and the two should not be weighed alike.** So the values fall into three
+kinds, and which kind each one is says what weight it can carry.
 
 **Measured, taken from outside this work.** The Sun's diameter, Earth's diameter, the speed
 of light, 1/137, the orbital distances and periods of every body in the Orbit Calculator.
 These can be checked against a published figure by anyone, and
 [ACCURACY.md](ACCURACY.md) does exactly that, line by line.
 
-**Derived, with nothing chosen.** maxIteration = 2103 is the floor of (Sun diameter × 1/137)
-÷ 3 — the one intermediate in this whole calculator that falls out of measured values with
-nothing fitted to it. The Clock is the other: Speed proportional to Track follows from
+**Derived here, from measured values.** maxIteration = 2103 is the floor of (Sun diameter ×
+1/137) ÷ 3 — the one intermediate in this whole calculator that falls straight out of measured
+values. The Clock is the other: Speed proportional to Track follows from
 anchoring every Track to the Life Track, and no choice of constants can break it. These two
 are results in the strict sense.
 
-**Carried in from outside this calculator.** lpDensity, cpRate, the Track Frequency offset,
-the three ring constants, the Life Track number. Each has an origin — a measurement made
+**Carried in from outside this calculator.** lpDensity, cpRate, the Track Frequency
+offset, the three ring constants, the Life Track number. Two of these are measuring the
+same kind of thing and are worth naming plainly: **`trackFreqMultiplier` is an offset**,
+for the error that accumulates over an iteration from resistance to signal propagation,
+and **`cpRate` measures resistance to motion** — the lag between a force applied and a
+mass responding to it. Neither is centrifugal force, and most models leave both out. Each has an origin — a measurement made
 elsewhere, a figure from Newton's or Tesla's notes, a count from Leavitt's plates — but none
 can be re-derived from the other numbers on this page. Their provenance is documentary, and
 [ACCURACY.md](ACCURACY.md) lists each one with where it came from.
@@ -210,7 +230,7 @@ number here is checkable in one file.
 
 ## Testing
 
-67 tests. Nothing passes until every one of them does.
+80 tests. Nothing passes until every one of them does.
 
 * In a browser, open `test.html`
 * From a terminal, `node run-tests.js`, exit 0 pass, exit 1 fail
@@ -225,6 +245,19 @@ The galaxy half runs the real calculator and checks the table it produces: 1,333
 Track 666 at 666,666 mph, no Track running backwards, Max Speed is 1001 times the Track
 on every row, the Clock spread is 1.000000, and the Life Track input holds up when it is
 moved, left out, set to zero, set out of range, or set to nonsense.
+
+It also asserts the four bridges. These are the places where a number is reached twice, by
+arithmetic that shares no step, with nothing fitted to make them meet:
+
+| Bridge | One route | The other | Apart |
+|---|---|---|---|
+| Earth's orbit | the Orbit Calculator's 584,000,000 miles | 2π × the measured AU | 0.010% |
+| The Sun's distance out | Track 666 × the Track Radius | GRAVITY Collaboration 2019 | 1.19% |
+| The Galaxy's drive frequency | Track 666's own distance ÷ its own speed | the gravitational route | 0.2% |
+| The Galaxy's radius | the last Track × the Track Radius | the measured disk radius | inside 10% |
+
+They are tests rather than prose so that if a constant moves and one of them stops
+agreeing, the Test Suite says so instead of a reader finding it later.
 
 ## update.bc.sh
 
@@ -281,6 +314,40 @@ electromagnetism, the number that sets how strongly Light and charged matter int
 For a model treating Gravity as a Frequency in an electromagnetic system, that is not an
 arbitrary constant to be holding. It is the one number in physics that already ties Light
 to matter.
+
+## You Cannot Mix Theories With Trinary Science
+
+This has to be said plainly, because a reader who mixes them will get a wrong answer and
+blame the arithmetic.
+
+**The only theory in this work is the Trinary Engine.** I cannot prove what is inside a
+Galaxy, a Sun, a Planet, or a Moon, so that one is a theory and I call it one. Everything
+else here is a measurement, a value carried in with a stated origin, or arithmetic done on
+those.
+
+**Einstein cannot be mixed in.** He sets Light as dynamic, and has the Universe as both
+dynamic and static. Trinary Science is the opposite of that: Light is static and the
+Universe is dynamic. The two do not combine, and an argument that starts by assuming his
+position has already left this model behind. That is not a complaint about him. It is a
+statement that the two systems answer different questions and their answers cannot be
+added together.
+
+So when this work is reviewed, review it on its own terms: check the values against what is
+measured, check the arithmetic, and check whether the numbers that arrive twice by
+unrelated routes really do agree. Those are all things anyone can do without accepting
+anything.
+
+## Credits
+
+Written by Jeffrey Scott Flesher.
+I used AI to verifyt the accuracy of my work. AI: Claude.ai
+
+The Science is mine: the concepts, the constants, the values, and the conclusions. Where a
+value came from someone else's notes or measurements, it says so where it appears.
+
+The code, the documentation, and the checking of the arithmetic in this repository were
+worked out with the help of **Claude**, an AI made by Anthropic. It found errors, ran the
+numbers, and wrote much of the wording. It did not decide what is true here.
 
 ## Links
 

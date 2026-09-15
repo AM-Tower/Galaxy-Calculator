@@ -1,9 +1,10 @@
 /* ****************************************************************************
- * Written by Jeffrey Scott Flesher
  * galaxycalculator.js
+ * Written by Jeffrey Scott Flesher
+ * I use AI to verify this file. AI used: Claude.ai
  * Originally I wrote this as a math formula in 1989
  * I converted that to bash, then Qt QML, which is this code, only modified for a browser.
- * Last Update: 27 May 2024
+ * Last Update: 14 September 2026
  */
 // include BigNumberMath
 var isDebugMessage = 1;
@@ -54,6 +55,41 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     // this uses 11 bits which is what Newton used, the above uses 15
     // Constant Precession Rate: Constant in Newtons work.
     var cpRate = "324.540503";
+    /**********************************************************************
+     * Core Frequency, also called the G Frequency or the G ring.
+     *
+     * 6.66666 Hz. This is the anchor the whole model is built on, and the
+     * number the Torah points at. It is not hard coded into the arithmetic:
+     * the table computes it per Track as lpFrequency, Max Speed times the
+     * Sun's first ring, and on the Life Track that comes out here. The
+     * constant is declared so the value has a name, is documented in one
+     * place, and is checked by the Test Suite rather than assumed.
+     *
+     * Why the Life Track is 666, given this Sun:
+     *     lifeMaxSpeed  = (aveIteration x Engines) - (pRate + Life Track)
+     *                   = (2012 x 333) - (2664 + Life Track)
+     *                   = 667,332 - Life Track
+     *     coreFrequency = lifeMaxSpeed x 0.00001
+     * For that to be 6.66666 Hz the Max Speed has to be 666,666 mph, which
+     * needs a Life Track of exactly 667,332 - 666,666 = 666. No other Track
+     * gives it: 665 gives 6.66667, 667 gives 6.66665. Both aveIteration and
+     * pRate come from the Sun's diameter, so this is the Sun that puts Life
+     * on Track 666.
+     *
+     * It is a speed times a ring, not a size times a ring, which is why it
+     * belongs to a planet orbiting its Sun and not to the planet's own ring
+     * ladder - that ladder runs 0.70, 7.83 and 79.17 Hz off Earth's diameter.
+     * It is not the Track Frequency either, which is a time and a distance.
+     *
+     * Read as a wavelength the way the 7.83 Hz surface ring is read,
+     * c / 6.66 = 27,970 miles, a sphere 8,903 miles across, which sits 488
+     * miles above Earth's surface: the upper ionosphere and lower exosphere,
+     * ionised by solar UV and X-rays, threaded by the magnetic field, with a
+     * planet-wide ambipolar electric field lifting ions into the polar wind.
+     * Gravity there is 78 to 80 percent of its surface value. Not free space,
+     * and where this model has the energy absorbed.
+     **********************************************************************/
+    var coreFrequency = "6.66666";
     // Newtons Constant for Earths Atmospheric Density based on Torr
     // I Calculated from Trinary Engines to make it generic to all Planets
     var lpDensity = "73.120284";
@@ -73,7 +109,27 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     // aP=( lpDensity * (1/760) )=73.120284 * 0.001315789 = 0.096210865
     if (isDebugMessage == 1) console.debug("aP=( lpDensity * (1/760) )=" + lpDensity + " * " + vStorage + " = " + aP);
     // Planets Trinary Engine Rings: First=.0001, Second=0.001, Third=.01
-    // Earth's first ring is 7.83 Hz. The second ring is ? Hz. And the third ring frequency is 6.66 Hz.
+    // Run against Earth's diameter these give 0.70 Hz, 7.83 Hz and 79.17 Hz.
+    // The second ring, 7.83 Hz, is the surface ring, the Schumann cavity.
+    //
+    // An earlier comment here said the third ring is 6.66 Hz. It is not; the
+    // third ring is 79.17 Hz. The 6.66 Hz G Frequency is not on this ladder at
+    // all. It comes from orbital speed rather than from the planet's size:
+    //
+    //     Life Track max speed x Sun's first ring  666,666 x 0.00001 = 6.66666 Hz
+    //     Earth orbital speed  x the next ring up  66,666.666 x 0.0001 = 6.66667 Hz
+    //
+    // So the G Frequency belongs to a planet orbiting its Sun, not to the
+    // planet's own rings, and it is not the Track Frequency either, which is a
+    // time and a distance rather than a drive frequency.
+    //
+    // Taking the wavelength the same way the 7.83 Hz surface ring is taken,
+    // c / 6.66 = 27,970 miles, a sphere 8,903 miles across, which is 488 miles
+    // above Earth's surface. That is the upper ionosphere and lower exosphere:
+    // ionised by solar UV and X-rays, threaded by the magnetic field, carrying a
+    // planet-wide ambipolar electric field that lifts ions into the polar wind.
+    // Gravity there is about 78 to 80 percent of its value at the surface. It is
+    // not free space, and it is where this model has the energy absorbed.
     var ringPlanetSecond = "0.001";
     // Used to iterate
     var currentNth = 0;
@@ -216,6 +272,7 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
         torr: dividedBy("1", "760", 9),
         aP: aP,
         lpRingFreq: lpRingFreq,
+        coreFrequency: coreFrequency,
         pRate: pRate,
         maxIteration: maxIteration,
         aveIteration: aveIteration,
@@ -244,7 +301,8 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     // Note that there are two ways to get this value; below and using the Livable Planets Properties
     // Earth for example: Orbital distance in Miles around Sun = 584,000,000 / (365 Days * 24 Hours) = 66,666.666 MPH * .0001 = 6.6666666 Hz
     // So this is a Double Verification Process; proving that this Math actually works both ways which is Magic proving God Designed this.
-    // Frequency: maxSpeed * ringSunFirst = Frequency of Livable Planet
+    // Core Frequency, the G Frequency: maxSpeed * ringSunFirst.
+    // 6.66666 Hz on the Life Track. Documented in full where it is calculated.
     var lpFrequency = "0.0";
     // This is based on the First Ring of the Sun
     // Sun: First=0.00001, Second=0.0001, Third=.001: One Magnitude different then Planets
@@ -348,7 +406,24 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
             if (isDebugMessage == 1) console.debug("minSpeed: minSpeedPerTrack * currentTrackNumber = " + minSpeedPerTrack + " * " + currentTrackNumber + " = " + minSpeed);
         }
         //minSpeed = ( minSpeedPerTrack * currentTrackNumber );
-        // lpFrequency
+        // lpFrequency -- the Core Frequency, also called the G Frequency or the
+        // G ring. On the Life Track it is 6.66666 Hz, and that is the number the
+        // Torah points at and the one this whole model is anchored to.
+        //
+        // It is a speed times a ring, not a size times a ring: the Sun's first
+        // ring applied to the Track's own Max Speed. That is why it belongs to a
+        // planet orbiting its Sun rather than to the planet's own rings, whose
+        // ladder runs 0.70, 7.83 and 79.17 Hz off Earth's diameter. It is not the
+        // Track Frequency either, which is a time and a distance.
+        //
+        // Read as a wavelength the way the 7.83 Hz surface ring is read,
+        // c / 6.66 = 27,970 miles, a sphere 8,903 miles across, which is 488
+        // miles above Earth's surface: the upper ionosphere and lower exosphere,
+        // ionised by solar UV and X-rays, threaded by the magnetic field, with a
+        // planet-wide ambipolar electric field lifting ions into the polar wind.
+        // Gravity there is 78 to 80 percent of its surface value. It is not free
+        // space, and it is where this model has the energy absorbed.
+        //
         // 5 places is exact: ringSunFirst shifts the decimal 5 places, so nothing rounds.
         // At 4 places 6.66666 rounded up to 6.6667, and chopping a digit hid it as 6.666.
         lpFrequency = times(maxSpeed, ringSunFirst, 5);
@@ -498,7 +573,8 @@ function showDerivedValues() {
         ["Trinary Marker", "1 / 137", d.trinaryMarker, ""],
         ["Torr", "1 / 760", d.torr, ""],
         ["Atmospheric Pressure Index", "Livable Planet Density &times; Torr", d.aP, ""],
-        ["Livable Planet Ring Frequency", "(Planet Diameter &times; 0.001) &minus; aP", d.lpRingFreq, "Hz"],
+        ["Core Frequency, the G Frequency", "Life Track Max Speed &times; the Sun&#39;s first ring", d.coreFrequency, "Hz"],
+        ["Livable Planet Ring Frequency", "second ring: (Planet Diameter &times; 0.001) &minus; aP", d.lpRingFreq, "Hz"],
         ["Precession Rate", "Sun Diameter &divide; Constant Precession Rate", d.pRate, ""],
         ["Max Iteration", "(Sun Diameter &times; Trinary Marker) &divide; 3", d.maxIteration, "years"],
         ["Ave Iteration", "Max Iteration &minus; 91", d.aveIteration, "years"],
@@ -644,6 +720,10 @@ function testGalaxy() {
         testIs("Life Track Max Speed", life.maxSpeed, "666,666");
         testIs("Life Track Min Speed", life.minSpeed, "333,333");
         testIs("Life Track Frequency", life.lpFrequency, "6.66666");
+        // The constant and the table have to agree. If a Sun size, an Engine
+        // count or the Life Track moves, this is where it shows.
+        testIs("Core Frequency constant matches the Life Track",
+            life.lpFrequency, derivedValues.coreFrequency);
         testIs("Life Track Orbit Distance", life.orbitDist, "996,895,259,518,900,613");
         testIs("Life Track Frequency of Track, full wave", life.trackFreq, "60,000,060");
     }
@@ -736,6 +816,57 @@ function testGalaxy() {
     testIs("Life Track 0 falls back, nothing is divided by zero", lifeTrackNumber, 666);
     testBuildTable("Milkyway", "864575.9", "7926.2109", "333", "238229441887838.4639953874", "66", "nonsense");
     testIs("Life Track that is not a number falls back", lifeTrackNumber, 666);
+
+    // ---- the bridges: independent routes that have to agree --------------
+    // Each of these is reached twice, by arithmetic that shares no step, and
+    // nothing in the calculator was fitted to make them meet. They are asserted
+    // here rather than written up in prose, so that if a constant moves and one
+    // of them stops agreeing, the Test Suite says so instead of a reader
+    // finding it later.
+    var C_MI_S = 186282.397;                 // speed of light, miles per second
+    var LY_MI  = C_MI_S * 3600 * 24 * 365.25; // one light year in miles
+    var HR_YR  = 24 * 365.25;                 // hours in a year
+    var near = function (label, value, expected, tolerancePercent) {
+        var off = Math.abs((value - expected) / expected) * 100;
+        testIs(label + ", within " + tolerancePercent + "%",
+            (off <= tolerancePercent), true);
+    };
+
+    // Bridge 1: Earth's orbit. The Orbit Calculator ships 584,000,000 miles as
+    // the path length. Two pi times the measured astronomical unit, 92,955,807
+    // miles, is 584,058,561. The two were arrived at separately.
+    near("Bridge 1, Earth orbit path against 2 pi AU",
+        584000000, 2 * Math.PI * 92955807, 0.05);
+
+    // Bridge 2: the Sun's distance from the galactic centre. Track 666 times
+    // the Track Radius, against the GRAVITY Collaboration's 2019 measurement of
+    // 26,673 light years.
+    if (life !== null) {
+        var lifeRadiusLy = (testUnComma(life.orbitDist) / (2 * Math.PI)) / LY_MI;
+        near("Bridge 2, Track 666 radius against GRAVITY 2019",
+            lifeRadiusLy, 26673, 1.5);
+
+        // Bridge 3: the frequency the Galaxy drives the Sun at. Track 666's own
+        // distance divided by its own average speed gives a period, and one over
+        // that period is a frequency. It lands on the same 1.39e-16 Hz that the
+        // gravitational route gives from the galactic radius.
+        var avgSpeed = (testUnComma(life.maxSpeed) + testUnComma(life.minSpeed)) / 2;
+        var periodHours = testUnComma(life.orbitDist) / avgSpeed;
+        near("Bridge 3, galactic drive frequency against 1.39e-16 Hz",
+            1 / (periodHours * 3600), 1.39e-16, 1.0);
+
+        // Bridge 4: the size of the Galaxy. The last Track, Engines times four,
+        // times the Track Radius, against the measured disk radius of about
+        // 50,000 light years. This is the radius the model allows, not a count
+        // of where Suns are, so the tolerance is wide on purpose.
+        var trackRadiusLy = lifeRadiusLy / 666;
+        near("Bridge 4, last Track against the measured disk radius",
+            trackRadiusLy * 1332, 50000, 10);
+
+        // The galactic year that falls out of the same two numbers.
+        near("Galactic year from Track 666, against 227.4 million",
+            periodHours / HR_YR / 1e6, 227.4, 0.5);
+    }
 
     // ---- the busy flag is released ---------------------------------------
     testIs("isBusy released when finished", isBusy, false);
