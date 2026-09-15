@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Accuracy - Galaxy Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jeffrey Scott Flesher" />
+    <meta name="description" content="Author: Jeffrey Scott Flesher, every value the Galaxy Calculator uses measured against the current published figure" />
+    <meta name="keywords" content="Accuracy,Galaxy Calculator,Trinary,Measurement,Jeffrey Scott Flesher" />
+    <link rel="shortcut icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="pico.min.css" />
+    <link rel="stylesheet" href="galaxy.css" />
+</head>
+<body>
+    <!-- Generated from ACCURACY.md by make-accuracy.js. Do not edit by hand. -->
+
+    <h1>Accuracy</h1>
+
+    <div class="container">
+        <p class="medium-font">
+            Every value the calculator uses, measured against the current published figure, in <br />
+            miles and in percent. Written so a reviewer can check the inputs without having to <br />
+            ask where any of them came from.
+        </p>
+
+        <p class="medium-font">
+            <b>Method.</b> Accepted figures are IAU / NASA / CODATA / GRAVITY-collaboration values, <br />
+            named per row. Conversions: 1 mile = 1.609344 km exactly, 1 mi³ = 4,168,181,825.44 m³, <br />
+            1 parsec = 3.0856775814913673 × 10¹³ km. Percentages are (ours − accepted) / accepted.
+        </p>
+
+        <p class="medium-font">
+            <b>Orbit paths are compared against elliptical perimeters, not circles.</b> The distances <br />
+            in this calculator are path lengths, and a planet's path is an ellipse. Comparing them <br />
+            against a circle of the same radius makes them look wrong by up to a percent — most <br />
+            visibly for Mercury, whose orbit is the most eccentric in the set and whose true <br />
+            perimeter is 1.06% shorter than the circle. Perimeters below use Ramanujan's <br />
+            approximation, which is exact to better than one part in 10⁹ at these eccentricities.
+        </p>
+
+        <h3>Solar system — the Orbit Calculator presets</h3>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Body</th>
+                        <th class="medium-font ridge">Diameter (mi)</th>
+                        <th class="medium-font ridge">off</th>
+                        <th class="medium-font ridge">Rotation (d)</th>
+                        <th class="medium-font ridge">off</th>
+                        <th class="medium-font ridge">Orbit path (mi)</th>
+                        <th class="medium-font ridge">off</th>
+                        <th class="medium-font ridge">Speed (mph)</th>
+                        <th class="medium-font ridge">off</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Mercury</td>
+                        <td class="ridge">3,031.9186</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">58.646225</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">223,700,000</td>
+                        <td class="ridge">+0.010%</td>
+                        <td class="ridge">105,954.7</td>
+                        <td class="ridge">+0.010%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Venus</td>
+                        <td class="ridge">7,521.0769</td>
+                        <td class="ridge">-0.000%</td>
+                        <td class="ridge">243.0187</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">422,500,000</td>
+                        <td class="ridge">+0.008%</td>
+                        <td class="ridge">78,345.2</td>
+                        <td class="ridge">+0.008%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Earth</td>
+                        <td class="ridge">7,926.2109</td>
+                        <td class="ridge">-0.002%</td>
+                        <td class="ridge">0.99726968</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">584,000,000</td>
+                        <td class="ridge">-0.003%</td>
+                        <td class="ridge">66,666.7</td>
+                        <td class="ridge">-0.003%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Moon</td>
+                        <td class="ridge">2,159.0000</td>
+                        <td class="ridge">-0.007%</td>
+                        <td class="ridge">27.321661</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">1,499,070</td>
+                        <td class="ridge">-0.038%</td>
+                        <td class="ridge">2,286.0</td>
+                        <td class="ridge">-0.038%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Mars</td>
+                        <td class="ridge">4,217.2460</td>
+                        <td class="ridge">-0.080%</td>
+                        <td class="ridge">1.0259567</td>
+                        <td class="ridge">-0.000%</td>
+                        <td class="ridge">888,000,000</td>
+                        <td class="ridge">-0.004%</td>
+                        <td class="ridge">53,858.9</td>
+                        <td class="ridge">-0.004%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Jupiter</td>
+                        <td class="ridge">88,731.8063</td>
+                        <td class="ridge">-0.129%</td>
+                        <td class="ridge">0.41007</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">3,037,000,000</td>
+                        <td class="ridge">-0.018%</td>
+                        <td class="ridge">29,220.4</td>
+                        <td class="ridge">-0.018%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Saturn</td>
+                        <td class="ridge">74,974.6481</td>
+                        <td class="ridge">+0.103%</td>
+                        <td class="ridge">0.426389</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">5,586,900,000</td>
+                        <td class="ridge">+0.001%</td>
+                        <td class="ridge">21,643.2</td>
+                        <td class="ridge">+0.001%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Uranus</td>
+                        <td class="ridge">31,763.2530</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">0.71833</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">11,187,300,000</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">15,191.1</td>
+                        <td class="ridge">+0.000%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Neptune</td>
+                        <td class="ridge">30,775.2720</td>
+                        <td class="ridge">-0.000%</td>
+                        <td class="ridge">0.67125</td>
+                        <td class="ridge">+0.000%</td>
+                        <td class="ridge">17,626,900,000</td>
+                        <td class="ridge">-0.000%</td>
+                        <td class="ridge">12,202.3</td>
+                        <td class="ridge">-0.000%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            Nothing here is worse than <b>0.13%</b>, and six of the nine bodies are inside 0.04% on <br />
+            every column.
+        </p>
+
+        <p class="medium-font">
+            <b>Rotation periods are equatorial throughout — System I for the gas giants.</b> Jupiter's <br />
+            0.41007 d is the equatorial cloud rotation, not the System III radio period of 0.41354 d <br />
+            usually quoted; Saturn's 0.426389 d likewise. This is deliberate, and it matches the use <br />
+            of equatorial diameters rather than mean or polar ones.
+        </p>
+
+        <h3>Earth's diameter — which one</h3>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Figure</th>
+                        <th class="medium-font ridge">Value</th>
+                        <th class="medium-font ridge">Ours is off by</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge"><b>IAU equatorial</b></td>
+                        <td class="ridge">7,926.3812 mi</td>
+                        <td class="ridge"><b>−0.17 mi (−0.0021%)</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">IAU volumetric mean</td>
+                        <td class="ridge">7,917.5117 mi</td>
+                        <td class="ridge">+8.70 mi (+0.1099%)</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">IAU polar</td>
+                        <td class="ridge">7,899.8051 mi</td>
+                        <td class="ridge">+26.41 mi (+0.3343%)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            7,926.2109 mi is an equatorial figure, and it is the value Newton used. It is kept <br />
+            deliberately; it anchors the chain that lands on 66,666 mph, and the 0.17-mile gap to the <br />
+            modern equatorial measurement is smaller than the difference between any two of the three <br />
+            standard diameters above.
+        </p>
+
+        <h3>Constants</h3>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Value</th>
+                        <th class="medium-font ridge">Ours</th>
+                        <th class="medium-font ridge">Accepted</th>
+                        <th class="medium-font ridge">Source</th>
+                        <th class="medium-font ridge">Off</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">c</td>
+                        <td class="ridge">186,282.397 mi/s</td>
+                        <td class="ridge">186,282.3971 mi/s</td>
+                        <td class="ridge">exact by definition</td>
+                        <td class="ridge"><b>−0.0000%</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Sun diameter</td>
+                        <td class="ridge">864,575.9 mi</td>
+                        <td class="ridge">864,575.8769 mi</td>
+                        <td class="ridge">IAU 2015 nominal</td>
+                        <td class="ridge"><b>+0.0000%</b></td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Earth orbital radius</td>
+                        <td class="ridge">92,955,807 mi</td>
+                        <td class="ridge">92,955,807.273 mi</td>
+                        <td class="ridge">1 AU, exact</td>
+                        <td class="ridge"><b>−0.0000%</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Moon orbital radius</td>
+                        <td class="ridge">238,855 mi</td>
+                        <td class="ridge">238,855.086 mi</td>
+                        <td class="ridge">mean distance</td>
+                        <td class="ridge"><b>−0.0000%</b></td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Earth GM</td>
+                        <td class="ridge">95,628 mi³/s²</td>
+                        <td class="ridge">95,629.33 mi³/s²</td>
+                        <td class="ridge">3.986004418 × 10¹⁴ m³/s²</td>
+                        <td class="ridge"><b>−0.0014%</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">G</td>
+                        <td class="ridge">6.67430 × 10⁻¹¹</td>
+                        <td class="ridge">6.67430 × 10⁻¹¹</td>
+                        <td class="ridge">CODATA 2022</td>
+                        <td class="ridge">0.0000%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">π</td>
+                        <td class="ridge">3.14159265359</td>
+                        <td class="ridge">3.14159265359</td>
+                        <td class="ridge">—</td>
+                        <td class="ridge">0.0000%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">1/137</td>
+                        <td class="ridge">0.00729927</td>
+                        <td class="ridge">0.00729735</td>
+                        <td class="ridge">1/137.035999177</td>
+                        <td class="ridge">+0.0263%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Schumann</td>
+                        <td class="ridge">7.83 Hz</td>
+                        <td class="ridge">7.83 Hz</td>
+                        <td class="ridge">measured fundamental</td>
+                        <td class="ridge">0.0000%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            <b>G was once 6.66.</b> That was the accepted value at the start of the twentieth century, <br />
+            from Boys and Braun. CODATA 2022 gives 6.67430(15) × 10⁻¹¹ — the least precisely known of <br />
+            the fundamental constants, where experiments disagree by about 550 ppm. The gap is 0.214%. <br />
+            This calculator uses 6.67430 and records 6.66 as history; the ring ladder does not multiply <br />
+            G by a mass, so the fourth digit never reaches the arithmetic.
+        </p>
+
+        <h3>The Sun's orbit around the Galaxy</h3>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Source</th>
+                        <th class="medium-font ridge">Radius</th>
+                        <th class="medium-font ridge">Period</th>
+                        <th class="medium-font ridge">Speed</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge"><b>This calculator, Track 666</b></td>
+                        <td class="ridge">26,990 ly (8.275 kpc)</td>
+                        <td class="ridge">227.6 My</td>
+                        <td class="ridge">223.5 km/s average</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">GRAVITY Collaboration 2019</td>
+                        <td class="ridge">26,673 ly (8.178 kpc)</td>
+                        <td class="ridge">225–250 My</td>
+                        <td class="ridge">220–250 km/s</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">IAU standard, 1985–2010</td>
+                        <td class="ridge">27,730 ly (8.5 kpc)</td>
+                        <td class="ridge">—</td>
+                        <td class="ridge">220 km/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            The radius sits **between the IAU's own standard value, used from 1985 to 2010, and the <br />
+            2019 GRAVITY measurement** — +1.19% on GRAVITY, −2.65% on the IAU figure. The published <br />
+            number has moved across that range within living memory.
+        </p>
+
+        <p class="medium-font">
+            <b>Read the speed with one caveat first.</b> Published figures assume the Sun holds a constant <br />
+            speed. This model does not: the path is a corkscrew, slowing above and below the galactic <br />
+            disk and speeding through it, so Track 666 carries a maximum of 666,666 mph and a minimum of <br />
+            333,333 mph. Only the average, 499,999.5 mph = 223.5 km/s, can be compared against a <br />
+            single published figure.
+        </p>
+
+        <h3>The Sun's motion against the cosmic microwave background</h3>
+
+        <p class="medium-font">
+            A separate measurement worth setting beside the Track speeds, because it is the one figure <br />
+            that describes the whole Solar System's motion rather than its orbit inside the Galaxy.
+        </p>
+
+        <p class="medium-font">
+            The <b>CMB dipole</b> is the Sun's motion relative to the cosmic microwave background — the <br />
+            closest thing there is to a rest frame for the Universe. It is measured at about <br />
+            <b>370 km/s, which is 827,666 mph.</b>
+        </p>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge"></th>
+                        <th class="medium-font ridge">Speed</th>
+                        <th class="medium-font ridge"></th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Track 666, Max Speed</td>
+                        <td class="ridge">666,666 mph</td>
+                        <td class="ridge">298.0 km/s</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge"><b>CMB dipole, measured</b></td>
+                        <td class="ridge"><b>827,666 mph</b></td>
+                        <td class="ridge"><b>370 km/s</b></td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Track 1332, Max Speed</td>
+                        <td class="ridge">1,333,332 mph</td>
+                        <td class="ridge">596.1 km/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="medium-font">
+            It falls between the Life Track and the last Track. Since Max Speed is 1001 times the Track <br />
+            number, 827,666 mph lands on <b>Track 827</b>, and it is 0.621 of the outermost Track's speed.
+        </p>
+
+        <p class="medium-font">
+            This is not the same quantity as the galactic orbital speed and should not be compared <br />
+            against it directly: one is motion around the galactic centre, the other is motion of the <br />
+            whole system through the background. It is recorded here because the two are often confused, <br />
+            and because a model that has the Sun moving at 666,666 mph should say plainly which motion <br />
+            it is talking about.
+        </p>
+
+        <h3>Tracks are a capacity, not a census</h3>
+
+        <p class="medium-font">
+            <b>This calculator does not know how many Tracks a Galaxy has.</b> The Engine count is an <br />
+            input, not a result. Counting Tracks is a visual account taken from images, not something <br />
+            any formula here produces.
+        </p>
+
+        <p class="medium-font">
+            The count is deliberately generous so the calculator works for galaxies larger than ours. <br />
+            Track 1,332 — the last one the Milky Way's 333 Trinary Engines allow — sits at 53,979 <br />
+            light-years. That is the radius the model permits, not a claim that stars reach that far. <br />
+            The outer Tracks may be empty.
+        </p>
+
+        <p class="medium-font">
+            For what it is worth as a cross-check, inverting the arithmetic gives an Engine count from <br />
+            a disk radius: one Track is 40.52 light-years, so Engines = radius ÷ (4 × 40.52). A 50,000 <br />
+            light-year disk gives 308; the Gaia warp edge near 52,850 gives 326; 333 Engines needs <br />
+            53,979. Published disk edges run from about 46,000 to 62,000 light-years, so 333 sits <br />
+            inside the range. That is a consistency check, not a measurement, and it does not replace <br />
+            counting.
+        </p>
+
+        <h3>Nothing unobservable</h3>
+
+        <p class="medium-font">
+            No quantity in this calculator exists only to close a gap. There is no invisible mass, no <br />
+            unmeasurable term, no free parameter tuned to fit a curve. Every value is measured, derived <br />
+            from something measured, or carried in with a stated origin — the three groups on this page. <br />
+            A reviewer can check that claim by reading one file, which is why it is made here.
+        </p>
+
+        <h3>Values with no published counterpart</h3>
+
+        <p class="medium-font">
+            These are inputs carried in from outside, not results. Origins are documentary.
+        </p>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Value</th>
+                        <th class="medium-font ridge">What it is</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge"><span class="text_code">lpDensity</span> 73.120284</td>
+                        <td class="ridge">atmospheric resistance. No published figure exists; reverse engineered from reentry data, satellites decaying out of orbit, and years of SpaceX telemetry. Newton had written the same number down.</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge"><span class="text_code">cpRate</span> 324.540503</td>
+                        <td class="ridge">the lag between an applied electromagnetic force and a mass's response, scaled on the size of the star — Newton's constant via Tesla's notes</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge"><span class="text_code">trackFreqMultiplier</span> 1e-13</td>
+                        <td class="ridge">offset for error accumulating over an iteration from resistance to signal propagation, scaled on the gap between valence rings</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">ring constants 0.01 / 0.001 / 0.0001</td>
+                        <td class="ridge">the three rings of a Trinary Engine</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Life Track 666</td>
+                        <td class="ridge">Leavitt's count of the Tracks, from her notes rather than her published work. There is no formula for it — counting Tracks is a visual account, and this calculator does not know how many Tracks a Galaxy has; it takes the Engine count as an input</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Independent routes that agree</h3>
+
+        <p class="medium-font">
+            Each of these is reached twice, by different arithmetic, without being fitted:
+        </p>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge"></th>
+                        <th class="medium-font ridge">Route A</th>
+                        <th class="medium-font ridge">Route B</th>
+                        <th class="medium-font ridge">Apart</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Earth's orbit</td>
+                        <td class="ridge">Orbit preset, 584,000,000 mi</td>
+                        <td class="ridge">2π × 1 AU = 584,058,561 mi</td>
+                        <td class="ridge"><b>0.010%</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Sun's galactic orbit</td>
+                        <td class="ridge">Track 666 distance ÷ speed</td>
+                        <td class="ridge">Kepler's law from galactic radius</td>
+                        <td class="ridge"><b>0.2%</b></td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Sun's distance from centre</td>
+                        <td class="ridge">Track 666 × Track Radius</td>
+                        <td class="ridge">GRAVITY 2019 measurement</td>
+                        <td class="ridge"><b>1.19%</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Galaxy radius</td>
+                        <td class="ridge">Track 1,332 × Track Radius</td>
+                        <td class="ridge">accepted disk radius, ~50,000 ly</td>
+                        <td class="ridge">within the capacity note above</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge"><b>The Life Track number</b></td>
+                        <td class="ridge"><b>Leavitt's count of the Tracks: 666</b></td>
+                        <td class="ridge"><b>the arithmetic: 667,332 − 666,666 = 666</b></td>
+                        <td class="ridge"><b>exact</b></td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Sirius century</td>
+                        <td class="ridge">two binary cycles at the model's 50 years</td>
+                        <td class="ridge">measured period 50.1284 yr × 2 = 100.26 yr</td>
+                        <td class="ridge"><b>0.26%</b></td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Vertical full cycle</td>
+                        <td class="ridge">Track 666 full wave, 60,000,060 years</td>
+                        <td class="ridge">measured 60–70 My between plane crossings, doubled</td>
+                        <td class="ridge">inside the band</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Changes made</h3>
+
+        <div class="tableContainer">
+            <table class="ridge">
+                <thead class="ridge">
+                    <tr class="ridge">
+                        <th class="medium-font ridge">Value</th>
+                        <th class="medium-font ridge">Was</th>
+                        <th class="medium-font ridge">Is</th>
+                        <th class="medium-font ridge">Why</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Saturn orbit path</td>
+                        <td class="ridge">5,565,900,000</td>
+                        <td class="ridge">5,586,900,000</td>
+                        <td class="ridge">−0.375% → +0.001%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Neptune orbit path</td>
+                        <td class="ridge">17,562,300,000</td>
+                        <td class="ridge">17,626,900,000</td>
+                        <td class="ridge">−0.367% → −0.000%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Uranus orbit path</td>
+                        <td class="ridge">11,201,300,000</td>
+                        <td class="ridge">11,187,300,000</td>
+                        <td class="ridge">+0.126% → +0.000%</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Saturn rotation</td>
+                        <td class="ridge">0.426</td>
+                        <td class="ridge">0.426389</td>
+                        <td class="ridge">−0.091% → 0.000%</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">Sun galactic orbit</td>
+                        <td class="ridge">radius 1.61 × 10¹⁷ mi over 242 My</td>
+                        <td class="ridge">Track 666 distance over 227.6 My</td>
+                        <td class="ridge">the preset disagreed with this calculator's own Track table</td>
+                    </tr>
+                    <tr class="ridge evenRow">
+                        <td class="ridge">Track Frequency</td>
+                        <td class="ridge">30,000,030 (half wave)</td>
+                        <td class="ridge"><b>60,000,060</b> (full wave)</td>
+                        <td class="ridge">one crossing of the Galactic Plane → the whole cycle, up and back down</td>
+                    </tr>
+                    <tr class="ridge oddRow">
+                        <td class="ridge">"Galaxy Radius" field</td>
+                        <td class="ridge">labelled as the Galaxy's radius</td>
+                        <td class="ridge"><b>Track Radius</b></td>
+                        <td class="ridge">it is the radius of one Track, 41 light years — the Galaxy's radius is this × the last Track</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Credits</h3>
+
+        <p class="medium-font">
+            Written by Jeffrey Scott Flesher.
+        </p>
+
+        <p class="medium-font">
+            The Science is mine: the concepts, the constants, the values, and the conclusions. Where a <br />
+            value came from someone else's notes or measurements, it says so where it appears.
+        </p>
+
+        <p class="medium-font">
+            The code, the documentation, and the checking of the arithmetic in this repository were <br />
+            worked out with the help of <a class="medium-font" href="https://claude.ai" target="_blank"><b>Claude</b></a>, an AI made by Anthropic. It found errors, ran the <br />
+            numbers, and wrote much of the wording. It did not decide what is true here.
+        </p>
+
+        <hr />
+
+        <p class="medium-font">
+            <a class="medium-font" href="index.html" target="_blank">Back to the Galaxy Calculator</a>
+        </p>
+    </div>
+</body>
+</html>

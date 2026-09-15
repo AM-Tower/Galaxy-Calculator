@@ -94,18 +94,34 @@ for (const name of fs.readdirSync(here)) {
     }
 }
 
+// ---------------------------------------------------------------------------
+// ACCURACY.html is generated from ACCURACY.md by make-accuracy.js, because a
+// browser cannot render Markdown. Two files carrying the same numbers will
+// drift apart the moment one is edited alone, so this rebuilds the page in
+// memory and compares it against the one on disk.
+const generatedFailures = [];
+try {
+    const maker = require('./make-accuracy.js');
+    const onDisk = fs.existsSync(maker.TARGET) ? fs.readFileSync(maker.TARGET, 'utf8') : '';
+    if (onDisk !== maker.build()) {
+        generatedFailures.push('ACCURACY.html is out of step with ACCURACY.md - run: node make-accuracy.js');
+    }
+} catch (e) {
+    generatedFailures.push('could not check ACCURACY.html: ' + e.message);
+}
+
 console.log('Galaxy Calculator Test Suite');
 console.log('  bignumber.js v' + version);
 console.log('  ' + results.passed + ' of ' + results.total + ' passed, ' + results.failed + ' failed');
 
-if (smartQuoteFailures.length > 0) {
+if (smartQuoteFailures.length > 0 || generatedFailures.length > 0) {
     console.log('');
-    for (const failure of smartQuoteFailures) {
+    for (const failure of smartQuoteFailures.concat(generatedFailures)) {
         console.log('  FAIL  ' + failure);
     }
 }
 
-if (results.failed > 0 || smartQuoteFailures.length > 0) {
+if (results.failed > 0 || smartQuoteFailures.length > 0 || generatedFailures.length > 0) {
     console.log('');
     for (const failure of results.failures) {
         console.log('  FAIL  ' + failure);
