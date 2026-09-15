@@ -323,13 +323,89 @@ button {
     max-width: 34rem;
 }
 
-/* On a phone there is no slack to line up, and the pinned column would be
- * wider than the screen, so the tables go back to sizing themselves.
+/* ****************************************************************************
+ * Phones. Two columns will not fit: a label wide enough to read plus an input
+ * wide enough for 238,229,441,887,838.4639953874 is more than the screen has.
+ * So the rows stop being rows. Each one becomes a flex line with the label
+ * across the top and the value under it, which gives the input the full width
+ * of the screen instead of whatever is left over. The Help button rides beside
+ * the input rather than taking a line of its own.
  */
 @media (max-width: 40rem) {
+    #galaxyCalculatorForm table,
+    #orbitCalculatorForm table,
+    #galaxyCalculatorForm tbody,
+    #orbitCalculatorForm tbody {
+        display: block;
+        width: 100%;
+        overflow-x: visible;
+    }
+
+    #galaxyCalculatorForm tr,
+    #orbitCalculatorForm tr {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.25rem 0;
+    }
+
+    #galaxyCalculatorForm td,
+    #orbitCalculatorForm td {
+        display: block;
+        border: 0;
+        /* the desktop cell padding is what pushes the Help button onto a line
+         * of its own here, so only the vertical part of it survives */
+        padding: 0.15rem 0;
+    }
+
+    /* the label takes its own line */
+    #galaxyCalculatorForm tr > td:first-child,
+    #orbitCalculatorForm tr > td:first-child {
+        flex: 1 0 100%;
+    }
+
+    /* the value takes the rest of the line, the Help button sits beside it */
     #galaxyCalculatorForm .valueCell,
     #orbitCalculatorForm .valueCell {
+        /* 18rem is what the longest value needs. Asking for it as the flex
+         * basis means the Help button rides alongside when the screen can
+         * carry both, and drops to its own line when it cannot, rather than
+         * squeezing the value until it clips. */
+        flex: 1 1 18rem;
         width: auto;
+        /* it must not shrink below what the value needs, or flex-wrap never
+         * fires and the Help button squeezes the number instead of moving */
+        min-width: min(18rem, 100%);
+    }
+
+    #galaxyCalculatorForm .helpCell {
+        flex: 0 0 auto;
+    }
+
+    /* the input carries its own bottom margin on a desktop, which here would
+     * push the Help button out of line with it */
+    #galaxyCalculatorForm .wide-input,
+    #orbitCalculatorForm .wide-input {
+        margin-bottom: 0;
+    }
+
+    .wide-input {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* ****************************************************************************
+ * Small phones. Below 30rem even a full width input cannot hold
+ * 238,229,441,887,838.4639953874 at the larger form font, so the inputs drop
+ * to the body size. That is the last thing to give: the value stays readable
+ * and stays whole rather than scrolling inside its own box.
+ */
+@media (max-width: 30rem) {
+    #galaxyCalculatorForm .wide-input,
+    #orbitCalculatorForm .wide-input {
+        font-size: 1rem;
     }
 }
 

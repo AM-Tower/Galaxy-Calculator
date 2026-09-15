@@ -817,6 +817,38 @@ function testGalaxy() {
     testBuildTable("Milkyway", "864575.9", "7926.2109", "333", "238229441887838.4639953874", "66", "nonsense");
     testIs("Life Track that is not a number falls back", lifeTrackNumber, 666);
 
+    // ---- the ring ladder, and the comment that used to be wrong ----------
+    // An older comment in this file said the third planet ring is 6.66 Hz. It
+    // is not. Run the ladder against Earth's diameter and these are the three,
+    // asserted here so the wrong number cannot come back.
+    testIs("planet third ring is 79.166 Hz, not 6.66",
+        format(minus(times("7926.2109", "0.01", 9), derivedValues.aP, 9), 3), "79.166");
+    testIs("planet first ring is 0.696 Hz",
+        format(minus(times("7926.2109", "0.0001", 9), derivedValues.aP, 9), 3), "0.696");
+
+    // ---- 666 is the only Life Track that gives the Core Frequency ---------
+    // Max Speed is 667,332 minus the Life Track, and the Core Frequency is that
+    // times the Sun's first ring. 6.66666 Hz needs a Max Speed of 666,666 mph,
+    // which needs a Life Track of exactly 666. Its neighbours do not give it.
+    var neighbour = function (track, expected) {
+        var rows = testBuildTable("Milkyway", "864575.9", "7926.2109", "333",
+            "238229441887838.4639953874", "1", String(track));
+        var row = null;
+        var j = 0;
+        for (j = 0; j < rows.length; j++) {
+            if (testUnComma(rows[j].n) === track) row = rows[j];
+        }
+        testIs("Life Track " + track + " gives " + expected, (row === null ? "no row" : row.lpFrequency), expected);
+    };
+    neighbour(665, "6.66667");
+    neighbour(667, "6.66665");
+
+    // put the table back the way the rest of the suite expects it
+    rows = testBuildTable("Milkyway", "864575.9", "7926.2109", "333", "238229441887838.4639953874", "1");
+    for (i = 0; i < rows.length; i++) {
+        if (testUnComma(rows[i].n) === 666) life = rows[i];
+    }
+
     // ---- the bridges: independent routes that have to agree --------------
     // Each of these is reached twice, by arithmetic that shares no step, and
     // nothing in the calculator was fitted to make them meet. They are asserted

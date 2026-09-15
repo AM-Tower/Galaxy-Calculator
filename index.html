@@ -27,37 +27,37 @@
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myGalaxy">Galaxy</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myGalaxy" name="myGalaxy" value="Milkyway"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(1)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(1)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="mySunSize">Sun Size</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="mySunSize" name="mySunSize" value="864575.9"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(2)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(2)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myLivablePlanetSize">Livable Planet Size</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myLivablePlanetSize" name="myLivablePlanetSize" value="7926.2109"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(3)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(3)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myTrinaryEngines">Trinary Engines</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myTrinaryEngines" name="myTrinaryEngines" value="333"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(4)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(4)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myLifeTrack">Life Track</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myLifeTrack" name="myLifeTrack" value="666"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(7)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(7)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myGalaxyRadius">Track Radius</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myGalaxyRadius" name="myGalaxyRadius" value="238229441887838.4639953874"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(5)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(5)">Help</button></td>
                 </tr>
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myPrintNthTrack">Print Nth Track</label></td>
                     <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myPrintNthTrack" name="myPrintNthTrack" value="66"></td>
-                    <td class="ridge"><button class="medium-font" type="button" onclick="showHelp(6)">Help</button></td>
+                    <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(6)">Help</button></td>
                 </tr>
             </table>
 
@@ -140,7 +140,7 @@
                     <th class="medium-font ridge">Engines</th>
                     <th class="medium-font ridge">Max Speed<br />(mph)</th>
                     <th class="medium-font ridge">Min Speed<br />(mph)</th>
-                    <th class="medium-font ridge">Core Frequency<br />(Hz)</th>
+                    <th class="medium-font ridge">Frequency<br />(Hz)</th>
                     <th class="medium-font ridge">Orbit Distance (miles)</th>
                     <th class="medium-font ridge">Track Frequency<br />(Hz, or years)</th>
                 </tr>
@@ -695,6 +695,43 @@
     </p>
 
     <hr />
+
+    <hr />
+
+    <h2 id="together">Why the Suns Orbit Together and the Planets Do Not</h2>
+
+    <p class="medium-font">
+        This is the question the whole calculator was built to answer, and the answer is in the table rather than in
+        an argument.
+    </p>
+
+    <p class="medium-font">
+        <b>The Galaxy drives its Tracks.</b> The signal sweeps out from the centre, every Ring reads it, and every Sun
+        keeps pace with it. One rate for all of them. A Sun on an outer Track has farther to go, so it must travel
+        faster in miles per hour to arrive at the same time, and it does: Max Speed is 1001 times the Track number, so
+        Track 333 runs at 333,333 mph and Track 999 at 999,999 mph. Same rate, different speed. That is a record on a
+        record player, and the Test Suite checks it on all 1,332 Tracks at once &mdash; the slowest Track divided by the
+        fastest comes out at 1.000000.
+    </p>
+
+    <p class="medium-font">
+        <b>The Sun does not drive the Planets that way.</b> Each Planet falls around it on its own and keeps its own
+        time. Mercury goes round in 88 days and Neptune takes 60,190, and nothing makes them arrive together because
+        nothing is driving them together. Run the Orbit Calculator on any two of them and the periods have nothing in
+        common.
+    </p>
+
+    <p class="medium-font">
+        That is the whole of it. A Galaxy is one driven system with one clock. A Solar System is a set of separate
+        falls around one Star. The same Science covers both, and it is the driving that makes the difference, not the
+        size.
+    </p>
+
+    <p class="medium-font">
+        It also says what to look for. If the Suns were not driven, the formation would wind up: the inner ones would
+        lap the outer ones and the shape of the Galaxy would smear out within a few turns. It has not. The arms are
+        still there. Something is holding the rate, and a frequency is the only thing that holds a rate.
+    </p>
 
     <hr />
 
