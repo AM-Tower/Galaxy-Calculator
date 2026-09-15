@@ -22,7 +22,7 @@
 #   cd /data/Nextcloud/workspace/GalaxyCalculator3/GalaxyCalculator
 #   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup
 #   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup --github
-#   clear; chmod +x backup.sh && bash -n backup.sh  && shellcheck backup.sh && ./backup.sh --backup --message="..."
+#   clear; chmod +x backup.sh && bash -n backup.sh && shellcheck backup.sh && ./backup.sh --backup --message="$(date)"
 #   ./backup.sh --backup        back up, then commit locally
 #   ./backup.sh --backup --github   back up, commit, push to GitHub
 #   ./backup.sh --github        commit and push, no backup
@@ -67,8 +67,8 @@ SWITCH_GITHUB=0
 SWITCH_NO_COMMIT=0
 SWITCH_HELP=0
 
-# Commit message. Empty means one is made from the date, the way the DocVoxVid
-# auto check-in does it.
+# Commit message. Empty means one is built from what actually changed, which
+# is more use in a history heading than the date is. --message= overrides it.
 COMMIT_MESSAGE=""
 
 # ----------------------------------------------------------------- contents
@@ -303,12 +303,34 @@ git_check()
     local changes
     changes="$(git_run diff --cached --name-only | wc -l)"
 
+    # Build a commit message from the staged change itself: the first few file
+    # names, how many more there are, and the line counts. A reviewer scanning
+    # the history learns something from "Update galaxies.js, README.md and 2
+    # more (+412 -88)" and nothing at all from a timestamp.
+    auto_message() {
+        local names count head_names stat insertions deletions
+        mapfile -t names < <(git_run diff --cached --name-only | xargs -r -n1 basename)
+        count="${#names[@]}"
+        if (( count == 0 )); then printf 'No changes'; return; fi
+
+        head_names="$(printf '%s, ' "${names[@]:0:3}")"
+        head_names="${head_names%, }"
+        if (( count > 3 )); then
+            head_names="${head_names} and $(( count - 3 )) more"
+        fi
+
+        stat="$(git_run diff --cached --shortstat)"
+        insertions="$(printf '%s' "${stat}" | grep -o '[0-9]\+ insertion' | grep -o '[0-9]\+')"
+        deletions="$(printf '%s' "${stat}" | grep -o '[0-9]\+ deletion' | grep -o '[0-9]\+')"
+        printf 'Update %s (+%s -%s)' "${head_names}" "${insertions:-0}" "${deletions:-0}"
+    }
+
     # --------------------------------------------------------------- commit
     if (( changes == 0 )); then
         log_msg "Info" "No changes to commit"
     else
         local msg="${COMMIT_MESSAGE}"
-        if [[ -z "${msg}" ]]; then msg="Local commit: $(date '+%Y-%m-%d %H:%M:%S')"; fi
+        if [[ -z "${msg}" ]]; then msg="$(auto_message)"; fi
         if ! git_run commit -m "${msg}"; then log_msg "Error" "git commit failed"; show_footer; return 1; fi
         log_msg "Pass" "Committed ${changes} file(s): ${msg}"
     fi
