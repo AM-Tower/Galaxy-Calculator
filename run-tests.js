@@ -18,7 +18,7 @@ const path = require('path');
 
 const verbose = process.argv.indexOf('--verbose') > -1;
 const here = __dirname;
-const files = ['bignumber.js', 'bignumbermath.js', 'galaxycalculator.js'];
+const files = ['bignumber.js', 'bignumbermath.js', 'galaxycalculator.js', 'galaxies.js'];
 
 // The three files are written for a browser, where they share one global
 // scope and no module system. A vm context gives them exactly that.

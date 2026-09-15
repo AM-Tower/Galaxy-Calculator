@@ -182,5 +182,5 @@ The Science is mine: the concepts, the constants, the values, and the conclusion
 value came from someone else's notes or measurements, it says so where it appears.
 
 The code, the documentation, and the checking of the arithmetic in this repository were
-worked out with the help of **Claude**, an AI made by Anthropic. It found errors, ran the
+worked out with the help of [**Claude**](https://claude.ai), an AI made by Anthropic. It found errors, ran the
 numbers, and wrote much of the wording. It did not decide what is true here.

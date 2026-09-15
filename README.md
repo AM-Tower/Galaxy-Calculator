@@ -213,6 +213,7 @@ number here is checkable in one file.
 | `bignumber.js` | the arbitrary precision library |
 | `bignumbermath.js` | the BC style wrapper, and the math half of the Test Suite |
 | `galaxycalculator.js` | the Galaxy Calculator, and the galaxy half of the Test Suite |
+| `galaxies.js` | the Galaxy presets, and the drop-downs built from them |
 | `run-tests.js` | runs the Test Suite from the command line |
 | `update.bc.sh` | updates bignumber.js, but only if the tests still pass |
 
@@ -220,12 +221,12 @@ number here is checkable in one file.
 
 | Field | Default | What it is |
 |---|---|---|
-| Galaxy | Milkyway | the name |
+| Galaxy | Milky Way | picked from a drop-down of 17 Spiral Galaxies, in `galaxies.js` |
 | Sun Size | 864575.9 | diameter in miles |
 | Livable Planet Size | 7926.2109 | diameter in miles, Earth |
 | Trinary Engines | 333 | Dark Stars, a term Halley implied. Last Track is this times 4 |
 | Life Track | 666 | the Track that supports Life, 1 to Engines x 4 |
-| Galaxy Radius | 238229441887838.4639953874 | miles, per Track |
+| Track Radius | 238229441887838.4639953874 | miles, one Track, the same in every Galaxy |
 | Print Nth Track | 66 | how many rows to skip |
 
 ## Testing

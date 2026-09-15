@@ -35,7 +35,10 @@ function inline(text) {
     s = s.replace(/`([^`]+)`/g, '<span class="text_code">$1</span>');
     s = s.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
     s = s.replace(/(^|[^*])\*([^*]+)\*/g, '$1<i>$2</i>');
-    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    /* Links carry the site's font class and open in their own tab, which is
+     * what the rest of the pages do. */
+    s = s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,
+        '<a class="medium-font" href="$2" target="_blank">$1</a>');
     return s;
 }
 
@@ -137,7 +140,7 @@ return `<!DOCTYPE html>
 ${body}        <hr />
 
         <p class="medium-font">
-            <a class="medium-font" href="index.html">Back to the Galaxy Calculator</a>
+            <a class="medium-font" href="index.html" target="_blank">Back to the Galaxy Calculator</a>
         </p>
     </div>
 </body>

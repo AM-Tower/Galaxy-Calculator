@@ -362,6 +362,14 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     }
 
     var ans;
+    /* Empty the table before filling it. Without this a second Calculate
+     * appends to the first, which matters now that the Galaxy is a drop
+     * down and changing it is expected to replace the table, not add to it. */
+    var galacticTable = (typeof document !== "undefined")
+        ? document.getElementById("myGalacticTable") : null;
+    if (galacticTable) {
+        galacticTable.innerHTML = "";
+    }
     // Calculate or set all variables
     trackEngines = trinaryEngines;
     // Calculate Total Tracks: absolute value * 2, then * 2, then add 1
@@ -915,11 +923,16 @@ function testGalaxy() {
 function testAll() {
     var mathResults = test();
     var galaxyResults = testGalaxy();
+    /* galaxies.js loads after this file, so it is tested for rather than
+     * assumed. A page that does not carry the presets still runs its tests. */
+    var presetResults = (typeof testGalaxyPresets === "function")
+        ? testGalaxyPresets()
+        : { passed: 0, failed: 0, total: 0, failures: [] };
     return {
-        passed: mathResults.passed + galaxyResults.passed,
-        failed: mathResults.failed + galaxyResults.failed,
-        total: mathResults.total + galaxyResults.total,
-        failures: mathResults.failures.concat(galaxyResults.failures)
+        passed: mathResults.passed + galaxyResults.passed + presetResults.passed,
+        failed: mathResults.failed + galaxyResults.failed + presetResults.failed,
+        total: mathResults.total + galaxyResults.total + presetResults.total,
+        failures: mathResults.failures.concat(galaxyResults.failures, presetResults.failures)
     };
 } // end testAll
 /* ****************************************************************************

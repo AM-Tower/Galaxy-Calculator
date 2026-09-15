@@ -16,6 +16,7 @@
     <script defer="defer" src="bignumber.js"></script>
     <script defer="defer" src="bignumbermath.js"></script>
     <script defer="defer" src="galaxycalculator.js"></script>
+    <script defer="defer" src="galaxies.js"></script>
 </head>
 <body>
 
@@ -26,7 +27,7 @@
             <table id="myTable" class="ridge">
                 <tr class="ridge">
                     <td class="ridge"><label class="medium-font" for="myGalaxy">Galaxy</label></td>
-                    <td class="ridge valueCell"><input class="medium-font wide-input" type="text" id="myGalaxy" name="myGalaxy" value="Milkyway"></td>
+                    <td class="ridge valueCell"><select class="medium-font wide-input" id="myGalaxy" name="myGalaxy" onchange="galaxyPreset(this.value);"><option value="Milky Way">Milky Way</option></select></td>
                     <td class="ridge helpCell"><button class="medium-font" type="button" onclick="showHelp(1)">Help</button></td>
                 </tr>
                 <tr class="ridge">
@@ -68,7 +69,19 @@
     <div class="container">
         <div id="helppopupHelp1" class="popupHelp medium-font">
             <span class="popupHelp-close" onclick="closeHelp(1)">&times;</span>
-            <p class="medium-font">Enter the Name of the Galaxy, for example: Milkyway.</p>
+            <p class="medium-font">Pick a Galaxy from the drop-down. Choosing one fills in its
+            Trinary Engines and its Life Track, and sets the Orbit Calculator below to the
+            Livable Planet of that Galaxy.</p>
+            <p class="medium-font">Only Spiral Galaxies are listed, barred ones among them,
+            because a bar is a feature of the middle and not of the disk the Tracks describe.
+            Ellipticals and irregulars are left out: they have not been tested, so they are
+            not offered.</p>
+            <p class="medium-font">The Track Radius never changes. One Track is 40.525 light
+            years in every Galaxy, so a larger Galaxy does not get wider Tracks, it gets more
+            of them. The Engines follow from the size: radius in light years divided by 40.525,
+            divided by 4. The Life Track is twice the Engines, which is half the last Track,
+            and that is what 666 is in the Milky Way. A larger Galaxy has its Life Track at the
+            same place, under a larger number.</p>
         </div>
 
         <div id="helppopupHelp2" class="popupHelp medium-font">
@@ -243,18 +256,11 @@
         <form id="orbitCalculatorForm" class="tableContainer">
             <p class="medium-font">
                 <label class="medium-font" for="presetBody">Select Celestial Body from the drop-down, or enter numbers manually:</label>
+                <!-- Filled by buildBodySelect() in galaxies.js: our Galaxy lists the
+                     planets that have been measured, every other Galaxy lists the one
+                     Livable Planet the model places, and nothing beside it. -->
                 <select class="medium-font" id="presetBody" name="presetBody" onchange="presetCB(this.options[this.selectedIndex].value);">
-                    <option value="0">Select</option>
-                    <option value="1">Sun</option>
-                    <option value="2">Mercury</option>
-                    <option value="3">Venus</option>
                     <option value="4" selected="selected">Earth</option>
-                    <option value="5">Moon</option>
-                    <option value="6">Mars</option>
-                    <option value="7">Jupiter</option>
-                    <option value="8">Saturn</option>
-                    <option value="9">Uranus</option>
-                    <option value="10">Neptune</option>
                 </select>
             </p>
 
