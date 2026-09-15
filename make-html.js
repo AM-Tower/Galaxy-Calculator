@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* ****************************************************************************
- * make-accuracy.js
- * Turns ACCURACY.md into ACCURACY.html, in the style of the rest of the site.
+ * make-html.js
+ * Turns the project's Markdown into HTML pages, in the style of the site.
  *
  * A browser cannot render Markdown. Firefox and Chrome both show a .md file as
  * plain text, so a link straight to ACCURACY.md gives a reader a wall of pipe
@@ -22,8 +22,18 @@ const fs = require('fs');
 const path = require('path');
 
 const here = __dirname;
-const SOURCE = path.join(here, 'ACCURACY.md');
-const TARGET = path.join(here, 'ACCURACY.html');
+/* Every page this builds. A source that is not on disk is skipped, so a fresh
+ * clone without the local-only notes builds what it has and says nothing.
+ *
+ *   tracked  ACCURACY.md is in git and so is its page; GitHub renders the
+ *            Markdown, a browser reads the HTML, and run-tests.js keeps the
+ *            two in step.
+ *   local    NOTES.md is gitignored working material. Its page is built for
+ *            reading on this machine and goes no further. */
+const DOCS = [
+    { source: 'ACCURACY.md', target: 'ACCURACY.html', tracked: true },
+    { source: 'NOTES.md',    target: 'NOTES.html',    tracked: false }
+];
 
 /* Text becomes HTML text: the three characters that would otherwise be read
  * as markup are escaped first, then the inline Markdown is turned into tags. */
@@ -68,6 +78,28 @@ function table(rows) {
     return html;
 }
 
+/* A run of list items becomes one list. Bullets and numbers are told apart by
+ * the marker, and the content of each item goes through inline() like any
+ * other text. */
+function list(items, ordered) {
+    const tag = ordered ? 'ol' : 'ul';
+    let html = '        <' + tag + ' class="medium-font">\n';
+    for (const item of items) {
+        html += '            <li>' + inline(item) + '</li>\n';
+    }
+    return html + '        </' + tag + '>\n\n';
+}
+
+/* Code is the one place the text must survive exactly as written, so it is
+ * escaped and nothing else is done to it -- no bold, no links, no code spans. */
+function codeBlock(lines) {
+    const escaped = lines.map((l) => l
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')).join('\n');
+    return '        <pre class="medium-font"><code>' + escaped + '</code></pre>\n\n';
+}
+
 function convert(markdown) {
     const lines = markdown.split('\n');
     let out = '';
@@ -95,6 +127,76 @@ function convert(markdown) {
             continue;
         }
 
+        /* Fenced code. Everything up to the closing fence is taken verbatim. */
+        if (line.trim().startsWith('```')) {
+            flush();
+            const code = [];
+            i = i + 1;
+            while (i < lines.length && !lines[i].trim().startsWith('```')) {
+                code.push(lines[i]);
+                i = i + 1;
+            }
+            out += codeBlock(code);
+            continue;
+        }
+
+        /* Indented code. Four spaces, and only when it is not a list item that
+         * happens to be indented. */
+        if (/^ {4}\S/.test(line) && !/^ {4}[-*+\d]/.test(line)) {
+            flush();
+            const code = [];
+            while (i < lines.length && (/^ {4}/.test(lines[i]) || lines[i].trim() === '')) {
+                if (lines[i].trim() === '' &&
+                        !(i + 1 < lines.length && /^ {4}\S/.test(lines[i + 1]))) {
+                    break;
+                }
+                code.push(lines[i].replace(/^ {4}/, ''));
+                i = i + 1;
+            }
+            i = i - 1;
+            out += codeBlock(code);
+            continue;
+        }
+
+        /* Block quotes. A run of "> " lines is one quote; the markers come off
+         * and what is left goes through as ordinary text. */
+        if (line.trim().startsWith('>')) {
+            flush();
+            const quoted = [];
+            while (i < lines.length && lines[i].trim().startsWith('>')) {
+                quoted.push(lines[i].replace(/^\s*>\s?/, ''));
+                i = i + 1;
+            }
+            i = i - 1;
+            out += '        <blockquote class="medium-font">\n            ' +
+                quoted.filter((q) => q.trim() !== '').map(inline).join(' <br />\n            ') +
+                '\n        </blockquote>\n\n';
+            continue;
+        }
+
+        /* Lists. A run of items at the same kind of marker is one list. */
+        const bullet = line.match(/^\s*[-*+]\s+(.*)$/);
+        const numbered = line.match(/^\s*\d+\.\s+(.*)$/);
+        if (bullet || numbered) {
+            flush();
+            const ordered = Boolean(numbered);
+            const items = [];
+            while (i < lines.length) {
+                const b = lines[i].match(/^\s*[-*+]\s+(.*)$/);
+                const n = lines[i].match(/^\s*\d+\.\s+(.*)$/);
+                if (b && !ordered) { items.push(b[1]); }
+                else if (n && ordered) { items.push(n[1]); }
+                else if (/^\s+\S/.test(lines[i]) && items.length > 0) {
+                    /* a wrapped continuation line belongs to the item above */
+                    items[items.length - 1] += ' ' + lines[i].trim();
+                } else { break; }
+                i = i + 1;
+            }
+            i = i - 1;
+            out += list(items, ordered);
+            continue;
+        }
+
         if (line.trim().startsWith('|')) {
             flush();
             const rows = [];
@@ -113,8 +215,8 @@ function convert(markdown) {
     return out;
 }
 
-function build() {
-const markdown = fs.readFileSync(SOURCE, 'utf8');
+function build(doc) {
+const markdown = fs.readFileSync(path.join(here, doc.source), 'utf8');
 const title = (markdown.match(/^#\s+(.*)$/m) || [null, 'Accuracy'])[1];
 const body = convert(markdown.replace(/^#\s+.*$/m, ''));
 
@@ -149,12 +251,19 @@ ${body}        <hr />
 
 }
 
-module.exports = { build: build, TARGET: TARGET };
+module.exports = { build: build, docs: DOCS, here: here };
 
 /* Only write when run directly, so run-tests.js can require this and compare
  * what the page should be against what is on disk. */
 if (require.main === module) {
-    const page = build();
-    fs.writeFileSync(TARGET, page);
-    console.log('ACCURACY.html written from ACCURACY.md, ' + page.split('\n').length + ' lines');
+    for (const doc of DOCS) {
+        if (!fs.existsSync(path.join(here, doc.source))) {
+            console.log(doc.source + ' is not here, skipping ' + doc.target);
+            continue;
+        }
+        const page = build(doc);
+        fs.writeFileSync(path.join(here, doc.target), page);
+        console.log(doc.target + ' written from ' + doc.source + ', ' +
+            page.split('\n').length + ' lines' + (doc.tracked ? '' : ' (local only)'));
+    }
 }

@@ -92,6 +92,62 @@
  *
  *  ON THE DIAMETERS
  *
+ *  Every diameter below is a published D25 figure: the isophote where B-band
+ *  surface brightness falls to 25 magnitudes per square arcsecond. That is the
+ *  main body of light with the halo excluded by definition, which is the
+ *  quantity this model wants. Each entry names its source.
+ *
+ *  HOW A PUBLISHED DIAMETER IS BUILT, and why they move. Nobody measures a
+ *  Galaxy's diameter in light years. What is measured is an angular size, and
+ *  the physical diameter is that angle times an adopted distance:
+ *
+ *      diameter = D25 angular size x distance
+ *
+ *  Both halves move. The angular size is stable -- most of these still trace
+ *  to RC3 in 1991 -- but the distance is revised often, so a Galaxy appears to
+ *  change size when nothing about it was re-observed. A published figure is a
+ *  composite of a catalogued angle and whichever distance the source adopted,
+ *  and the source does not always say which distance that was: for several of
+ *  these, the stated diameter does not reproduce from the stated angular size
+ *  and the stated distance on the same page. That is not an error in the entry
+ *  below; it is what the published record looks like.
+ *
+ *  A reviewer should read these as good to the nearest ten percent or so, not
+ *  as precise. They are worth revisiting about once a year.
+ *
+ *  ISOPHOTE IS THE LARGER TRAP THAN DISTANCE. A fainter cut gives a bigger
+ *  Galaxy, and the difference dwarfs any distance revision:
+ *
+ *    - M83 is widely published at 118,000 light years. That is D26, one
+ *      magnitude fainter. Its D25 is 55,000. The entry below is the D25.
+ *    - M101 is widely published at 252,000 light years, at a high surface
+ *      brightness level that is not D25. Its D25 figure is 170,000. The entry
+ *      below is the D25.
+ *
+ *  Both of those look like errors against a casual lookup, and are not. Mixing
+ *  a D26 for one Galaxy with a D25 for another would be the error.
+ *
+ *  SIX ENTRIES DO NOT NAME THEIR ISOPHOTE -- M106, NGC 2403, NGC 1300, M100,
+ *  M66 and M95 publish a diameter in kpc without stating the cut. They are
+ *  almost certainly D25, because that is what the catalogues carry, and
+ *  "almost certainly" is the weakest word in this file. Their source field
+ *  says so rather than implying a confidence nobody has. The consequence is
+ *  bounded: a wrong isophote moves that one Galaxy's Livable Planet distance
+ *  and reaches nothing else.
+ *
+ *  THE MILKY WAY IS THE ONE TO WATCH, for a reason that has nothing to do with
+ *  its own accuracy. It is the denominator every other Galaxy is scaled from,
+ *  so it is sixteen times more consequential than any single numerator -- and
+ *  it is the only one that is modelled rather than measured, because nobody
+ *  can photograph this Galaxy from outside. It is also the one being actively
+ *  revised: Gaia-era work finds a broken exponential profile and a larger
+ *  half-light radius than the single-exponential disk the 1997 figure assumed.
+ *  A revision from 87,400 to 95,000 would move all sixteen Livable Planet
+ *  distances by -8.7%. It would not move Track 666, which is anchored to the
+ *  Sun's own measured distance from the core and takes no diameter as input.
+ *
+ *  (the original note follows)
+ *
  *  A Galaxy has no edge. The published diameter is the D25 isophote, the
  *  contour where the surface brightness falls to 25 magnitudes per square
  *  arcsecond, and a fainter cut gives a bigger Galaxy. Andromeda is quoted
@@ -127,11 +183,68 @@ var trackRadiusLightYears = 40.525;
 /* The Milky Way, which is the anchor in either reading. */
 var milkyWayEngines = 333;
 var milkyWayLifeTrack = 666;
-var milkyWayDiameter = 107958;
+
+/* The Milky Way's D25 diameter: 26.8 +/- 1.1 kpc, Goodwin, Gribbin and Hendry
+ * 1997, who could not photograph the Galaxy from outside and so modelled it by
+ * comparing Cepheid distributions in 17 other spirals. It is the scaling
+ * denominator, and it has to be a D25 figure because every numerator is one.
+ *
+ * What the model implies is a different number: 1,332 Tracks of 40.525 light
+ * years is 107,958 light years across, 23.5% wider than D25. That is not a
+ * contradiction -- D25 is where the light falls below 25 magnitudes per square
+ * arcsecond, not where the Galaxy ends -- but the two cannot be mixed. Using
+ * the model's figure as the denominator against other Galaxies' D25 understated
+ * every one of them by that same 23.5%. */
+var milkyWayD25 = 87400;
+var milkyWayModelDiameter = 107958;
 
 /* The speed a Livable Planet runs at. Track 666 of this Galaxy, and the
  * Core Frequency is this times 0.00001: 6.66666 Hz. */
 var livableSpeedMph = 666666;
+
+/* ****************************************************************************
+ *  THE LIVABLE RANGE
+ *
+ *  A Planet does not stop being livable one Track either side of 666. There is
+ *  a band, and its edges come out of the model rather than out of a round
+ *  number.
+ *
+ *  THE CEILING is where the Track's Core Frequency meets the Livable Planet's
+ *  own ring frequency:
+ *
+ *      lpRingFreq = (Earth diameter x 0.001) - aP
+ *                 = 7.9262109 - 0.096210865 = 7.830 Hz
+ *
+ *  That is the Planet's second ring, the Schumann cavity. The Core Frequency
+ *  is the Track's, and it rises with the Track number. While it stays under
+ *  7.830 Hz the Planet's cavity is the faster of the two and the Planet holds
+ *  its own ring. Past that the Track is faster and the ring cannot hold. So
+ *  the ceiling is Track 782: 782,782 mph, 7.82782 Hz, 31,691 light years out.
+ *
+ *  THE FLOOR is the ceiling mirrored through the Life Track. The Life Track is
+ *  where the model is calibrated, so a band around it is symmetric in frequency
+ *  unless something says otherwise, and nothing does. That is Track 550:
+ *  550,550 mph, 5.50550 Hz, 22,289 light years out.
+ *
+ *      floor   Track  550    550,550 mph   5.50550 Hz   22,289 ly
+ *      Life    Track  666    666,666 mph   6.66666 Hz   26,990 ly
+ *      ceiling Track  782    782,782 mph   7.82782 Hz   31,691 ly
+ *
+ *  233 Tracks of 1,332, which is 17.5% of the Galaxy, and +/- 116,116 mph.
+ *
+ *  WHAT THIS IS WORTH. The ceiling is derived: it is two quantities already in
+ *  the model, compared. The floor is not derived, it is the ceiling reflected,
+ *  and a different argument could put it somewhere else.
+ *
+ *  And the width rests on one sample. Earth is the only Planet anybody has
+ *  confirmed life on, so nothing here is measured against a second case. This
+ *  is the model saying where life could be, not a measurement saying where it
+ *  is, and it is the weakest claim in this file. It is written down so it can
+ *  be argued with, which is more than a round number allows.
+ * *************************************************************************** */
+var livableCeilingHz = 7.830;      // the Livable Planet's own ring frequency
+var livableCeilingTrack = 782;
+var livableFloorTrack = 550;       // the ceiling mirrored through Track 666
 
 /* Set by the Sun alone, so they are the same for every preset here. Held as
  * numbers only to work out which Track carries the livable speed; the
@@ -185,10 +298,10 @@ function nearestLivableTrack(engines) {
 /* Scaling the Track Radius. The Milky Way keeps its own figure to the last
  * digit; the rest are that figure times how much bigger the Galaxy is. */
 function scaledTrackRadius(diameterLightYears) {
-    if (diameterLightYears === milkyWayDiameter) {
+    if (diameterLightYears === milkyWayD25) {
         return trackRadiusMiles;
     }
-    return (Number(trackRadiusMiles) * (diameterLightYears / milkyWayDiameter)).toFixed(4);
+    return (Number(trackRadiusMiles) * (diameterLightYears / milkyWayD25)).toFixed(4);
 }
 
 /* The Orbit Calculator's body list. The values behind these are in
@@ -230,51 +343,49 @@ var galaxies = [
         name: "Milky Way",
         type: "Spiral",
         group: "Local Group",
-        /* 107,958 light years is what 333 Engines and 1,332 Tracks imply,
-         * against a published 105,700, which is 2.1% apart. The model's
-         * figure is kept rather than the published one, because it is the
-         * figure every other preset is scaled from. Under the "fixed"
-         * reading this is also the Engine count, stated rather than derived,
-         * for the same reason. */
-        diameter: 107958,
+        /* The only one nobody can photograph from outside, so the only one
+         * whose D25 is modelled rather than measured. 26.8 +/- 1.1 kpc.
+         * The familiar "100,000 light years" is a different quantity -- the
+         * stellar disk, which reaches past the D25 isophote. */
+        diameter: 87400,
         enginesFixed: 333,
         bodies: solarSystemBodies,
-        source: "the model's own: 333 Engines, 1332 Tracks, 53,979 light year radius"
+        source: "D25 26.8 +/- 1.1 kpc, Goodwin, Gribbin & Hendry 1997, arXiv astro-ph/9704216"
     },
     { name: "Andromeda",  designation: "M31",  type: "Spiral", group: "Local Group",
-      diameter: 152000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 152000, bodies: livablePlanetOnly, source: "D25 46.56 kpc, RC3 1991 at 765 kpc" },
     { name: "Triangulum", designation: "M33",  type: "Spiral", group: "Local Group",
-      diameter: 60000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 61100,  bodies: livablePlanetOnly, source: "D25 18.74 kpc" },
 
     { name: "Whirlpool",  designation: "M51",  type: "Spiral", group: "Nearby",
-      diameter: 76000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 76900,  bodies: livablePlanetOnly, source: "D25 23.58 kpc" },
     { name: "Pinwheel",   designation: "M101", type: "Spiral", group: "Nearby",
-      diameter: 170000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 170000, bodies: livablePlanetOnly, source: "D25, 28.8 arcmin at 6.9 Mpc" },
     { name: "NGC 628",    designation: "M74",  type: "Spiral", group: "Nearby",
-      diameter: 95000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 85300,  bodies: livablePlanetOnly, source: "D25 26.16 kpc" },
     { name: "NGC 4258",   designation: "M106", type: "Spiral", group: "Nearby",
-      diameter: 135000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 151700, bodies: livablePlanetOnly, source: "46.53 kpc; isophote NOT stated by the source, assumed D25" },
     { name: "NGC 7331",   type: "Spiral", group: "Nearby",
-      diameter: 120000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 146250, bodies: livablePlanetOnly, source: "D25 44.84 kpc, 25.0 B-mag/arcsec2" },
     { name: "NGC 6946",   designation: "Fireworks", type: "Spiral", group: "Nearby",
-      diameter: 40000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 87300,  bodies: livablePlanetOnly, source: "D25 26.77 kpc, RC3 1991" },
     { name: "NGC 2403",   type: "Spiral", group: "Nearby",
-      diameter: 50000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 90300,  bodies: livablePlanetOnly, source: "27.69 kpc; isophote NOT stated by the source, assumed D25" },
 
     { name: "NGC 1300",   type: "Barred Spiral", group: "Barred",
-      diameter: 110000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 130000, bodies: livablePlanetOnly, source: "39.40 kpc; isophote NOT stated by the source, assumed D25" },
     { name: "NGC 1365",   type: "Barred Spiral", group: "Barred",
-      diameter: 200000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 201700, bodies: livablePlanetOnly, source: "D25.5 61.85 kpc; 2MASS K-band gives 306,800" },
     { name: "NGC 5236",   designation: "M83",  type: "Barred Spiral", group: "Barred",
-      diameter: 55000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 55000,  bodies: livablePlanetOnly, source: "D25 16.9 kpc; the 118,000 figure is D26, a fainter cut" },
     { name: "NGC 4321",   designation: "M100", type: "Barred Spiral", group: "Barred",
-      diameter: 107000, bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 166100, bodies: livablePlanetOnly, source: "50.93 kpc; isophote NOT stated by the source, assumed D25" },
     { name: "NGC 3627",   designation: "M66",  type: "Barred Spiral", group: "Barred",
-      diameter: 95000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 85200,  bodies: livablePlanetOnly, source: "26.12 kpc; isophote NOT stated by the source, assumed D25" },
     { name: "NGC 3351",   designation: "M95",  type: "Barred Spiral", group: "Barred",
-      diameter: 46000,  bodies: livablePlanetOnly, source: "published D25, needs a source" },
+      diameter: 80130,  bodies: livablePlanetOnly, source: "24.58 kpc; isophote NOT stated by the source, assumed D25" },
     { name: "NGC 2903",   type: "Barred Spiral", group: "Barred",
-      diameter: 80000,  bodies: livablePlanetOnly, source: "published D25, needs a source" }
+      diameter: 100800,  bodies: livablePlanetOnly, source: "D25 30.91 kpc" }
 ];
 
 /* ****************************************************************************
@@ -308,7 +419,7 @@ var galaxies = [
             g.engines = milkyWayEngines;
             g.lifeTrack = milkyWayLifeTrack;
             g.trackRadius = scaledTrackRadius(g.diameter);
-            g.trackLightYears = trackRadiusLightYears * (g.diameter / milkyWayDiameter);
+            g.trackLightYears = trackRadiusLightYears * (g.diameter / milkyWayD25);
             g.livableTrack = milkyWayLifeTrack;
         } else {
             /* Same Track everywhere, different Galaxy. The size sets the
@@ -544,7 +655,7 @@ function testGalaxyPresets() {
             testIs(g.label + ": Livable Planet is on Track 666", g.livableTrack, 666);
             testIs(g.label + ": Track Radius is scaled by size",
                 Math.round(g.trackLightYears / trackRadiusLightYears * 100000),
-                Math.round(g.diameter / milkyWayDiameter * 100000));
+                Math.round(g.diameter / milkyWayD25 * 100000));
         } else {
             /* Nobody lives further from 666,666 mph than a Track's worth. */
             if (g.livableTrack !== null) {
@@ -574,6 +685,46 @@ function testGalaxyPresets() {
             testIs(g.label + ": Core Frequency", lifeRow.lpFrequency, "6.66666");
             testIs(g.label + ": Track cycle", lifeRow.trackFreq, "60,000,060");
         }
+    }
+
+    /* ---- the livable range ---------------------------------------------
+     * The ceiling is the Livable Planet's own ring frequency, so it is two
+     * quantities already in the model compared against each other, not a
+     * chosen number. If lpRingFreq ever moves, this moves with it. */
+    testIs("the ceiling is the Livable Planet's ring frequency",
+        livableCeilingHz, 7.830);
+    testIs("which puts the ceiling on Track 782",
+        Math.round(livableCeilingHz * 100000 / 1001), livableCeilingTrack);
+    testIs("the floor is the ceiling mirrored through the Life Track",
+        livableCeilingTrack - 666, 666 - livableFloorTrack);
+    testIs("the Life Track sits in its own band",
+        (666 > livableFloorTrack && 666 < livableCeilingTrack), true);
+    /* Track 1055 was the worked example of too fast. It must fall outside. */
+    testIs("Track 1055 is outside the band", (1055 > livableCeilingTrack), true);
+
+    /* ---- what the published diameters can and cannot move ---------------
+     * Track 666's radius is 666 Tracks of 40.525 light years, which lands on
+     * the Sun's own measured distance from the core. It is anchored to that
+     * measurement, not to the Galaxy's edge, so no revision of a published
+     * diameter can move it. This asserts that. */
+    testIs("Life Track 666 sits at the Sun's measured distance from the core",
+        Math.round(666 * trackRadiusLightYears), 26990);
+
+    /* Every diameter in the list is a D25 figure, including the denominator.
+     * If a measured D25 ever gets mixed with a model-implied diameter, this
+     * ratio stops being the same for every Galaxy and the scaling is wrong. */
+    var ratio0 = null;
+    for (i = 0; i < galaxies.length; i = i + 1) {
+        g = galaxies[i];
+        var modelOverD25 = Math.round(
+            g.lastTrack * g.trackLightYears * 2 / g.diameter * 10000);
+        if (ratio0 === null) {
+            ratio0 = modelOverD25;
+            testIs("the model reaches past D25 by the Milky Way's own factor",
+                ratio0, Math.round(milkyWayModelDiameter / milkyWayD25 * 10000));
+        }
+        testIs(g.label + ": measured the same way as the denominator",
+            modelOverD25, ratio0);
     }
 
     /* The Milky Way's own Track Radius is never recomputed, in either model,

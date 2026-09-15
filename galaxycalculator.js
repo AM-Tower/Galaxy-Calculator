@@ -54,6 +54,28 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     // do not use Math.PI=3.141592653589793
     // this uses 11 bits which is what Newton used, the above uses 15
     // Constant Precession Rate: Constant in Newtons work.
+    /* ************************************************************************
+     * cpRate, the Constant Precession Rate. 324.540503
+     *
+     * The lag between an applied electromagnetic force and a mass's response,
+     * scaled on the size of the star. Newton's constant, by way of Tesla's
+     * notes. It does one job here: the Sun's diameter divided by it gives the
+     * Precession Rate.
+     *
+     *     pRate = 864,575.9 / 324.540503 = 2,664
+     *
+     * pRate is then the lag term in the Life Track speed:
+     *
+     *     lifeMaxSpeed = (aveIteration x Engines) - (pRate + LifeTrack)
+     *                  = (2012 x 333) - (2664 + 666) = 666,666 mph
+     *
+     * BE CLEAR ABOUT WHAT THIS IS. cpRate is an input. It is measured and
+     * carried in, not derived from anything else in this file, and no claim
+     * here rests on it having been derived. A reviewer is right to ask where
+     * 324.540503 comes from, and the honest answer is Tesla's notes, not an
+     * equation. Deriving it from first principles is exactly the kind of work
+     * that would strengthen the model; nothing here pretends it is done.
+     * ********************************************************************** */
     var cpRate = "324.540503";
     /**********************************************************************
      * Core Frequency, also called the G Frequency or the G ring.
@@ -309,11 +331,29 @@ function galaxyCalculator(myGalaxy, mySunSize, myLivablePlanetSize, myTrinaryEng
     var ringSunFirst = "0.00001";
     // Orbital Distance in Miles around the Track.
     var orbitDist = 0;
-    // Valence Gap Offset. An offset for the error that accumulates over an
-    // iteration, from resistance to signal propagation, scaled on the gap
-    // between the valence rings of an atom -- the ratio holds even though the
-    // distances do not. Known as the Galaxy Ring of Power; 13 is the Masonic
-    // number in the Bible.
+    /* ************************************************************************
+     * trackFreqMultiplier, the Valence Gap Offset. 1e-13
+     *
+     * An offset for the error that accumulates over an iteration, from
+     * resistance to signal propagation, scaled on the gap between the valence
+     * rings of an atom -- the ratio holds even though the distances do not.
+     * Known as the Galaxy Ring of Power; 13 is the Masonic number in the Bible.
+     *
+     * It sets the Track cycle, and it is the number a reviewer checks first,
+     * because the cycle is one of the model's three signature figures:
+     *
+     *     trackFreq = 2 / (1e-13 x |minSpeed|)
+     *     at the Life Track: 2 / (1e-13 x 333,333) = 60,000,060 years
+     *
+     * Move it one decimal place and the cycle moves with it: 1e-12 gives
+     * 6,000,006 years, and nothing else in the table changes. That is the
+     * test of whether it is load bearing, and it is.
+     *
+     * BE CLEAR ABOUT WHAT THIS IS. Like cpRate, it is an input. It is named,
+     * defined, and used consistently, but it is carried in rather than derived,
+     * and the model does not claim otherwise. A derivation would be worth more
+     * than any further checking of the numbers that depend on it.
+     * ********************************************************************** */
     var trackFreqMultiplier = "0.0000000000001"; // JavaScript=1e-13
     // Track Frequency: .0000000000001 * |minSpeed|
     var trackFreq = "0.0";

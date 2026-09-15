@@ -101,13 +101,22 @@ for (const name of fs.readdirSync(here)) {
 // memory and compares it against the one on disk.
 const generatedFailures = [];
 try {
-    const maker = require('./make-accuracy.js');
-    const onDisk = fs.existsSync(maker.TARGET) ? fs.readFileSync(maker.TARGET, 'utf8') : '';
-    if (onDisk !== maker.build()) {
-        generatedFailures.push('ACCURACY.html is out of step with ACCURACY.md - run: node make-accuracy.js');
+    const maker = require('./make-html.js');
+    for (const doc of maker.docs) {
+        const src = path.join(maker.here, doc.source);
+        const tgt = path.join(maker.here, doc.target);
+        // A source that is not here builds nothing, so there is nothing to check.
+        if (!fs.existsSync(src)) continue;
+        // An untracked page nobody has built yet is not a failure either.
+        if (!doc.tracked && !fs.existsSync(tgt)) continue;
+        const onDisk = fs.existsSync(tgt) ? fs.readFileSync(tgt, 'utf8') : '';
+        if (onDisk !== maker.build(doc)) {
+            generatedFailures.push(doc.target + ' is out of step with ' + doc.source +
+                ' - run: node make-html.js');
+        }
     }
 } catch (e) {
-    generatedFailures.push('could not check ACCURACY.html: ' + e.message);
+    generatedFailures.push('could not check the generated pages: ' + e.message);
 }
 
 console.log('Galaxy Calculator Test Suite');
